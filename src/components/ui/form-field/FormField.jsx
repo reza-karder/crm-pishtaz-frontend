@@ -3,7 +3,7 @@ import styles from "./FormField.module.css";
 
 function FormField({ children, label, required, id, error, className }) {
 	return (
-		<div className={clsx(styles.form_field, className)}>
+		<div className={clsx(styles.form_field, className)} >
 			{label && (
 				<label htmlFor={id} className={styles.label}>
 					{label} {required && <span>*</span>}
