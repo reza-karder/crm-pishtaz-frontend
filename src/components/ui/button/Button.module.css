@@ -1,0 +1,149 @@
+.button {
+	display: flex;
+	column-gap: 6px;
+	align-items: center;
+	border-radius: 8px;
+	font-weight: 500;
+	transition: all 0.15s ease-in;
+}
+
+.button:active {
+  transform: scale(0.95);
+  transform-origin: bottom center;
+}
+
+.button:disabled {
+	cursor: not-allowed;
+	opacity: 0.6;
+}
+
+/* ======================================= 
+COMPOUND STYLES 
+======================================= */
+.button.normalBtn {
+	border: 1px solid #155dfb33 !important;
+	background-color: transparent !important;
+  box-shadow: #1922300f 0px 1px 2px 0px, #1922301f 0px 6px 14px -8px !important;
+	color: var(--clr-text-dark) !important;
+
+	.icon {
+		color: var(--btn-accent) !important;
+	}
+}
+
+/* ======================================= 
+COLORS 
+======================================= */
+.button.primary {
+	--btn-accent: var(--clr-primary);
+	--btn-accent-soft: var(--clr-primary-soft);
+}
+
+.button.danger {
+	--btn-accent: var(--clr-danger);
+	--btn-accent-soft: var(--clr-danger-soft);
+}
+
+/* ======================================= 
+VARIANTS 
+======================================= */
+.button.contained {
+	border: none;
+	background-color: var(--btn-accent);
+	box-shadow:
+		color-mix(in srgb, var(--btn-accent) 60%, transparent) 0px 2px 4px 0px,
+		color-mix(in srgb, var(--btn-accent) 50%, transparent) 0px 8px 18px -8px;
+  color: var(--clr-white);
+
+	.icon {
+		color: var(--clr-white);
+	}
+}
+
+.button.outlined {
+	border: 1px solid var(--btn-accent);
+	background-color: transparent;
+  box-shadow: #1922300f 0px 1px 2px 0px, #1922301f 0px 6px 14px -8px;
+	color: var(--btn-accent);
+
+	.icon {
+		color: var(--btn-accent);
+	}
+}
+
+.button.text {
+	background-color: transparent;
+	color: var(--clr-text-soft);
+
+	.icon {
+		color: var(--clr-text-mute);
+	}
+}
+
+.button.soft {
+	background-color: var(--btn-accent-soft);
+  box-shadow: #1922300f 0px 1px 2px 0px, #1922301f 0px 6px 14px -8px;
+	color: var(--btn-accent);
+
+	.icon {
+		color: var(--btn-accent);
+	}
+}
+
+/* ======================================= 
+SIZES 
+======================================= */
+.button.small {
+	height: 30px;
+	padding-inline: 12px;
+
+	.icon {
+		width: 14px;
+		height: 14px;
+	}
+}
+
+.button.medium {
+	height: 40px;
+	padding-inline: 16px;
+
+	.icon {
+		width: 16px;
+		height: 16px;
+	}
+}
+
+.button.large {
+	height: 48px;
+	padding-inline: 24px;
+
+	.icon {
+		width: 18px;
+		height: 18px;
+	}
+}
+
+/* ======================================= 
+HOVER MEDIA 
+======================================= */
+@media (hover: hover) {
+	.button.normalBtn:hover {
+		background-color: var(--clr-primary-soft) !important;
+	}
+
+	.button.contained:hover {
+		background-color: color-mix(in srgb, var(--btn-accent) 90%, transparent);
+	}
+
+	.button.outlined:hover {
+		background-color: var(--btn-accent-soft);
+	}
+
+	.button.text:hover {
+		background-color: var(--btn-accent-soft);
+	}
+
+	.button.soft:hover {
+		background-color: color-mix(in srgb, var(--btn-accent-soft) 70%, transparent);
+	}
+}
