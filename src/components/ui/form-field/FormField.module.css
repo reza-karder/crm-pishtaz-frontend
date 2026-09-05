@@ -1,0 +1,21 @@
+.form_field {
+  width: 100%;
+}
+
+.label {
+  display: block;
+  margin-block-end: 6px;
+  color: var(--clr-text-soft);
+  font-weight: 500;
+  font-size: 12px;
+
+  span {
+    color: var(--clr-danger)
+  }
+}
+
+.error_message {
+  margin-block-start: 6px;
+  color: var(--clr-danger);
+  font-size: 12px;
+}
