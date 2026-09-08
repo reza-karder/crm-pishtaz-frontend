@@ -30,7 +30,6 @@ BASE STYLE
 	border-radius: 8px;
 	background-color: transparent;
 	color: var(--btn-text);
-	font-size: 16px;
 	cursor: pointer;
 	transition: all 0.15s ease-in;
 }
