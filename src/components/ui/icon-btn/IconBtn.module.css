@@ -1,3 +1,6 @@
+/* ==========================================
+COLORS
+==========================================*/
 .iconBtn.normal {
 	--btn-text: var(--clr-text-soft);
 	--btn-text-hover: var(--clr-text-dark);
@@ -16,6 +19,9 @@
 	--btn-bg: var(--clr-success-soft);
 }
 
+/* ==========================================
+BASE STYLE
+==========================================*/
 .iconBtn {
 	display: grid;
 	place-items: center;
@@ -33,6 +39,9 @@
   transform: scale(0.95);
 }
 
+/* ==========================================
+HOVER MEDIA
+==========================================*/
 @media (hover: hover) {
 	.iconBtn:hover {
 		background-color: var(--btn-bg);
