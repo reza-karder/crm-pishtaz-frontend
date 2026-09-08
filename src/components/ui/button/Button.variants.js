@@ -18,6 +18,9 @@ const buttonVariants = cva(styles.button, {
       small: styles.small,
       medium: styles.medium,
       large: styles.large
+    },
+    fullWidth: {
+      true: styles.full_width
     }
   },
   compoundVariants: [{variant: "outlined", color: "normal", className: styles.normalBtn}],
