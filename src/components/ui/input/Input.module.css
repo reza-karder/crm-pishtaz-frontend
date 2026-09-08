@@ -1,9 +1,10 @@
 .wrapper {
-  position: relative;
-  width: 100%;
+	position: relative;
+	width: 100%;
 }
 
 .input {
+  width: 100%;
 	height: 40px;
 	padding-inline: 12px;
 	border: 1px solid var(--clr-border);
@@ -11,14 +12,14 @@
 	outline: none;
 	background-color: transparent;
 	color: var(--clr-text-dark);
-  caret-color: var(--clr-text-soft);
+	caret-color: var(--clr-text-soft);
 	font-weight: 400;
 	font-size: var(--fs-sm);
 	transition: all 0.15s linear;
 
 	&:focus {
 		border-color: var(--clr-primary) !important;
-    background-color: transparent !important;
+		background-color: transparent !important;
 		box-shadow: 0 0 5px var(--clr-primary);
 	}
 
@@ -31,18 +32,29 @@
 
 .input.error {
 	border-color: var(--clr-danger);
-  background-color: var(--clr-danger-soft);
+	background-color: var(--clr-danger-soft);
 }
 
-.input.iconed {
-  padding-inline-start: 42px;
+.input.start_icon {
+	padding-inline-start: 42px;
+}
+
+.input.end_icon {
+	padding-inline-end: 42px;
 }
 
 .icon {
-  position: absolute;
-  top: 50%;
-  right: 12px;
-  transform: translateY(-50%);
-  color: var(--clr-text-soft);
-  font-size: var(--fs-base);
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	color: var(--clr-text-soft);
+	font-size: var(--fs-base);
+}
+
+.icon.start_icon {
+	right: 12px;
+}
+
+.icon.end_icon {
+	left: 12px;
 }
