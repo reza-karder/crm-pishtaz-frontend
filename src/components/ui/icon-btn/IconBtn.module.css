@@ -1,0 +1,41 @@
+.iconBtn.normal {
+	--btn-text: var(--clr-text-soft);
+	--btn-text-hover: var(--clr-text-dark);
+	--btn-bg: var(--clr-text-mute);
+}
+
+.iconBtn.danger {
+	--btn-text: #d45e5e;
+	--btn-text-hover: var(--clr-danger);
+	--btn-bg: var(--clr-danger-soft);
+}
+
+.iconBtn.success {
+	--btn-text: #58976b;
+	--btn-text-hover: var(--clr-success);
+	--btn-bg: var(--clr-success-soft);
+}
+
+.iconBtn {
+	display: grid;
+	place-items: center;
+	width: 32px;
+	height: 32px;
+	border-radius: 8px;
+	background-color: transparent;
+	color: var(--btn-text);
+	font-size: 16px;
+	cursor: pointer;
+	transition: all 0.15s ease-in;
+}
+
+.iconBtn:active {
+  transform: scale(0.95);
+}
+
+@media (hover: hover) {
+	.iconBtn:hover {
+		background-color: var(--btn-bg);
+		color: var(--btn-text-hover);
+	}
+}
