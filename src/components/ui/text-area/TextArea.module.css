@@ -8,7 +8,7 @@
   background-color: var(--clr-white);
   color: var(--clr-text-dark);
   font-weight: 400;
-  font-size: 14px;
+  font-size: var(--fs-sm);
   resize: vertical;
   transition: all .15s linear;
 }
@@ -25,5 +25,5 @@
 .text_area::placeholder {
   color: #BFBFBF;
   font-weight: 400;
-  font-size: 14px;
+  font-size: var(--fs-sm);
 }
