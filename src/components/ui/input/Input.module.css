@@ -4,7 +4,7 @@
 }
 
 .input {
-  width: 100%;
+	width: 100%;
 	height: 40px;
 	padding-inline: 12px;
 	border: 1px solid var(--clr-border);
@@ -51,10 +51,16 @@
 	font-size: var(--fs-base);
 }
 
-.icon.start_icon {
+.adornment {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.icon.start_icon, .start_adornment{
 	right: 12px;
 }
 
-.icon.end_icon {
+.icon.end_icon, .end_adornment {
 	left: 12px;
 }
