@@ -1,11 +1,12 @@
 import buttonVariants from "./Button.variants";
 import styles from "./Button.module.css"
 
-function Button({ variant, color, size, className, children, Icon, ...props }) {
+function Button({ variant, color, size, className, children, IconStart, IconEnd, ...props }) {
 	return (
 		<button className={buttonVariants({ variant, color, size, className })} {...props}>
-			{Icon && <Icon className={styles.icon} />}
+			{IconStart && <IconStart className={styles.icon} />}
 			{children}
+			{IconEnd && <IconEnd className={styles.icon} />}
 		</button>
 	);
 }
