@@ -2,7 +2,7 @@ import clsx from "clsx";
 import styles from "./Input.module.css";
 
 // use adornments for components rendering like iconBtn. use icon for svg icons.
-function Input({ className, error, StartIcon, EndIcon, endAdornment, startAdornment, ...props }) {
+function Input({ className, error, StartIcon, EndIcon, endAdornment, startAdornment, dir, ...props }) {
 	if (StartIcon || EndIcon || endAdornment || startAdornment) {
 		const inputClassName = clsx(
 			styles.input,
@@ -13,10 +13,9 @@ function Input({ className, error, StartIcon, EndIcon, endAdornment, startAdornm
 			endAdornment && styles.end_adornment,
 			startAdornment && styles.start_adornment
 		);
-
 		return (
-			<div className={styles.wrapper}>
-				<input className={inputClassName} {...props} />
+			<div className={styles.wrapper} dir={dir}>
+				<input className={inputClassName} dir={dir} {...props}  />
 				{StartIcon && <StartIcon className={clsx(styles.icon, styles.start_icon)} />}
 				{EndIcon && <EndIcon className={clsx(styles.icon, styles.end_icon)} />}
 				{endAdornment && <div className={clsx(styles.end_adornment, styles.adornment)}>{endAdornment}</div>}
@@ -25,7 +24,7 @@ function Input({ className, error, StartIcon, EndIcon, endAdornment, startAdornm
 		);
 	}
 
-	return <input className={clsx(styles.input, className, error && styles.error)} {...props} />;
+	return <input className={clsx(styles.input, className, error && styles.error)} dir={dir} {...props} />;
 }
 
 export default Input;
