@@ -30,7 +30,7 @@ function SigninForm() {
 
 	const navigateUser = (role) => {
 		const path = role === "admin" ? "/admin" : "/";
-		navigate(path);
+		navigate(path, { replace: true });
 	};
 
 	const handleSubmit = async (formData) => {

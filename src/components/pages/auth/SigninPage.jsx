@@ -1,8 +1,28 @@
+import { useNavigate } from "react-router";
+import { useCheckSession } from "../../../api/auth/queries";
 import Brand from "../../common/brand/Brand";
 import SigninForm from "./SigninForm";
 import styles from "./SigninPage.module.css";
+import { BeatLoader } from "react-spinners";
 
 function SigninPage() {
+	const { data, isPending } = useCheckSession();
+	const navigate = useNavigate();
+
+  // protect the route if user is already signed in
+	if(data?.success) {
+	  const path = data.user.role === "admin" ? "/admin" : "/"
+	  navigate(path, { replace: true })
+	}
+
+	if (isPending) {
+		return (
+			<div className={styles.loader}>
+				<BeatLoader color="var(--clr-primary)" />
+			</div>
+		);
+	}
+
 	return (
 		<main className={styles.main}>
 			<section className={styles.panel_sec}>
@@ -11,9 +31,7 @@ function SigninPage() {
 					<h1 className={styles.panel__title}>ورود به سامانه</h1>
 					<p className={styles.panel__desc}>برای ادامه، نام کاربری و رمز عبور خود را وارد کنید.</p>
 					<SigninForm />
-					<p className={styles.panel__help}>
-						در صورت فراموشی رمز عبور با مدیر سیستم تماس بگیرید.
-					</p>
+					<p className={styles.panel__help}>در صورت فراموشی رمز عبور با مدیر سیستم تماس بگیرید.</p>
 				</div>
 			</section>
 
