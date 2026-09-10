@@ -22,7 +22,6 @@ function Layout({ links }) {
 				<Sidebar links={links} />
 			</aside>
 			<div className={styles.wrapper}>
-				<button onClick={toggleIsDrawerOpen}>asdasd</button>
 				<Outlet />
 			</div>
 
