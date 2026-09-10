@@ -9,6 +9,7 @@ import Sidebar from "./Sidebar";
 import useToggle from "../../hooks/useToggle";
 import MobileDrawer from "./MobileDrawer";
 import Header from "./Header";
+import BottomNav from "./BottomNav";
 
 function Layout({ links }) {
 	const [isDrawerOpen, toggleIsDrawerOpen] = useToggle(false);
@@ -25,6 +26,7 @@ function Layout({ links }) {
 				<Outlet />
 			</div>
 
+      <BottomNav links={links.slice(0, 5)} />
       {isDrawerOpen && (
 				<MobileDrawer links={links} isOpen={isDrawerOpen} onClose={toggleIsDrawerOpen} />
 			)}
