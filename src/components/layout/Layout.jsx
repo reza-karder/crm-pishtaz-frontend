@@ -6,8 +6,12 @@
 import { Outlet } from "react-router";
 import styles from "./Layout.module.css";
 import Sidebar from "./Sidebar";
+import useToggle from "../../hooks/useToggle";
+import MobileDrawer from "./MobileDrawer";
 
 function Layout({ links }) {
+	const [isDrawerOpen, toggleIsDrawerOpen] = useToggle(false);
+
 	return (
 		<main className={styles.main}>
 			<aside className={styles.aside}>
@@ -17,6 +21,10 @@ function Layout({ links }) {
 				<button onClick={toggleIsDrawerOpen}>asdasd</button>
 				<Outlet />
 			</div>
+
+      {isDrawerOpen && (
+				<MobileDrawer links={links} isOpen={isDrawerOpen} onClose={toggleIsDrawerOpen} />
+			)}
 		</main>
 	);
 }

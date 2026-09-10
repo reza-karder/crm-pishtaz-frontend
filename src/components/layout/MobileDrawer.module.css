@@ -1,0 +1,51 @@
+.wrapper {
+	display: none;
+	position: fixed;
+	inset-block-start: 0;
+	inset-inline-start: 0;
+}
+
+.content {
+	z-index: 2;
+	position: relative;
+	transform: translateX(100%);
+  animation: slide-in 150ms ease-out forwards;
+}
+
+.wrapper.open .content {
+	transform: translateX(0);
+}
+
+.backdrop {
+	z-index: 1;
+	position: fixed;
+	width: 100vw;
+	height: 100dvh;
+	inset-block-start: 0;
+	inset-inline-start: 0;
+	backdrop-filter: blur(30px);
+	background-color: #c8cbce83;
+}
+
+/* ============================
+KEY FRRAMES
+============================ */
+@keyframes slide-in {
+  from {
+    transform: translateX(100%);
+  }
+
+  to {
+    transform: translateX(0);
+  }
+}
+
+/* ============================
+WIDTH MEDIA
+============================ */
+@media (max-width: 1024px) {
+	.wrapper {
+		display: block;
+	}
+}
+
