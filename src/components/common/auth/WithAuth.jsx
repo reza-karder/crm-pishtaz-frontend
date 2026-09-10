@@ -15,7 +15,8 @@ function WithAuth({ role }) {
   }
 
   if(data.user.role !== role) {
-    return <Navigate  to="/" />
+    const path = role === "admin" ? "/admin" : "/"
+    return <Navigate to={path} />
   }
 
 	if (isPending) {
