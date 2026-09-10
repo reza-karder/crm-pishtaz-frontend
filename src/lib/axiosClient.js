@@ -1,6 +1,6 @@
 import axios from "axios";
 import env from "../config/env";
-import { toast } from "sonner";
+import ERROR_MESSAGES from "../constants/errorMessages";
 
 const axiosClient = axios.create({ baseURL: env.API_BASE_URL, withCredentials: true });
 
@@ -13,8 +13,8 @@ axiosClient.interceptors.response.use(
       return error.response.data
     }
 
-    // if error is unexpected just show some toast message
-    toast.error("مشکلی پیش آمده لطفا بعدا سعی کنید")
+    // if error is unexpected just show some toast message in react query client
+    error.message = ERROR_MESSAGES[error.code] || "مشکلی پیش اومد. لطفاً دوباره تلاش کنید."
     return Promise.reject(error)
   }
 );
