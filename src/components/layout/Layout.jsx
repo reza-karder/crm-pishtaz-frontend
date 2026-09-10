@@ -8,12 +8,15 @@ import styles from "./Layout.module.css";
 import Sidebar from "./Sidebar";
 import useToggle from "../../hooks/useToggle";
 import MobileDrawer from "./MobileDrawer";
+import Header from "./Header";
 
 function Layout({ links }) {
 	const [isDrawerOpen, toggleIsDrawerOpen] = useToggle(false);
 
 	return (
 		<main className={styles.main}>
+      <Header toggleDrawer={toggleIsDrawerOpen} />
+			
 			<aside className={styles.aside}>
 				<Sidebar links={links} />
 			</aside>

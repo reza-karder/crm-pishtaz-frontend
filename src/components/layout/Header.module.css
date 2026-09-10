@@ -1,0 +1,26 @@
+.header {
+  display: flex;
+  display: none;
+  position: sticky;
+  align-items: center;
+  justify-content: space-between;
+  height: 56px;
+  margin-block-end: 20px;
+  inset-block-start: 0;
+  padding-inline: 24px;
+  border-bottom: 1px solid var(--clr-border);
+  background-color: var(--clr-white);
+}
+
+.drawer_btn {
+  font-size: 20px;
+}
+
+/* ============================
+WIDTH MEDIA
+============================ */
+@media (max-width: 1024px) {
+  .header {
+    display: flex;
+  }
+}
