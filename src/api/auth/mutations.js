@@ -10,4 +10,11 @@ const useSignin = () => {
 	});
 };
 
-export { useSignin };
+const useSignout = () => {
+  return useMutation({
+    mutationFn: AUTH_SERVICES.signout,
+    mutationKey: AUTH_KEYS.SIGN_OUT
+  })
+}
+
+export { useSignin, useSignout };

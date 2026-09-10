@@ -14,7 +14,7 @@
   --clr-danger-soft: #FEF2F2;
   --clr-warning: #D97706;
   --clr-warning-soft: #FFFBEB;
-  --clr-bg: #F8FAFC;
+  --clr-bg: #f5f5fa;
   --clr-surface: #FFFFFF;
   --clr-white: #FFFFFF;
   --clr-border: #E0E5EB;
@@ -79,4 +79,18 @@ textarea,
 select {
 	color: inherit;
 	font: inherit;
+}
+
+/* ======================================= 
+SCROLLBAR
+======================================= */
+
+::-webkit-scrollbar {
+  width: 8px;
+  background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 4px;
+  background-color: var(--clr-text-mute);
 }
