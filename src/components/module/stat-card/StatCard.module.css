@@ -1,0 +1,60 @@
+.card {
+  display: flex;
+  column-gap: 15px;
+  align-items: center;
+  width: 100%;
+  padding: 16px;
+  border: 1px solid var(--clr-border);
+  border-radius: 14px;
+  background: var(--clr-white);
+}
+
+.card__icon {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background-color: var(--card-bg);
+  color: var(--card-text);
+  font-size: 20px;
+}
+
+.card__title {
+  margin-block-end: 4px;
+  color: var(--clr-text-soft);
+  font-size: var(--fs-xs);
+}
+
+.card__value {
+  font-weight: 700;
+  font-size: var(--fs-lg);
+}
+
+/* ============================
+COLOR VARIANTS 
+============================*/
+.card.primary {
+  --card-text: var(--clr-primary);
+  --card-bg: var(--clr-primary-soft);
+}
+
+.card.danger {
+  --card-text: var(--clr-danger);
+  --card-bg: var(--clr-danger-soft);
+}
+
+.card.warning {
+  --card-text: var(--clr-warning);
+  --card-bg: var(--clr-warning-soft);
+}
+
+.card.success {
+  --card-text: var(--clr-success);
+  --card-bg: var(--clr-success-soft);
+}
+
+.card.normal {
+  --card-text: var(--clr-text-soft);
+  --card-bg: var(--clr-text-mute);
+}
