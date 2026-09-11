@@ -3,6 +3,7 @@ import styles from "./Button.module.css";
 import { ClipLoader } from "react-spinners";
 
 function Button({
+  Component = "button",
 	variant,
 	color,
 	size,
@@ -16,7 +17,7 @@ function Button({
 	...props
 }) {
 	return (
-		<button
+		<Component
 			className={buttonVariants({ variant, color, size, fullWidth, className })}
 			disabled={disabled || loading}
 			{...props}
@@ -30,7 +31,7 @@ function Button({
 					{IconEnd && <IconEnd className={styles.icon} />}
 				</>
 			)}
-		</button>
+		</Component>
 	);
 }
 

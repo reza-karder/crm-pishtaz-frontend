@@ -50,6 +50,10 @@ COLORS
 	--btn-accent-soft: var(--clr-danger-soft);
 }
 
+.button.normal {
+	--btn-accent-soft: var(--clr-text-soft);
+}
+
 /* ======================================= 
 VARIANTS 
 ======================================= */
