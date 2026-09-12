@@ -1,20 +1,19 @@
-import { yupResolver } from "@hookform/resolvers/yup";
-import { useForm } from "react-hook-form";
+import { useFormik } from "formik";
 
-function useCustomForm(initialFormData, validatorSchema) {
-	const form = useForm({
-		defaultValues: initialFormData,
-		mode: "onChange",
-		reValidateMode: "onSubmit",
-		resolver: yupResolver(validatorSchema),
+function useCustomForm(initialFormData, validatorSchema, onSubmit) {
+	const form = useFormik({
+		initialValues: initialFormData,
+		validationSchema: validatorSchema,
+		validateOnChange: true,
+		validateOnBlur: true,
+    onSubmit
 	});
 
-	const getErrorMessage = (fieldName) =>
-		form.formState.touchedFields[fieldName] && form.formState.errors[fieldName]?.message;
+	const getErrorMessage = (fieldName) => form.touched[fieldName] && form.errors[fieldName];
 
 	return {
 		...form,
-		onSubmit: form.handleSubmit,
+    onSubmit: form.handleSubmit,
 		getErrorMessage,
 	};
 }
