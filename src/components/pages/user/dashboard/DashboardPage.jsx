@@ -3,6 +3,7 @@ import StatCard from "../../../module/stat-card/StatCard";
 import styles from "./DashboardPage.module.css";
 import PersonIcon from "../../../../assets/icons/person.svg?react";
 import PhoneIcon from "../../../../assets/icons/phone.svg?react";
+import QuickAccess from "./QuickAccess";
 import Chart from "./Chart";
 import clsx from "clsx";
 import PageHeader from "../../../module/page-header/PageHeader";
@@ -57,6 +58,8 @@ function DashboardPage() {
 					)}
 				</section>
 			</div>
+
+			<QuickAccess />
 		</>
 	);
 }
