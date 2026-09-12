@@ -22,7 +22,6 @@ function SigninForm() {
 	const navigate = useNavigate();
 	const [showPassword, toggleShowPassword] = useToggle(false);
 	const { mutateAsync: signin, isPending } = useSignin();
-	const { register, onSubmit, getErrorMessage } = useCustomForm(INITIAL_FORM_DATA, signinSchema);
 
 	const navigateUser = (role) => {
 		const path = role === "admin" ? "/admin" : "/";
@@ -40,8 +39,14 @@ function SigninForm() {
 		navigateUser(response.user.role);
 	};
 
+	const { getFieldProps, onSubmit, getErrorMessage } = useCustomForm(
+		INITIAL_FORM_DATA,
+		signinSchema,
+		handleSubmit
+	);
+
 	return (
-		<form className={styles.form} onSubmit={onSubmit(handleSubmit)}>
+		<form className={styles.form} onSubmit={onSubmit}>
 			<FormField required id="email" label="ایمیل" error={getErrorMessage("email")}>
 				<Input
 					dir="ltr"
@@ -49,7 +54,7 @@ function SigninForm() {
 					type="email"
 					placeholder="example@gmail.com"
 					error={getErrorMessage("email")}
-					{...register("email")}
+					{...getFieldProps("email")}
 				/>
 			</FormField>
 
@@ -60,7 +65,7 @@ function SigninForm() {
 					placeholder="••••••••"
 					type={showPassword ? "text" : "password"}
 					error={getErrorMessage("password")}
-					{...register("password")}
+					{...getFieldProps("password")}
 					startAdornment={
 						<IconBtn type="button" onClick={toggleShowPassword}>
 							{showPassword ? <EyeOffIcon /> : <EyeIcon />}
