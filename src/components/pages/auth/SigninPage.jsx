@@ -5,17 +5,20 @@ import SigninForm from "./SigninForm";
 import styles from "./SigninPage.module.css";
 import { BeatLoader } from "react-spinners";
 import useDocumentTitle from "../../../hooks/useDocumentTitle";
+import { useEffect } from "react";
 
 function SigninPage() {
-  useDocumentTitle("ورود")
+	useDocumentTitle("ورود");
 	const { data, isPending } = useCheckSession();
 	const navigate = useNavigate();
 
-  // protect the route if user is already signed in
-	if(data?.success) {
-	  const path = data.user.role === "admin" ? "/admin" : "/"
-	  navigate(path, { replace: true })
-	}
+	useEffect(() => {
+		// protect the route if user is already signed in
+		if (data?.success) {
+			const path = data.user.role === "admin" ? "/admin" : "/";
+			navigate(path, { replace: true });
+		}
+	}, [data, navigate]);
 
 	if (isPending) {
 		return (
