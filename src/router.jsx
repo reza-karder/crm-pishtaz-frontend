@@ -7,6 +7,18 @@ import QueryBoundary from "./components/common/QueryBoundary";
 import DashboardPage from "./components/pages/user/dashboard/DashboardPage";
 import UserDashPageLoading from "./components/pages/user/dashboard/PageLoading";
 import ErrorState from "./components/common/error-state/ErrorState";
+import AUTH_SERVICES from "./api/auth/services";
+
+const userRoutes = [
+	{
+		index: true,
+		element: (
+			<QueryBoundary loadingFallback={<UserDashPageLoading />} errorFallback={<ErrorState />}>
+				<DashboardPage />
+			</QueryBoundary>
+		),
+	},
+];
 
 const router = createBrowserRouter([
 	{
@@ -18,22 +30,14 @@ const router = createBrowserRouter([
 			},
 			{
 				element: <WithAuth role="employee" />,
+				loader: async () => {
+					const result = await AUTH_SERVICES.checkSession();
+					return { result };
+				},
 				children: [
 					{
 						element: <Layout links={USER_LAYOUT_LINKS} />,
-						children: [
-							{
-								index: true,
-								element: (
-									<QueryBoundary
-										loadingFallback={<UserDashPageLoading />}
-										errorFallback={<ErrorState />}
-									>
-										<DashboardPage />
-									</QueryBoundary>
-								),
-							},
-						],
+						children: userRoutes,
 					},
 				],
 			},
