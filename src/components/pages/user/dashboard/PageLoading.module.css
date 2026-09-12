@@ -1,0 +1,38 @@
+.stats_sec {
+  display: flex;
+  margin-block-start: 20px;
+  gap: 12px;
+}
+
+.wrapper {
+  display: flex;
+  align-items: stretch;
+  min-height: 324px;
+  margin-block: 20px;
+  gap: 16px;
+}
+
+.chart {
+  flex-grow: 1;
+  width: unset;
+  min-width: 450px;
+  height: 324px;
+}
+
+.calls {
+  width: 347px;
+  height: 324px;
+}
+
+/* ====================================
+WIDTH MEDIA
+==================================== */
+@media (max-width: 1024px) {
+  .wrapper {
+    flex-direction: column;
+  }
+
+  .calls {
+    width: 100%;
+  }
+}
