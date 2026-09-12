@@ -22,11 +22,7 @@ function SigninForm() {
 	const navigate = useNavigate();
 	const [showPassword, toggleShowPassword] = useToggle(false);
 	const { mutateAsync: signin, isPending } = useSignin();
-	const { register, onSubmit, errors, touchedFields } = useCustomForm(
-		INITIAL_FORM_DATA,
-		signinSchema
-	);
-  
+	const { register, onSubmit, getErrorMessage } = useCustomForm(INITIAL_FORM_DATA, signinSchema);
 
 	const navigateUser = (role) => {
 		const path = role === "admin" ? "/admin" : "/";
@@ -46,34 +42,24 @@ function SigninForm() {
 
 	return (
 		<form className={styles.form} onSubmit={onSubmit(handleSubmit)}>
-			<FormField
-				required
-				id="email"
-				label="ایمیل"
-				error={touchedFields.email && errors.email?.message}
-			>
+			<FormField required id="email" label="ایمیل" error={getErrorMessage("email")}>
 				<Input
 					dir="ltr"
 					id="email"
 					type="email"
 					placeholder="example@gmail.com"
-					error={touchedFields.email && errors.email}
+					error={getErrorMessage("email")}
 					{...register("email")}
 				/>
 			</FormField>
 
-			<FormField
-				required
-				id="password"
-				label="رمز عبور"
-				error={touchedFields.password && errors.password?.message}
-			>
+			<FormField required id="password" label="رمز عبور" error={getErrorMessage("password")}>
 				<Input
 					dir="ltr"
 					id="password"
 					placeholder="••••••••"
 					type={showPassword ? "text" : "password"}
-					error={touchedFields.password && errors.password}
+					error={getErrorMessage("password")}
 					{...register("password")}
 					startAdornment={
 						<IconBtn type="button" onClick={toggleShowPassword}>
