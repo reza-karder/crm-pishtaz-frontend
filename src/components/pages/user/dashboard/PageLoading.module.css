@@ -32,6 +32,11 @@ WIDTH MEDIA
     flex-direction: column;
   }
 
+  .chart {
+    min-width: 0;
+  }
+
+
   .calls {
     width: 100%;
   }
