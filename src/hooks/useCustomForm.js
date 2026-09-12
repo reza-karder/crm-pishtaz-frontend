@@ -1,20 +1,21 @@
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 
-function useCustomForm(intialFormData, validatorSchema) {
-	const { handleSubmit, formState, ...props } = useForm({
-		defaultValues: intialFormData,
+function useCustomForm(initialFormData, validatorSchema) {
+	const form = useForm({
+		defaultValues: initialFormData,
 		mode: "onChange",
 		reValidateMode: "onSubmit",
 		resolver: yupResolver(validatorSchema),
 	});
 
+	const getErrorMessage = (fieldName) =>
+		form.formState.touchedFields[fieldName] && form.formState.errors[fieldName]?.message;
+
 	return {
-		onSubmit: handleSubmit,
-		errors: formState.errors,
-		touchedFields: formState.touchedFields,
-		...props,
+		...form,
+		onSubmit: form.handleSubmit,
+		getErrorMessage,
 	};
 }
-
 export default useCustomForm;
