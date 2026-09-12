@@ -1,31 +1,16 @@
-import { useNavigate } from "react-router";
-import { useCheckSession } from "../../../api/auth/queries";
+import { Navigate, useLoaderData } from "react-router";
 import Brand from "../../common/brand/Brand";
 import SigninForm from "./SigninForm";
 import styles from "./SigninPage.module.css";
-import { BeatLoader } from "react-spinners";
 import useDocumentTitle from "../../../hooks/useDocumentTitle";
-import { useEffect } from "react";
 
 function SigninPage() {
 	useDocumentTitle("ورود");
-	const { data, isPending } = useCheckSession();
-	const navigate = useNavigate();
+	const { result } = useLoaderData();
 
-	useEffect(() => {
-		// protect the route if user is already signed in
-		if (data?.success) {
-			const path = data.user.role === "admin" ? "/admin" : "/";
-			navigate(path, { replace: true });
-		}
-	}, [data, navigate]);
-
-	if (isPending) {
-		return (
-			<div className={styles.loader}>
-				<BeatLoader color="var(--clr-primary)" />
-			</div>
-		);
+	if (result?.success) {
+		const path = result.user.role === "admin" ? "/admin" : "/";
+		<Navigate to={path} replace />;
 	}
 
 	return (

@@ -9,6 +9,11 @@ import UserDashPageLoading from "./components/pages/user/dashboard/PageLoading";
 import ErrorState from "./components/common/error-state/ErrorState";
 import AUTH_SERVICES from "./api/auth/services";
 
+async function sessionLoader() {
+	const result = await AUTH_SERVICES.checkSession();
+	return { result };
+}
+
 const userRoutes = [
 	{
 		index: true,
@@ -27,13 +32,11 @@ const router = createBrowserRouter([
 			{
 				path: "/sign-in",
 				Component: SigninPage,
+				loader: sessionLoader,
 			},
 			{
 				element: <WithAuth role="employee" />,
-				loader: async () => {
-					const result = await AUTH_SERVICES.checkSession();
-					return { result };
-				},
+				loader: sessionLoader,
 				children: [
 					{
 						element: <Layout links={USER_LAYOUT_LINKS} />,

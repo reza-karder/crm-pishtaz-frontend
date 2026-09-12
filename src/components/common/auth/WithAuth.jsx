@@ -8,12 +8,12 @@ function WithAuth({ role }) {
 	const { result } = useLoaderData();
 
 	if (!result?.success) {
-		return <Navigate to="/sign-in" />;
+		return <Navigate to="/sign-in" replace />;
 	}
 
 	if (result.user.role !== role) {
 		const path = role === "admin" ? "/admin" : "/";
-		return <Navigate to={path} />;
+		return <Navigate to={path}  replace />;
 	}
 
 	return <Outlet />;
