@@ -9,12 +9,12 @@ import styles from "./Modal.module.css";
 import CrossIcon from "../../../assets/icons/cross.svg?react";
 import clsx from "clsx";
 
-function Modal({ isOpen, children, onClose, className }) {
+function Modal({ isOpen, children, onClose, className, style }) {
 	if (!isOpen) return null;
 
 	return (
 		<div className={clsx(styles.modal_wrapper, className)}>
-			<div className={styles.modal}>{children}</div>
+			<div className={styles.modal} style={style}>{children}</div>
 			<div className={styles.backdrop} onClick={onClose}></div>
 		</div>
 	);
