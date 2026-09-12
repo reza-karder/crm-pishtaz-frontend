@@ -1,0 +1,32 @@
+.calls_list {
+	margin-block-start: 16px;
+}
+
+.call__link {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 12px;
+	border: 1px solid var(--clr-border);
+	border-radius: 10px;
+	cursor: pointer;
+	transition: all 100ms ease-in;
+}
+
+.call_item + .call_item {
+	margin-block-start: 8px;
+}
+
+.call__name {
+	font-weight: 500;
+	font-size: var(--fs-sm);
+}
+
+/* ========================================
+HOVER MEDIA 
+======================================== */
+@media (hover: hover) {
+	.call__link:hover {
+		background-color: var(--clr-text-mute);
+	}
+}

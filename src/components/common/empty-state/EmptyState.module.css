@@ -1,0 +1,13 @@
+.title {
+	font-weight: 500;
+	font-size: var(--fs-sm);
+  text-align: center;
+}
+
+.subtitle {
+	margin-block-start: 4px;
+  color: var(--clr-text-soft);
+	font-weight: 400;
+	font-size: var(--fs-xs);
+  text-align: center;
+}
