@@ -1,5 +1,6 @@
 .wrapper {
 	display: none;
+  z-index: 1002;
 	position: fixed;
 	inset-block-start: 0;
 	inset-inline-start: 0;

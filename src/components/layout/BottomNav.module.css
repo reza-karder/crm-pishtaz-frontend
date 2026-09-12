@@ -1,5 +1,6 @@
 .nav {
   display: none;
+  z-index: 1001;
   position: fixed;
   align-items: center;
   width: 100vw;

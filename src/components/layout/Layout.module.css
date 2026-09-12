@@ -30,7 +30,7 @@ WIDTH MEDIA
 	}
 
 	.wrapper {
-		padding-block: 0;
+		padding-block: 0 90px;
 	}
 }
 
