@@ -1,9 +1,11 @@
 .modal_wrapper {
 	display: grid;
-	position: relative;
+	position: fixed;
 	place-items: center;
 	width: 100vw;
 	height: 100dvh;
+  inset-block-start: 0;
+  inset-inline-start: 0;
 	padding-inline: 15px;
 	padding-block: 30px;
 	overflow: hidden;
