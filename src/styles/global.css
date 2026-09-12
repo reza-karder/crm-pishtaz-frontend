@@ -94,3 +94,24 @@ SCROLLBAR
   border-radius: 4px;
   background-color: var(--clr-text-mute);
 }
+
+/* =================================
+REUSEABLE STYLES 
+================================= */
+.paper {
+  padding: 20px;
+  border: 1px solid var(--clr-border);
+  border-radius: 14px;
+  background-color: var(--clr-white);
+}
+
+.paper__title {
+  font-weight: 500;
+  font-size: var(--fs-base);
+}
+
+.paper__subtitle {
+  color: var(--clr-text-soft);
+  font-weight: 400;
+  font-size: var(--fs-xs);
+}

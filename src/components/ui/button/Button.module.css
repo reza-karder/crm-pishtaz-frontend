@@ -51,7 +51,7 @@ COLORS
 }
 
 .button.normal {
-	--btn-accent-soft: var(--clr-text-soft);
+	--btn-accent-soft: var(--clr-text-mute);
 }
 
 /* ======================================= 
@@ -86,7 +86,7 @@ VARIANTS
 	color: var(--clr-text-soft);
 
 	.icon {
-		color: var(--clr-text-mute);
+		color: var(--clr-text-soft);
 	}
 }
 
