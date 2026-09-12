@@ -10,30 +10,30 @@ import ErrorState from "./components/common/error-state/ErrorState";
 
 const router = createBrowserRouter([
 	{
-		path: "/sign-in",
-		Component: SigninPage,
-	},
-	{
-		element: <WithAuth role="employee" />,
+		errorElement: <ErrorState />,
 		children: [
 			{
-				element: <Layout links={USER_LAYOUT_LINKS} />,
+				path: "/sign-in",
+				Component: SigninPage,
+			},
+			{
+				element: <WithAuth role="employee" />,
 				children: [
 					{
-						index: true,
-						element: (
-							<QueryBoundary
-								loadingFallback={<UserDashPageLoading />}
-								errorFallback={
-									<ErrorState
-										title="مشکلی پیش اومد. لطفاً دوباره تلاش کنید."
-										subtitle="درصورت برطرف نشدن مشکل پس از چند تلاش با مدیریت تماس گیرید"
-									/>
-								}
-							>
-								<DashboardPage />
-							</QueryBoundary>
-						),
+						element: <Layout links={USER_LAYOUT_LINKS} />,
+						children: [
+							{
+								index: true,
+								element: (
+									<QueryBoundary
+										loadingFallback={<UserDashPageLoading />}
+										errorFallback={<ErrorState />}
+									>
+										<DashboardPage />
+									</QueryBoundary>
+								),
+							},
+						],
 					},
 				],
 			},
