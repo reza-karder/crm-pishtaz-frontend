@@ -2,11 +2,11 @@ import { BarChart, Bar, XAxis, CartesianGrid, Tooltip } from "recharts";
 import styles from "./Chart.module.css";
 
 // returns Array of {label: String, y: Number}
-function generateData(last7DaysCalls) {
+function generateData(callsOfLast7Days) {
   const today = new Date()
 
   const data = Array.from({ length: 7 }, (_, index) => {
-    const callsOfDay = last7DaysCalls[index] || []
+    const callsOfDay = callsOfLast7Days[index] || []
 
     today.setDate(today.getDate() - index)
     const label = today.toLocaleDateString("fa-IR", { weekday: "long" })
@@ -17,8 +17,8 @@ function generateData(last7DaysCalls) {
   return data.reverse()
 }
 
-function Chart({ last7DaysCalls }) {
-  const data = generateData(last7DaysCalls)
+function Chart({ callsOfLast7Days }) {
+  const data = generateData(callsOfLast7Days)
   
 	return (
 		<BarChart responsive data={data} className={styles.chart}>

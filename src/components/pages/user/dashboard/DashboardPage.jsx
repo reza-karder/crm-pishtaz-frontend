@@ -18,7 +18,7 @@ import useDocumentTitle from "../../../../hooks/useDocumentTitle";
 function DashboardPage() {
   useDocumentTitle("داشبورد")
 	const { data } = useGetUserStats();
-	const { todayCalls, allCallsCount, customersCount, callsOfWeek } = data.stats;
+	const { todayCalls, allCallsCount, customersCount, callsOfLast7Days } = data.stats;
 	const pageHeaderLabel = todayCalls.length
 		? `امروز ${todayCalls.length || "هیچ"} تماس در برنامه کاری شما ثبت شده است.`
 		: "هیچ تماسی برای امروز ثبت نشده است";
@@ -40,7 +40,7 @@ function DashboardPage() {
 						<p className="paper__title">تماس‌های هفته</p>
 						<p className="paper__subtitle">تعداد تماس‌های انجام‌شده در ۷ روز گذشته</p>
 					</div>
-					<Chart last7DaysCalls={callsOfWeek} />
+					<Chart callsOfLast7Days={callsOfLast7Days} />
 				</section>
 				<section className={clsx("paper", styles.calls_sec)}>
 					<div className={styles.calls__header}>
