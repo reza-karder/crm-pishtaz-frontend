@@ -13,8 +13,10 @@ import ArrowIcon from "../../../../assets/icons/arrow-left.svg?react";
 import CallsList from "./CallsList";
 import EmptyState from "../../../common/empty-state/EmptyState";
 import LinkButton from "../../../ui/button/LinkButton";
+import useDocumentTitle from "../../../../hooks/useDocumentTitle";
 
 function DashboardPage() {
+  useDocumentTitle("داشبورد")
 	const { data } = useGetUserStats();
 	const { todayCalls, allCallsCount, customersCount, callsOfWeek } = data.stats;
 	const pageHeaderLabel = todayCalls.length

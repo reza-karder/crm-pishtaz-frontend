@@ -4,8 +4,10 @@ import Brand from "../../common/brand/Brand";
 import SigninForm from "./SigninForm";
 import styles from "./SigninPage.module.css";
 import { BeatLoader } from "react-spinners";
+import useDocumentTitle from "../../../hooks/useDocumentTitle";
 
 function SigninPage() {
+  useDocumentTitle("ورود")
 	const { data, isPending } = useCheckSession();
 	const navigate = useNavigate();
 
