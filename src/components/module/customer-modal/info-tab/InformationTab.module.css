@@ -1,0 +1,27 @@
+.form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin-block-start: 24px;
+  gap: 16px;
+}
+
+.input_field {
+  grid-column: span 1;
+}
+
+.text_area_field {
+  grid-column: span 2;
+}
+
+.text_area {
+  height: 78px;
+}
+
+/* ==================================
+WIDTH MEDIA
+================================== */
+@media (max-width: 680px) {
+  .input {
+    grid-column: span 2;
+  }
+}
