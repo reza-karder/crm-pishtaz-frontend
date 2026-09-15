@@ -1,0 +1,21 @@
+.item {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  padding-inline: 16px;
+  padding-block: 12px;
+  border-top: 1px solid var(--clr-border);
+}
+
+.item__title {
+  font-weight: 500;
+  font-size: var(--fs-xs);
+}
+
+.item__actions {
+  display: flex;
+  column-gap: 4px;
+  flex-wrap: wrap;
+  align-items: center;
+}

@@ -1,0 +1,29 @@
+.wrapper {
+  margin-block-start: 24px;
+  overflow: hidden;
+  border: 1px solid var(--clr-border);
+  border-radius: 14px;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-inline: 16px;
+  padding-block: 10px;
+}
+
+.header__details {
+  display: flex;
+  column-gap: 8px;
+  align-items: center;
+}
+
+.header__icon {
+  font-size: var(--fs-xs);
+}
+
+.header__title {
+  font-weight: 700;
+  font-size: var(--fs-xs);
+}
