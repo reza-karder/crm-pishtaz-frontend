@@ -4,31 +4,26 @@ COLORS
 .badge.primary {
   --badge-text: var(--clr-primary);
   --badge-bg: var(--clr-primary-soft);
-  --badge-border: color-mix(in srgb, var(--clr-primary), transparent 70%)
 }
 
 .badge.danger {
   --badge-text: var(--clr-danger);
   --badge-bg: var(--clr-danger-soft);
-  --badge-border: color-mix(in srgb, var(--clr-danger), transparent 70%)
 }
 
 .badge.success {
   --badge-text: var(--clr-success);
   --badge-bg: var(--clr-success-soft);
-  --badge-border: color-mix(in srgb, var(--clr-success), transparent 70%)
 }
 
 .badge.mute {
   --badge-text: var(--clr-text-soft);
   --badge-bg: var(--clr-text-mute);
-  --badge-border: color-mix(in srgb, var(--clr-text-soft), transparent 70%)
 }
 
 .badge.warning {
   --badge-text: var(--clr-warning);
   --badge-bg: var(--clr-warning-soft);
-  --badge-border: color-mix(in srgb, var(--clr-warning), transparent 70%)
 }
 
 /* ==========================================
@@ -37,7 +32,6 @@ BASE STYLE
 .badge {
   padding-inline: 8px;
   padding-block: 2px;
-  border: 1px solid var(--badge-border);
   border-radius: 8px;
   background-color: var(--badge-bg);
   color: var(--badge-text);

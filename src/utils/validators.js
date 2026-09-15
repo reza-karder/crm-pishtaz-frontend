@@ -19,14 +19,23 @@ const customerSchema = yup.object({
 	address: yup.string().optional(),
 	notes: yup.string().optional(),
 	products: yup.array(),
-	job: yup.array(),
+	job: yup.string(),
 });
 
 const customerProductSchema = yup.object({
 	product: yup.string().required("محصول اجباری است"),
 	type: yup.string().oneOf(["purchased", "potential"]),
-	price: yup.number().typeError("مبلغ معتبر نیست"),
+	price: yup
+		.number()
+		.typeError("مبلغ معتبر نیست")
+		.positive("قیمت باید عدد مثبت باشد")
+		.integer("قیمت باید عدد صحیح باشد"),
 	intetionScore: yup.number().oneOf([1, 2, 3, 4, 5]),
+	quantity: yup
+		.number()
+		.required("تعداد الزامی است")
+		.min(1, "تعداد نمی تواند کمتر از ۱ باشد")
+		.integer("تعداد باید عدد صحیح باشد"),
 });
 
 const customerCallValidator = yup.object({
