@@ -1,0 +1,28 @@
+.stars {
+  display: flex;
+  align-items: center;
+}
+
+.star {
+  height: 25px;
+  background-color: transparent;
+  font-size: var(--fs-3xl);
+  transition: all 150ms ease-in;
+}
+
+.icon_outline {
+  color: #e0e5eb;
+}
+
+.icon_fill {
+  color: #c77500;
+}
+
+/* ===============================
+HOVER MEDIA 
+=============================== */
+@media (hover: hover) {
+  .star:not(.read_only):hover {
+    transform: scale(1.2);
+  }
+}
