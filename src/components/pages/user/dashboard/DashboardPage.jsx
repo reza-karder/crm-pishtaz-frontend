@@ -14,9 +14,12 @@ import CallsList from "./CallsList";
 import EmptyState from "../../../common/empty-state/EmptyState";
 import LinkButton from "../../../ui/button/LinkButton";
 import useDocumentTitle from "../../../../hooks/useDocumentTitle";
+import CustomerModal from "../../../module/customer-modal/CustomerModal";
+import useToggle from "../../../../hooks/useToggle";
 
 function DashboardPage() {
-  useDocumentTitle("داشبورد")
+	useDocumentTitle("داشبورد");
+	const [isCustomerModalOpen, toggleIsCustomerModalOpen] = useToggle(false);
 	const { data } = useGetUserStats();
 	const { todayCalls, allCallsCount, customersCount, callsOfLast7Days } = data.stats;
 	const pageHeaderLabel = todayCalls.length
@@ -26,7 +29,9 @@ function DashboardPage() {
 	return (
 		<>
 			<PageHeader title={`سلام ${data.user.name}`} subTitle={pageHeaderLabel}>
-				<Button IconStart={PlusIcon}>مشتری جدید</Button>
+				<Button IconStart={PlusIcon} onClick={toggleIsCustomerModalOpen}>
+					مشتری جدید
+				</Button>
 			</PageHeader>
 
 			<section className={styles.stats_sec}>
@@ -61,6 +66,9 @@ function DashboardPage() {
 				</section>
 			</div>
 
+			{isCustomerModalOpen && (
+				<CustomerModal isOpen={isCustomerModalOpen} onClose={toggleIsCustomerModalOpen} />
+			)}
 			<QuickAccess />
 		</>
 	);

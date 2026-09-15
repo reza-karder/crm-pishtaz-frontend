@@ -1,9 +1,7 @@
 .select {
   display: block;
 	width: 100%;
-  max-width: 400px;
 	height: 40px;
-  margin: 100px;
 	padding-inline: 12px;
 	border: 1px solid var(--clr-border);
 	border-radius: 8px;
