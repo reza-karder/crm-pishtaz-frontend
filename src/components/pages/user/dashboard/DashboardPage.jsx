@@ -69,7 +69,7 @@ function DashboardPage() {
 			{isCustomerModalOpen && (
 				<CustomerModal isOpen={isCustomerModalOpen} onClose={toggleIsCustomerModalOpen} />
 			)}
-			<QuickAccess />
+			<QuickAccess openCustomerModal={toggleIsCustomerModalOpen} />
 		</>
 	);
 }

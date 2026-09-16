@@ -31,7 +31,7 @@ function CallsTab({ customerForm }) {
 						key={call.id}
 						onDelete={() => deleteCall(call.key)}
 						onEdit={() => openEditModal(call)}
-						title={call.date.toLocaleDateString("fa-IR")}
+						title={new Date(call.date).toLocaleDateString("fa-IR")}
 					>
 						<Badge color={callStatusesColor[call.status]}>{callStatusesLabel[call.status]}</Badge>
 					</SubItem>

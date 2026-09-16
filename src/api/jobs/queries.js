@@ -6,6 +6,7 @@ const useGetJobs = () => {
 	return useQuery({
 		queryKey: JOB_KEYS.GET_JOBS,
 		queryFn: JOB_SERVICES.getJobs,
+    refetchOnMount: false,
 		meta: { silent: true },
 	});
 };

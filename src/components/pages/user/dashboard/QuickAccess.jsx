@@ -9,7 +9,7 @@ const QUECK_ACCESS_LINKS = [
 	{ path: "/customers", label: "فهرست مشتریان", Icon: ListIcon },
 ];
 
-function QuickAccess() {
+function QuickAccess({ openCustomerModal }) {
 	return (
 		<section className="paper">
 			<div>
@@ -17,7 +17,7 @@ function QuickAccess() {
 				<p className="paper__subtitle">کارهایی که بیشتر انجام می‌دهید</p>
 			</div>
 			<div className={styles.quick_access_actions}>
-				<button className={styles.action}>
+				<button className={styles.action} onClick={openCustomerModal}>
 					<PersonIcon className={styles.action__icon} />
 					<span className={styles.action__label}>افزودن مشتری</span>
 				</button>

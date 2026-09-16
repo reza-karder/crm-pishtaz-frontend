@@ -6,7 +6,7 @@ const useGetProducts = () => {
 	return useQuery({
 		queryFn: PRODUCTS_SERVICES.getProducts,
 		queryKey: PRODUCTS_KEYS.GET_PRODUCTS,
-    staleTime: Infinity,
+    refetchOnMount: false,
     meta: { silent: true }
 	});
 };

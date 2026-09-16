@@ -8,7 +8,7 @@ import Rating from "../../../ui/rating/Rating";
 import { useGetProducts } from "../../../../api/products/queries";
 import { useState } from "react";
 
-function getTitle(products, productId) {
+function getTitle(products = [], productId) {
 	const foundProduct = products.find((product) => product._id === productId);
 	return foundProduct?.title;
 }
@@ -39,7 +39,7 @@ function ProductsTab({ customerForm }) {
 						product={product}
 						onEdit={() => openEditModal(product)}
 						onDelete={() => deleteProduct(product.key)}
-						title={getTitle(data.products, product.product)}
+						title={getTitle(data?.products, product.product)}
 					/>
 				))}
 			</SubList>

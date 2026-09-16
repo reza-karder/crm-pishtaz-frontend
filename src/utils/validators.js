@@ -19,7 +19,7 @@ const customerSchema = yup.object({
 	address: yup.string().optional(),
 	notes: yup.string().optional(),
 	products: yup.array(),
-	job: yup.string(),
+	job: yup.string().required("شغل اجباری است"),
 });
 
 const customerProductSchema = yup.object({
