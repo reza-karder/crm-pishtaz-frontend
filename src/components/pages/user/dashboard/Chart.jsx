@@ -3,23 +3,22 @@ import styles from "./Chart.module.css";
 
 // returns Array of {label: String, y: Number}
 function generateData(callsOfLast7Days) {
-  const today = new Date()
-
   const data = Array.from({ length: 7 }, (_, index) => {
-    const callsOfDay = callsOfLast7Days[index] || []
+    const callsOfDay = callsOfLast7Days[index] || [];
 
-    today.setDate(today.getDate() - index)
-    const label = today.toLocaleDateString("fa-IR", { weekday: "long" })
+    const date = new Date();
+    date.setDate(date.getDate() - index);
+    const label = date.toLocaleDateString('fa-IR', { weekday: 'long' });
 
-    return { label, y: callsOfDay.length }
-  })
-  
-  return data.reverse()
+    return { label, y: callsOfDay.length };
+  });
+
+  return data.reverse();
 }
 
 function Chart({ callsOfLast7Days }) {
   const data = generateData(callsOfLast7Days)
-  
+
 	return (
 		<BarChart responsive data={data} className={styles.chart}>
 			<CartesianGrid vertical={false} />
@@ -30,13 +29,14 @@ function Chart({ callsOfLast7Days }) {
 	);
 }
 
-function TooltipContent(props) {
-	const payload = props.payload[0]?.payload;
+function TooltipContent({ active, payload }) {
+  if(!active || !payload.length) return null
+	const firstPayload = payload[0]?.payload;
 
 	return (
 		<div className={styles.tooltip}>
-			<p className={styles.tooltip__day}>{payload?.label}</p>
-			<p className={styles.tooltip__count}>تماس ها : {payload?.y}</p>
+			<p className={styles.tooltip__day}>{firstPayload?.label}</p>
+			<p className={styles.tooltip__count}>تماس ها : {firstPayload?.y}</p>
 		</div>
 	);
 }
