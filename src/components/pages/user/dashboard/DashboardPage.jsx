@@ -42,14 +42,14 @@ function DashboardPage() {
 			<div className={styles.wrapper}>
 				<section className={clsx("paper", styles.chart_sec)}>
 					<div>
-						<p className="paper__title">تماس‌های هفته</p>
+						<p className="paper__title">تماس‌ های هفته</p>
 						<p className="paper__subtitle">تعداد تماس‌های انجام‌شده در ۷ روز گذشته</p>
 					</div>
 					<Chart callsOfLast7Days={callsOfLast7Days} />
 				</section>
 				<section className={clsx("paper", styles.calls_sec)}>
 					<div className={styles.calls__header}>
-						<p className="paper__title">تماس‌های هفته</p>
+						<p className="paper__title">تماس‌ های امروز</p>
 						<LinkButton to="/calendar" IconEnd={ArrowIcon} variant="text" color="normal">
 							تقویم
 						</LinkButton>

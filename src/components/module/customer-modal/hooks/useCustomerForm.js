@@ -1,6 +1,6 @@
 import { v4 as uuid } from "uuid";
-import useCustomForm from "./useCustomForm";
-import { customerSchema } from "../utils/validators";
+import useCustomForm from "../../../../hooks/useCustomForm";
+import { customerSchema } from "../../../../utils/validators";
 
 const INITIAL_FORM_DATA = {
 	name: "",

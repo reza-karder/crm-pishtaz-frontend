@@ -1,6 +1,6 @@
 import { toast } from "sonner";
 import { useCreateCustomer, useEditCustomer } from "../../../api/customers/mutations";
-import useCustomerForm from "../../../hooks/useCustomerForm";
+import useCustomerForm from "./hooks/useCustomerForm";
 import Button from "../../ui/button/Button";
 import Modal, { ModalBody, ModalFooter, ModalHeader } from "../../ui/modal/Modal";
 import CustomerForm from "./CustomerForm";
