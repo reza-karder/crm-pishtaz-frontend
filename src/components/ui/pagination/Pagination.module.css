@@ -18,8 +18,9 @@
 	border: 1px solid var(--clr-border);
 	border-radius: 8px;
 	background-color: transparent;
+  color: var(--clr-text-soft);
 	font-weight: 500;
-	font-size: var(--fs-base);
+	font-size: var(--fs-sm);
 	transition: all 100ms linear;
 }
 

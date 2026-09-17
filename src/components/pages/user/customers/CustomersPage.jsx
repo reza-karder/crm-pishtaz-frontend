@@ -6,6 +6,7 @@ import useToggle from "../../../../hooks/useToggle";
 import CustomerModal from "../../../module/customer-modal/CustomerModal";
 import CustomersToolbar from "./CustomersToolbar";
 import SelectionState from "./SelectionState";
+import CustomersList from "./customers-list/CustomersList";
 
 function CustomersPage() {
 	useDocumentTitle("مشتریان");
@@ -22,6 +23,7 @@ function CustomersPage() {
 
       <CustomersToolbar />
       <SelectionState />
+      <CustomersList />
 
 			{isCustomerModalOpen && (
 				<CustomerModal isOpen={isCustomerModalOpen} onClose={toggleIsCustomerModalOpen} />

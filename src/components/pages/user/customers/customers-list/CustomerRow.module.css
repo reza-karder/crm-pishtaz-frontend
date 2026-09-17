@@ -1,0 +1,33 @@
+.row td {
+  padding-inline: 12px;
+  padding-block: 14px;
+}
+
+.name_wrapper {
+  display: flex;
+  column-gap: 12px;
+  align-items: center;
+}
+
+.avatar {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  background-color: var(--clr-primary-soft);
+  color: var(--clr-primary);
+  font-weight: 700;
+  font-size: var(--fs-xs);
+}
+
+.name {
+  font-weight: 500;
+  font-size: var(--fs-sm);
+}
+
+.phone, .job, .date {
+  color: var(--clr-text-soft);
+  font-weight: 400;
+  font-size: var(--fs-sm);
+}
