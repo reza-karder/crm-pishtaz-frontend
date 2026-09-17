@@ -115,3 +115,18 @@ REUSEABLE STYLES
   font-weight: 400;
   font-size: var(--fs-xs);
 }
+
+/* ==================================
+WIDTH MEDIA
+================================== */
+@media (max-width: 680px) {
+ .paper {
+  padding: 16px;
+ } 
+}
+
+@media (max-width: 480px) {
+ .paper {
+  padding: 12px;
+ } 
+}

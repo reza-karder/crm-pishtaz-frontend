@@ -5,6 +5,7 @@ import PlusIcon from "../../../../assets/icons/plus.svg?react";
 import useToggle from "../../../../hooks/useToggle";
 import CustomerModal from "../../../module/customer-modal/CustomerModal";
 import CustomersToolbar from "./CustomersToolbar";
+import SelectionState from "./SelectionState";
 
 function CustomersPage() {
 	useDocumentTitle("مشتریان");
@@ -20,6 +21,7 @@ function CustomersPage() {
 			</PageHeader>
 
       <CustomersToolbar />
+      <SelectionState />
 
 			{isCustomerModalOpen && (
 				<CustomerModal isOpen={isCustomerModalOpen} onClose={toggleIsCustomerModalOpen} />

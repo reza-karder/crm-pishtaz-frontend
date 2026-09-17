@@ -5,7 +5,6 @@
   justify-content: center;
 	border-radius: 8px;
 	font-weight: 500;
-  font-size: var(--fs-sm);
 	transition: all 0.15s ease-in;
 }
 
@@ -106,6 +105,7 @@ SIZES
 .button.small {
 	height: 30px;
 	padding-inline: 12px;
+  font-size: var(--fs-xs);
 
 	.icon {
 		width: 14px;
@@ -116,6 +116,7 @@ SIZES
 .button.medium {
 	height: 40px;
 	padding-inline: 16px;
+  font-size: var(--fs-sm);
 
 	.icon {
 		width: 16px;
@@ -126,6 +127,7 @@ SIZES
 .button.large {
 	height: 48px;
 	padding-inline: 24px;
+  font-size: var(--fs-base);
 
 	.icon {
 		width: 18px;

@@ -27,7 +27,7 @@ function CustomersToolbar() {
 	};
 
 	return (
-		<div className={clsx("paper", styles.toolbar, isFilterOpen && styles.open)}>
+		<section className={clsx("paper", styles.toolbar, isFilterOpen && styles.open)}>
 			<div className={styles.toolbar__summary}>
 				<Input placeholder="جستجوی نام، شماره تماس، ایمیل ..." StartIcon={MagnifyIcon} />
 				<Select options={SORT_OPTIONS} value={SORT_OPTIONS[0].value} />
@@ -55,7 +55,7 @@ function CustomersToolbar() {
 					</div>
 				</div>
 			</div>
-		</div>
+		</section>
 	);
 }
 
