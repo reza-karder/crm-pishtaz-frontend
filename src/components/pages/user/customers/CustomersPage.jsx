@@ -4,6 +4,7 @@ import Button from "../../../ui/button/Button";
 import PlusIcon from "../../../../assets/icons/plus.svg?react";
 import useToggle from "../../../../hooks/useToggle";
 import CustomerModal from "../../../module/customer-modal/CustomerModal";
+import CustomersToolbar from "./CustomersToolbar";
 
 function CustomersPage() {
 	useDocumentTitle("مشتریان");
@@ -17,6 +18,8 @@ function CustomersPage() {
 					مشتری جدید
 				</Button>
 			</PageHeader>
+
+      <CustomersToolbar />
 
 			{isCustomerModalOpen && (
 				<CustomerModal isOpen={isCustomerModalOpen} onClose={toggleIsCustomerModalOpen} />

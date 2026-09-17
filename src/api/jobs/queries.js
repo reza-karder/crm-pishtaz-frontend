@@ -6,9 +6,23 @@ const useGetJobs = () => {
 	return useQuery({
 		queryKey: JOB_KEYS.GET_JOBS,
 		queryFn: JOB_SERVICES.getJobs,
-    refetchOnMount: false,
+		refetchOnMount: false,
 		meta: { silent: true },
 	});
 };
 
-export { useGetJobs };
+const useGetJobOptions = () => {
+	return useQuery({
+		queryKey: JOB_KEYS.GET_JOBS,
+		queryFn: JOB_SERVICES.getJobs,
+		refetchOnMount: false,
+		meta: { silent: true },
+		select: (data) =>
+			data?.jobs.map((job) => ({
+				label: job.title,
+				value: job._id,
+			})),
+	});
+};
+
+export { useGetJobs, useGetJobOptions };

@@ -6,9 +6,23 @@ const useGetProducts = () => {
 	return useQuery({
 		queryFn: PRODUCTS_SERVICES.getProducts,
 		queryKey: PRODUCTS_KEYS.GET_PRODUCTS,
-    refetchOnMount: false,
-    meta: { silent: true }
+		refetchOnMount: false,
+		meta: { silent: true },
 	});
 };
 
-export { useGetProducts };
+const useGetProductOptions = () => {
+	return useQuery({
+		queryFn: PRODUCTS_SERVICES.getProducts,
+		queryKey: PRODUCTS_KEYS.GET_PRODUCTS,
+		refetchOnMount: false,
+		meta: { silent: true },
+		select: (data) =>
+			data?.products.map((product) => ({
+				label: product.title,
+				value: product._id,
+			})),
+	});
+};
+
+export { useGetProducts, useGetProductOptions };
