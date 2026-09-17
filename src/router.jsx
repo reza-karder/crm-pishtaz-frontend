@@ -8,6 +8,7 @@ import DashboardPage from "./components/pages/user/dashboard/DashboardPage";
 import UserDashPageLoading from "./components/pages/user/dashboard/PageLoading";
 import ErrorState from "./components/common/error-state/ErrorState";
 import AUTH_SERVICES from "./api/auth/services";
+import CustomersPage from "./components/pages/user/customers/CustomersPage";
 
 async function sessionLoader() {
 	const result = await AUTH_SERVICES.checkSession();
@@ -23,6 +24,10 @@ const userRoutes = [
 			</QueryBoundary>
 		),
 	},
+  {
+    path: "/customers",
+    element: <CustomersPage />
+  }
 ];
 
 const router = createBrowserRouter([
