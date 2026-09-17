@@ -8,15 +8,15 @@ import CrossIcon from "../../../../assets/icons/cross.svg?react";
 function SelectionState() {
 	return (
 		<div className={clsx("paper", styles.selection)}>
-      <p className={styles.selection__count}>1 مشتری انتخاب شده</p>
+			<p className={styles.selection__count}>1 مشتری انتخاب شده</p>
 			<div className={styles.selection__actions}>
-				<Button size="small" IconStart={CrossIcon} variant="outlined" color="normal">
+				<Button size="small" IconStart={CrossIcon} variant="soft" color="normal">
 					لغو انتخاب
 				</Button>
-				<Button size="small" IconStart={MessageIcon}>
+				<Button size="small" IconStart={MessageIcon} variant="soft">
 					ارسال پیام
 				</Button>
-				<Button size="small" IconStart={TrashIcon} color="danger">
+				<Button size="small" IconStart={TrashIcon} variant="soft" color="danger">
 					حذف همه
 				</Button>
 			</div>

@@ -5,6 +5,7 @@
 	justify-content: space-between;
 	margin-block-start: 16px;
 	gap: 16px;
+  background-color: var(--clr-primary) !important;
 }
 
 .selection__actions {
@@ -14,8 +15,9 @@
 }
 
 .selection__count {
+  color: var(--clr-white);
 	font-weight: 500;
-	font-size: var(--fs-sm);
+	font-size: var(--fs-sm)
 }
 
 /* ==================================
