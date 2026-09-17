@@ -1,31 +1,52 @@
+import { useGetUserCustomers } from "../../../../../api/customers/queries";
 import Pagination from "../../../../ui/pagination/Pagination";
 import CustomerRow from "./CustomerRow";
 import styles from "./CustomersList.module.css";
 
 const TABLE_HEADES = ["مشتری", "شماره تماس", "شغل", "وضعیت", "تاریخ افزودن", "جزئیات"];
 
-function CustomersList() {
+function CustomersList({ customersParams }) {
+	const { params, updateParams } = customersParams;
+	const { data } = useGetUserCustomers(params);
+
+	const { customers, totalPages, totalCustomers, limit } = data || {};
+
+	const customerDisplayStartRange = ((params.page - 1) * limit) + Math.min(1, totalCustomers);
+	const customerDisplayEndRange = Math.min(
+		customerDisplayStartRange + limit - 1,
+		totalCustomers
+	);
+
 	return (
 		<section className={styles.wrapper}>
 			<table className={styles.table}>
 				<thead>
 					<tr>
-            <th><input type="checkbox" /></th>
+						<th>
+							<input type="checkbox" />
+						</th>
 						{TABLE_HEADES.map((head) => (
 							<th key={head}>{head}</th>
 						))}
 					</tr>
 				</thead>
 				<tbody>
-					<CustomerRow />
-					<CustomerRow />
+					{customers?.map((customer) => (
+						<CustomerRow key={customer._id} customer={customer} />
+					))}
 				</tbody>
 			</table>
 
-      <div className={styles.pagination}>
-        <p className={styles.pagination__count}>نمایش ۱ تا ۱۰ از ۸۰ مشتری</p>
-        <Pagination totalPages={10} currentPage={1} />
-      </div>
+			<div className={styles.pagination}>
+				<p className={styles.pagination__count}>
+					نمایش {customerDisplayStartRange} تا {customerDisplayEndRange} از {totalCustomers} مشتری
+				</p>
+				<Pagination
+					totalPages={totalPages || 1}
+					currentPage={params.page}
+					onChange={(page) => updateParams({ page })}
+				/>
+			</div>
 		</section>
 	);
 }

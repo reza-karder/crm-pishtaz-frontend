@@ -2,8 +2,8 @@ const ALL_OPTION = { label: "همه", value: "all" };
 
 const STATUS_OPTIONS = [
 	ALL_OPTION,
-	{ label: "۲۴ ساعت اخیر", value: "24h" },
-	{ label: "هفته اخیر", value: "week" },
+	{ label: "فعال", value: "active" },
+	{ label: "غیر فعال", value: "cold" },
 ];
 
 const DATE_OPTIONS = [
@@ -28,13 +28,13 @@ const SORT_OPTIONS = [
 const CUSTOMER_TOOLBAR_FIELDS = [
 	{
 		label: "محصول خریداری شده",
-		name: "purchased_product",
+		name: "purchasedProduct",
 		id: "purchased_product",
 		optionsKey: "product",
 	},
 	{
 		label: "محصول مورد علاقه",
-		name: "potential_products",
+		name: "potentialProduct",
 		id: "potential_products",
 		optionsKey: "product",
 	},

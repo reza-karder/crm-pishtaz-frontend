@@ -14,23 +14,43 @@ import {
 	CUSTOMER_TOOLBAR_FIELDS,
 	SORT_OPTIONS,
 } from "../../../../constants/CustomersToolbar";
+import { useEffect, useState } from "react";
+import useDebouncedValue from "../../../../hooks/useDebouncedValue";
 
-function CustomersToolbar() {
+function CustomersToolbar({ customersParams }) {
 	const [isFilterOpen, toggleIsFilterOpen] = useToggle(false);
+	const { params, updateParams } = customersParams;
+
+	const [searchValue, setSearchValue] = useState(params.search);
+	const debouncedSearchValue = useDebouncedValue(searchValue, 500);
+
+	useEffect(() => {
+		updateParams({ search: debouncedSearchValue });
+	}, [debouncedSearchValue]);
 
 	const { data: jobOptions } = useGetJobOptions();
 	const { data: productOptions } = useGetProductOptions();
-  
+
 	const dynamicOptions = {
 		job: [ALL_OPTION, ...(jobOptions || [])],
 		product: [ALL_OPTION, ...(productOptions || [])],
 	};
 
+	const handleChange = (event) => {
+		const { name, value } = event.target;
+		updateParams({ [name]: value });
+	};
+
 	return (
 		<section className={clsx("paper", styles.toolbar, isFilterOpen && styles.open)}>
 			<div className={styles.toolbar__summary}>
-				<Input placeholder="جستجوی نام، شماره تماس، ایمیل ..." StartIcon={MagnifyIcon} />
-				<Select options={SORT_OPTIONS} value={SORT_OPTIONS[0].value} />
+				<Input
+					placeholder="جستجوی نام، شماره تماس، ایمیل ..."
+					value={searchValue}
+					StartIcon={MagnifyIcon}
+					onChange={(event) => setSearchValue(event.target.value)}
+				/>
+				<Select name="sort" value={params.sort} options={SORT_OPTIONS} onChange={handleChange} />
 				<Button
 					color="primary"
 					variant="outlined"
@@ -47,8 +67,11 @@ function CustomersToolbar() {
 						{CUSTOMER_TOOLBAR_FIELDS.map((field) => (
 							<FormField key={field.id} id={field.id} label={field.label}>
 								<Select
+									id={field.id}
+									name={field.name}
+									onChange={handleChange}
+									value={params[field.name]}
 									options={field.options || dynamicOptions[field.optionsKey]}
-									value={ALL_OPTION.value}
 								/>
 							</FormField>
 						))}
