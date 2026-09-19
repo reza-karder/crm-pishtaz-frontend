@@ -42,7 +42,7 @@ function CustomerModal({ isOpen, onClose, customer }) {
 
 		// sync new customer across the app
 		queryClient.invalidateQueries({
-			queryKey: CUSTOMER_KEYS.GET_SINGLE_CUSTOMER(response.customer._id),
+			queryKey: CUSTOMER_KEYS.GET_CUSTOMER_PROFILE(response.customer._id),
 		});
 
 		toast.success(response.message);

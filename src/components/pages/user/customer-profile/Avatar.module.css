@@ -1,0 +1,34 @@
+.avatar {
+  display: flex;
+  column-gap: 14px;
+  align-items: center;
+}
+
+.avatar__photo {
+  display: grid;
+  place-items: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 14px;
+  background-color: var(--clr-primary-soft);
+  color: var(--clr-primary);
+  font-size: var(--fs-4xl);
+}
+
+.avatar__name {
+  font-weight: 700;
+  font-size: var(--fs-2xl);
+}
+
+.avatar__date {
+  display: flex;
+  column-gap: 4px;
+  align-items: center;
+  color: var(--clr-text-soft);
+  font-weight: 400;
+  font-size: var(--fs-xs);
+}
+
+.date__icon {
+  font-size: var(--fs-base);
+}

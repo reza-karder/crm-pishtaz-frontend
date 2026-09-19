@@ -10,4 +10,11 @@ const useGetUserCustomers = (params, options = {}) => {
   })
 }
 
-export { useGetUserCustomers }
+const useGetCustomerProfile = (customerId) => {
+  return useSuspenseQuery({
+    queryKey: CUSTOMER_KEYS.GET_CUSTOMER_PROFILE(customerId),
+    queryFn: () => CUSTOMER_SERVICES.getCustomerProfile(customerId)
+  })
+}
+
+export { useGetUserCustomers, useGetCustomerProfile }
