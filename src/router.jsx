@@ -9,6 +9,7 @@ import UserDashPageLoading from "./components/pages/user/dashboard/PageLoading";
 import ErrorState from "./components/common/error-state/ErrorState";
 import AUTH_SERVICES from "./api/auth/services";
 import CustomersPage from "./components/pages/user/customers/CustomersPage";
+import CustomerProfile from "./components/pages/user/customer-profile/CustomerProfile";
 
 async function sessionLoader() {
 	const result = await AUTH_SERVICES.checkSession();
@@ -27,6 +28,10 @@ const userRoutes = [
   {
     path: "/customers",
     element: <CustomersPage />
+  },
+  {
+    path: "/customers/:customerId",
+    element: <CustomerProfile />
   }
 ];
 

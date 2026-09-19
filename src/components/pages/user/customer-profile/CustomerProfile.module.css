@@ -1,0 +1,9 @@
+/* ===============================
+WIDTH MEDIA 
+=============================== */
+@media (max-width: 680px) {
+  .page_header {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
