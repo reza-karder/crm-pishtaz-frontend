@@ -7,14 +7,14 @@ import {
 	CUSTOMER_STATUSES_LABEL,
 } from "../../../../../constants/customerStatus";
 
-function CustomerRow({ customer }) {
+function CustomerRow({ customer, isSelected, onToggleSelect }) {
 	const { name, job, phonePrimary, createdAt, _id, status } = customer;
 	const addDate = new Date(createdAt).toLocaleDateString("fa-IR");
 
 	return (
 		<tr className={styles.row}>
 			<td>
-				<input type="checkbox" />
+				<input type="checkbox" checked={isSelected} onChange={onToggleSelect} />
 			</td>
 			<td>
 				<div className={styles.name_wrapper}>

@@ -5,17 +5,15 @@ import styles from "./CustomersList.module.css";
 
 const TABLE_HEADES = ["مشتری", "شماره تماس", "شغل", "وضعیت", "تاریخ افزودن", "جزئیات"];
 
-function CustomersList({ customersParams }) {
+function CustomersList({ customersParams, selection }) {
 	const { params, updateParams } = customersParams;
-	const { data } = useGetUserCustomers(params);
+	const { isSelected, toggleSelect, toggleSelectAll, selectionState } = selection;
 
+	const { data } = useGetUserCustomers(params);
 	const { customers, totalPages, totalCustomers, limit } = data || {};
 
-	const customerDisplayStartRange = ((params.page - 1) * limit) + Math.min(1, totalCustomers);
-	const customerDisplayEndRange = Math.min(
-		customerDisplayStartRange + limit - 1,
-		totalCustomers
-	);
+	const customerDisplayStartRange = (params.page - 1) * limit + Math.min(1, totalCustomers);
+	const customerDisplayEndRange = Math.min(customerDisplayStartRange + limit - 1, totalCustomers);
 
 	return (
 		<section className={styles.wrapper}>
@@ -23,7 +21,11 @@ function CustomersList({ customersParams }) {
 				<thead>
 					<tr>
 						<th>
-							<input type="checkbox" />
+							<input
+								type="checkbox"
+								checked={selectionState.mode === "all"}
+								onChange={toggleSelectAll}
+							/>
 						</th>
 						{TABLE_HEADES.map((head) => (
 							<th key={head}>{head}</th>
@@ -32,7 +34,12 @@ function CustomersList({ customersParams }) {
 				</thead>
 				<tbody>
 					{customers?.map((customer) => (
-						<CustomerRow key={customer._id} customer={customer} />
+						<CustomerRow
+							key={customer._id}
+							customer={customer}
+							isSelected={isSelected(customer._id)}
+							onToggleSelect={(event) => toggleSelect(event, customer._id)}
+						/>
 					))}
 				</tbody>
 			</table>

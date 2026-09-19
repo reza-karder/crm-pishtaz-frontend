@@ -8,11 +8,15 @@ import CustomersToolbar from "./CustomersToolbar";
 import SelectionState from "./SelectionState";
 import CustomersList from "./customers-list/CustomersList";
 import useCustomersParams from "./hooks/useCustomersParams";
+import useSelection from "./hooks/useSelection";
 
 function CustomersPage() {
 	useDocumentTitle("مشتریان");
-  const customersParams = useCustomersParams()
+
 	const [isCustomerModalOpen, toggleIsCustomerModalOpen] = useToggle(false);
+
+	const customersParams = useCustomersParams();
+	const selection = useSelection();
 
 	return (
 		<>
@@ -22,9 +26,9 @@ function CustomersPage() {
 				</Button>
 			</PageHeader>
 
-      <CustomersToolbar customersParams={customersParams} />
-      <SelectionState />
-      <CustomersList customersParams={customersParams} />
+			<CustomersToolbar customersParams={customersParams} />
+			{selection.isSelecting && <SelectionState selection={selection} customersParams={customersParams} />}
+			<CustomersList customersParams={customersParams} selection={selection} />
 
 			{isCustomerModalOpen && (
 				<CustomerModal isOpen={isCustomerModalOpen} onClose={toggleIsCustomerModalOpen} />
