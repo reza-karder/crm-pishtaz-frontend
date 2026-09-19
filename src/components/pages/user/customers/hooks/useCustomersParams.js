@@ -27,6 +27,7 @@ function useCustomersParams() {
 		page: Number(searchParams.get("page")) || DEFAULT_PARAMS.page,
 	};
 
+  // remove any default value before setting to url
   const normalizeParams = (dirtyParams) => {
     const normalizedParams = {...dirtyParams}
 

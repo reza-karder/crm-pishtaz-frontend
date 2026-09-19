@@ -1,5 +1,14 @@
 import { useState } from "react";
 
+/**
+ * there are two modes of selections, all and explicit
+ * since we don't have access to all the customers inside DB
+ * we have to abtractly handle them using these two modes.
+ * 
+ * explicit: tells server to delete the only ones I send you
+ * all: tells server to delete all except the ones included by excludedIds
+ */
+
 const EXPLICIT_SELECTION = {
 	mode: "explicit",
 	selectedIds: [],
