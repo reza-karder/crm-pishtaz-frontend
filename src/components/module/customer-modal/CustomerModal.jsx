@@ -11,18 +11,9 @@ import USER_KEYS from "../../../api/user/keys";
 function CustomerModal({ isOpen, onClose, customer }) {
 	const isEditing = Boolean(customer);
 	const queryClient = useQueryClient();
+
 	const { mutateAsync: mutateCreateCustomer, isPending: isCreatingCustomer } = useCreateCustomer();
 	const { mutateAsync: mutateEditCustomer, isPending: isEditingCustomer } = useEditCustomer();
-
-	const addCustomerToCache = (customer) => {
-		queryClient.setQueriesData({ queryKey: CUSTOMER_KEYS.GET_USER_CUSTOMERS }, (prevData) => {
-			if (!prevData) return prevData;
-			return {
-				...prevData,
-				customers: [customer, ...prevData.customers],
-			};
-		});
-	};
 
 	const createCustomer = async (customer) => {
 		const response = await mutateCreateCustomer(customer);
@@ -35,25 +26,10 @@ function CustomerModal({ isOpen, onClose, customer }) {
 		toast.success(response.message);
 
 		// sync new customer across the app
+		queryClient.invalidateQueries({ queryKey: CUSTOMER_KEYS.GET_USER_CUSTOMERS() });
 		queryClient.invalidateQueries({ queryKey: USER_KEYS.GET_USER_STATS });
-		addCustomerToCache(response.customer);
 
 		onClose();
-	};
-
-	const editCustomerInCache = (editedCustomer) => {
-		queryClient.setQueriesData({ queryKey: CUSTOMER_KEYS.GET_USER_CUSTOMERS }, (prevData) => {
-			if (!prevData) return prevData;
-
-			const updatedCustomers = prevData.customers.map((customer) =>
-				customer._id === editedCustomer._id ? editedCustomer : customer
-			);
-
-			return {
-				...prevData,
-				customers: updatedCustomers,
-			};
-		});
 	};
 
 	const editCustomer = async (customer) => {
@@ -64,12 +40,12 @@ function CustomerModal({ isOpen, onClose, customer }) {
 			return;
 		}
 
+		// sync new customer across the app
+		queryClient.invalidateQueries({
+			queryKey: CUSTOMER_KEYS.GET_SINGLE_CUSTOMER(response.customer._id),
+		});
+
 		toast.success(response.message);
-
-		// sync edited customer across the app
-		queryClient.invalidateQueries({ queryKey: USER_KEYS.GET_USER_STATS });
-		editCustomerInCache(response.customer);
-
 		onClose();
 	};
 

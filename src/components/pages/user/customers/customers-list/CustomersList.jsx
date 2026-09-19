@@ -11,7 +11,7 @@ function CustomersList({ customersParams, selection }) {
 	const { params, updateParams } = customersParams;
 	const { isSelected, toggleSelect, toggleSelectAll, selectionState } = selection;
   
-	const { data } = useGetUserCustomers(params);
+	const { data } = useGetUserCustomers(new URLSearchParams(params).toString());
 	const { customers, totalPages, totalCustomers, limit } = data || {};
 
 	const customerDisplayStartRange = (params.page - 1) * limit + Math.min(1, totalCustomers);
