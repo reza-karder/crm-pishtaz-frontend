@@ -8,7 +8,6 @@ const TABLE_HEADES = ["مشتری", "شماره تماس", "شغل", "وضعیت
 function CustomersList({ customersParams, selection }) {
 	const { params, updateParams } = customersParams;
 	const { isSelected, toggleSelect, toggleSelectAll, selectionState } = selection;
-
 	const { data } = useGetUserCustomers(params);
 	const { customers, totalPages, totalCustomers, limit } = data || {};
 

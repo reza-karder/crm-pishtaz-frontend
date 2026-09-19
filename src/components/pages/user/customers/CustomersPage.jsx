@@ -9,6 +9,9 @@ import SelectionState from "./SelectionState";
 import CustomersList from "./customers-list/CustomersList";
 import useCustomersParams from "./hooks/useCustomersParams";
 import useSelection from "./hooks/useSelection";
+import QueryBoundary from "../../../common/QueryBoundary";
+import Loading from "./customers-list/Loading";
+import ErrorState from "../../../common/error-state/ErrorState";
 
 function CustomersPage() {
 	useDocumentTitle("مشتریان");
@@ -27,8 +30,12 @@ function CustomersPage() {
 			</PageHeader>
 
 			<CustomersToolbar customersParams={customersParams} />
-			{selection.isSelecting && <SelectionState selection={selection} customersParams={customersParams} />}
-			<CustomersList customersParams={customersParams} selection={selection} />
+			{selection.isSelecting && (
+				<SelectionState selection={selection} customersParams={customersParams} />
+			)}
+			<QueryBoundary loadingFallback={<Loading />} errorFallback={<ErrorState />}>
+				<CustomersList customersParams={customersParams} selection={selection} />
+			</QueryBoundary>
 
 			{isCustomerModalOpen && (
 				<CustomerModal isOpen={isCustomerModalOpen} onClose={toggleIsCustomerModalOpen} />
