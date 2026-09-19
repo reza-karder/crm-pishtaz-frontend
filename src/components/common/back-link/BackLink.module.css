@@ -1,0 +1,13 @@
+.link {
+  display: flex;
+  column-gap: 4px;
+  align-items: center;
+  margin-block-end: 20px;
+  color: var(--clr-text-soft);
+  font-weight: 400;
+  font-size: var(--fs-xs);
+}
+
+.icon {
+  font-size: var(--fs-lg);
+}
