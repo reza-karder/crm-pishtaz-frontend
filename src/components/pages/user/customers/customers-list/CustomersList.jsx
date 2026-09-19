@@ -1,4 +1,6 @@
+import clsx from "clsx";
 import { useGetUserCustomers } from "../../../../../api/customers/queries";
+import EmptyState from "../../../../common/empty-state/EmptyState";
 import Pagination from "../../../../ui/pagination/Pagination";
 import CustomerRow from "./CustomerRow";
 import styles from "./CustomersList.module.css";
@@ -8,11 +10,22 @@ const TABLE_HEADES = ["مشتری", "شماره تماس", "شغل", "وضعیت
 function CustomersList({ customersParams, selection }) {
 	const { params, updateParams } = customersParams;
 	const { isSelected, toggleSelect, toggleSelectAll, selectionState } = selection;
+  
 	const { data } = useGetUserCustomers(params);
 	const { customers, totalPages, totalCustomers, limit } = data || {};
 
 	const customerDisplayStartRange = (params.page - 1) * limit + Math.min(1, totalCustomers);
 	const customerDisplayEndRange = Math.min(customerDisplayStartRange + limit - 1, totalCustomers);
+
+	if (!data.totalCustomers) {
+		return (
+			<EmptyState
+        className={clsx("paper", styles.empty_state)}
+				title="هیچ مشتری مطابق خواست شما پیدا نشد"
+				subtitle="هیچ مشتری با توجه به این فیلتر ها پیدا نشده"
+			/>
+		);
+	}
 
 	return (
 		<section className={styles.wrapper}>

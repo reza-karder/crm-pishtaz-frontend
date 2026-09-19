@@ -1,3 +1,8 @@
+.empty_state {
+  margin-block-start: 16px;
+  background-color: var(--clr-white);
+}
+
 .wrapper {
   width: 100%;
   margin-block-start: 16px;
