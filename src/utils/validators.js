@@ -44,4 +44,14 @@ const customerCallValidator = yup.object({
 	notes: yup.string(),
 });
 
-export { signinSchema, customerSchema, customerProductSchema, customerCallValidator };
+const transferCustomerValidator = yup.object({
+	userId: yup.string().required("کارمند مقصد اجباری است"),
+});
+
+export {
+	signinSchema,
+	customerSchema,
+	customerProductSchema,
+	customerCallValidator,
+	transferCustomerValidator,
+};

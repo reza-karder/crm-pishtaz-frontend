@@ -30,4 +30,17 @@ const useDeleteCustomer = () => {
 	});
 };
 
-export { useCreateCustomer, useEditCustomer, useDeleteManyCustomers, useDeleteCustomer };
+const useTransferCustomer = () => {
+	return useMutation({
+		mutationFn: CUSTOMER_SERVICES.transferCustomer,
+		mutationKey: CUSTOMER_KEYS.TRANSFER_CUSTOMER,
+	});
+};
+
+export {
+	useCreateCustomer,
+	useEditCustomer,
+	useDeleteManyCustomers,
+	useDeleteCustomer,
+	useTransferCustomer,
+};

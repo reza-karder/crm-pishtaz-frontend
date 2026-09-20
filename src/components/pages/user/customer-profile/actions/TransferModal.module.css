@@ -1,0 +1,54 @@
+.users_list {
+	overflow: hidden;
+	border: 1px solid var(--clr-border);
+	border-radius: 14px;
+}
+
+.user + .user {
+	border-top: 1px solid var(--clr-border);
+}
+
+.user.checked {
+	background-color: var(--clr-primary-soft);
+}
+
+.user__label {
+	display: flex;
+	column-gap: 12px;
+	align-items: center;
+	padding-inline: 16px;
+	padding-block: 12px;
+	cursor: pointer;
+	transition: all 100ms ease-in;
+}
+
+.user__name {
+	font-weight: 600;
+	font-size: var(--fs-sm);
+}
+
+.user__radio {
+	transform: scale(1.2);
+}
+
+.loading {
+	overflow: hidden;
+	border-radius: 14px;
+}
+
+.skeleton {
+	border-radius: 0;
+}
+
+.skeleton + .skeleton {
+	margin-block-start: 4px;
+}
+
+/* ==================================
+HOVER MEDIA
+================================== */
+@media (hover: hover) {
+	.user:hover {
+		background-color: var(--clr-text-mute);
+	}
+}

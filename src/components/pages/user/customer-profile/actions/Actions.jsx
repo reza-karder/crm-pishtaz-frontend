@@ -14,10 +14,12 @@ import { useDeleteCustomer } from "../../../../../api/customers/mutations";
 import { toast } from "sonner";
 import { useQueryClient } from "@tanstack/react-query";
 import CUSTOMER_KEYS from "../../../../../api/customers/keys";
+import TransferModal from "./TransferModal";
 
 function Actions() {
-	const [isEditModalOpen, toggleEditModal] = useToggle(false);
-	const [isDeleteModalOpen, toggleDeleteModal] = useToggle(false);
+	const [isEditModalOpen, toggleIsEditModalOpen] = useToggle(false);
+	const [isDeleteModalOpen, toggleIsDeleteModalOpen] = useToggle(false);
+	const [isTransferModalOpen, toggleIsTransferModalOpen] = useToggle(false);
 
 	const params = useParams();
 	const navigate = useNavigate();
@@ -45,11 +47,17 @@ function Actions() {
 				<Button size="small" IconStart={MessageIcon} variant="outlined" color="normal">
 					پیامک
 				</Button>
-				<Button size="small" IconStart={ArrowIcon} variant="outlined" color="normal">
+				<Button
+					onClick={toggleIsTransferModalOpen}
+					size="small"
+					IconStart={ArrowIcon}
+					variant="outlined"
+					color="normal"
+				>
 					انتقال
 				</Button>
 				<Button
-					onClick={toggleEditModal}
+					onClick={toggleIsEditModalOpen}
 					size="small"
 					IconStart={PenIcon}
 					variant="outlined"
@@ -57,25 +65,37 @@ function Actions() {
 				>
 					ویرایش
 				</Button>
-				<Button onClick={toggleDeleteModal} size="small" IconStart={TrashIcon} color="danger">
+				<Button onClick={toggleIsDeleteModalOpen} size="small" IconStart={TrashIcon} color="danger">
 					حذف
 				</Button>
 			</div>
 
 			{isEditModalOpen && (
-				<CustomerModal onClose={toggleEditModal} isOpen={isEditModalOpen} customer={customer} />
+				<CustomerModal
+					onClose={toggleIsEditModalOpen}
+					isOpen={isEditModalOpen}
+					customer={customer}
+				/>
 			)}
 
 			{isDeleteModalOpen && (
 				<DeleteModal
 					isOpen={isDeleteModalOpen}
-					onClose={toggleDeleteModal}
+					onClose={toggleIsDeleteModalOpen}
 					onConfirm={deleteCustomer}
-          loading={isPending}
+					loading={isPending}
 					title="حذف مشتری"
 					subTitle="آیا مطمئن هستید؟ این عملیات قابل بازگشت نیست."
 					messageTilte={`آیا میخواهید ${customer.name} را حذف کنید؟`}
 					message="تماس‌ها، یادداشت‌ها و سفارش‌های ثبت‌شده برای این مشتری از سیستم پاک خواهد شد."
+				/>
+			)}
+
+			{isTransferModalOpen && (
+				<TransferModal
+					isOpen={isTransferModalOpen}
+					onClose={toggleIsTransferModalOpen}
+					customerId={customer._id}
 				/>
 			)}
 		</div>

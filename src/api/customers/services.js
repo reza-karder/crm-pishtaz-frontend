@@ -6,7 +6,8 @@ const CUSTOMER_SERVICES = {
   getUserCustomers: (params) => axiosClient.get(`/customers/me?${params}`),
   deleteManyCustomers: (selectionState) => axiosClient.post("/customers/delete-many", selectionState),
   getCustomerProfile: (customerId) => axiosClient.get(`/customers/${customerId}`),
-  deleteCustomer: (customerId) => axiosClient.delete(`/customers/${customerId}`)
+  deleteCustomer: (customerId) => axiosClient.delete(`/customers/${customerId}`),
+  transferCustomer: (data) => axiosClient.post("/customers/transfer", data)
 }
 
 export default CUSTOMER_SERVICES
