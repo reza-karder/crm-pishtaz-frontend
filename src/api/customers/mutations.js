@@ -37,10 +37,18 @@ const useTransferCustomer = () => {
 	});
 };
 
+const useToggleCustomerStatus = () => {
+  return useMutation({
+    mutationFn: CUSTOMER_SERVICES.toggleCustomerStatus,
+    mutationKey: CUSTOMER_KEYS.TOGGLE_CUSTOMER_STATUS
+  })
+}
+
 export {
 	useCreateCustomer,
 	useEditCustomer,
 	useDeleteManyCustomers,
 	useDeleteCustomer,
 	useTransferCustomer,
+  useToggleCustomerStatus
 };

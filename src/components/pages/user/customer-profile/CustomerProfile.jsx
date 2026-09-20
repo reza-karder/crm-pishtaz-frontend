@@ -8,6 +8,7 @@ import styles from "./CustomerProfile.module.css";
 import { useState } from "react";
 import ProductsTab from "./products-tab/ProductsTab";
 import CallsTab from "./calls-tab/CallsTab";
+import useDocumentTitle from "../../../../hooks/useDocumentTitle";
 
 const TAB_ITEMS = [
 	{ title: "محصولات", id: "products", Component: ProductsTab },
@@ -16,6 +17,8 @@ const TAB_ITEMS = [
 ];
 
 function CustomerProfile() {
+  useDocumentTitle("پروفایل مشتری")
+
 	const [activeTabId, setActiveTabId] = useState(TAB_ITEMS[0].id);
 	const ActiveTabComponent = TAB_ITEMS.find((item) => item.id === activeTabId).Component;
 

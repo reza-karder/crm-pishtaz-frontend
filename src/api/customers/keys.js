@@ -5,7 +5,8 @@ const CUSTOMER_KEYS = {
   DELETE_MANY_CUSTOMERS: ["customers", "delete", "many"],
   GET_CUSTOMER_PROFILE: (customerId) => ["customers", "single", customerId],
   DELETE_CUSTOMER: ["customer", "delete"],
-  TRANSFER_CUSTOMER: ["customer", "transfer"]
+  TRANSFER_CUSTOMER: ["customer", "transfer"],
+  TOGGLE_CUSTOMER_STATUS: ["customer", "status"]
 }
 
 export default CUSTOMER_KEYS
