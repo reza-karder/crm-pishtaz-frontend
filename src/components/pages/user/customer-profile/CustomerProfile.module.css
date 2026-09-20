@@ -3,9 +3,24 @@
   gap: 16px;
 }
 
+.tabs__section {
+  flex-grow: 1;
+}
+
+.tab__item {
+  flex-grow: 1;
+  text-align: center;
+}
+
 /* ===============================
 WIDTH MEDIA 
 =============================== */
+@media (max-width: 1024px) {
+  .wrapper {
+    flex-direction: column;
+  }
+}
+
 @media (max-width: 680px) {
   .page_header {
     flex-direction: column;

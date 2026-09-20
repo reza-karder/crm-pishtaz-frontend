@@ -5,7 +5,7 @@ INFO LIST
 	display: flex;
 	column-gap: 10px;
 	align-items: center;
-	width: 357px;
+	width: 300px;
 	padding-block: 12px;
 
 	&:first-of-type {
