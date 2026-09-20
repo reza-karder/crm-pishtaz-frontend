@@ -116,6 +116,17 @@ REUSEABLE STYLES
   font-size: var(--fs-xs);
 }
 
+.toast--success {
+  border-color: var(--clr-success) !important;
+  background-color: var(--clr-success-soft) !important ;
+  color: var(--clr-success) !important;
+}
+
+.toast_btn {
+  background-color: var(--clr-text-mute) !important;
+  color: var(--clr-text-soft) !important;
+}
+
 /* ==================================
 WIDTH MEDIA
 ================================== */

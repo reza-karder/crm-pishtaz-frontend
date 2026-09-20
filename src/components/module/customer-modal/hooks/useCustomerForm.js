@@ -16,7 +16,7 @@ const INITIAL_FORM_DATA = {
 
 // add key to products and calls for mapping, editing, deleting
 function normalizeValues(values) {
-	const normalizedProducts = values.products.map((product) => ({ key: product._id, ...product }));
+	const normalizedProducts = values.products.map((product) => ({ key: product._id, ...product, product: product.product._id }));
 	const normalizedCalls = values.calls.map((call) => ({ key: call._id, ...call }));
   const normalizedJob = values.job._id
 
