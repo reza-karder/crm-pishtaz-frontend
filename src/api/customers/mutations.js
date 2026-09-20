@@ -17,10 +17,17 @@ const useEditCustomer = () => {
 };
 
 const useDeleteManyCustomers = () => {
-  return useMutation({
-    mutationFn: CUSTOMER_SERVICES.deleteManyCustomers,
-    mutationKey: CUSTOMER_KEYS.DELETE_MANY_CUSTOMERS
-  })
-}
+	return useMutation({
+		mutationFn: CUSTOMER_SERVICES.deleteManyCustomers,
+		mutationKey: CUSTOMER_KEYS.DELETE_MANY_CUSTOMERS,
+	});
+};
 
-export { useCreateCustomer, useEditCustomer, useDeleteManyCustomers };
+const useDeleteCustomer = () => {
+	return useMutation({
+		mutationFn: CUSTOMER_SERVICES.deleteCustomer,
+		mutationKey: CUSTOMER_KEYS.DELETE_CUSTOMER,
+	});
+};
+
+export { useCreateCustomer, useEditCustomer, useDeleteManyCustomers, useDeleteCustomer };
