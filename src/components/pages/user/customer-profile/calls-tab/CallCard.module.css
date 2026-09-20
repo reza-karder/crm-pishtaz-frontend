@@ -1,0 +1,51 @@
+.call {
+  padding: 14px;
+  border: 1px solid var(--clr-border);
+  border-radius: 10px;
+}
+
+.call + .call {
+  margin-block-start: 10px;
+}
+
+.call__details {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.date {
+  color: var(--clr-text-soft);
+  font-weight: 400;
+  font-size: var(--fs-xs);
+}
+
+.note_wrapper {
+	margin-block-start: 8px;
+	padding: 14px;
+	border-right: 4px solid color-mix(in srgb, var(--clr-text-soft) 30%, transparent);
+	border-radius: 10px;
+	background-color: var(--clr-text-mute);
+}
+
+.note__header {
+	display: flex;
+	column-gap: 12px;
+	align-items: center;
+	color: var(--clr-text-soft);
+}
+
+.note__icon {
+	font-size: var(--fs-base);
+}
+
+.note__title {
+	font-weight: 500;
+	font-size: var(--fs-xs);
+}
+
+.note__text {
+	margin-block-start: 4px;
+	font-weight: 400;
+	font-size: var(--fs-xs);
+}

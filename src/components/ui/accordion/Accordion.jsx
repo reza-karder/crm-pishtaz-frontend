@@ -16,8 +16,10 @@ export function AccordionSummary({ children, title, onToggle }) {
 	return (
 		<div className={styles.accordion__summary} onClick={onToggle}>
 			<p className={styles.summary__title}> {title} </p>
-			{children}
-			<ArrowIcon className={styles.summary__icon} />
+			<div className={styles.summary__actions}>
+				{children}
+				<ArrowIcon className={styles.summary__icon} />
+			</div>
 		</div>
 	);
 }

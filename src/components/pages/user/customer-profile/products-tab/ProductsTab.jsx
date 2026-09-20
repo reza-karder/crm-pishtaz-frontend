@@ -39,7 +39,7 @@ function ProductsBlock({ products, title }) {
 		<div className={styles.products_block}>
 			<div className={styles.title_wrapper}>
 				<p className={styles.title}>{title}</p>
-				<p className={styles.count}>{products.length} مورد</p>
+				<p className={styles.count}>( {products.length} مورد )</p>
 			</div>
 			<ul className={styles.products_list}>
 				{products.map((product) => (

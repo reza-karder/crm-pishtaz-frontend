@@ -1,7 +1,8 @@
 .wrapper {
 	position: sticky;
 	top: 20px;
-	width: 357px;
+  width: 357px;
+  min-width: 357px;
 }
 
 /* ================================
@@ -89,5 +90,6 @@ WIDTH MEDIA
 	.wrapper {
 		position: static;
 		width: 100%;
+    min-width: 0;
 	}
 }

@@ -46,7 +46,7 @@ function CustomerInfos() {
 					<NoteIcon className={styles.note__icon} />
 					<p className={styles.note__title}>یادداشت مشتری</p>
 				</div>
-				<p className={styles.note__text}>{customer?.notes}به خرید کمپرسور علاقه‌مند است.</p>
+				<p className={styles.note__text}>{customer?.notes}</p>
 			</div>
 		</section>
 	);

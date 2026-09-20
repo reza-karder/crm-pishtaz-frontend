@@ -7,10 +7,11 @@ import CustomerInfos from "./CustomerInfos";
 import styles from "./CustomerProfile.module.css";
 import { useState } from "react";
 import ProductsTab from "./products-tab/ProductsTab";
+import CallsTab from "./calls-tab/CallsTab";
 
 const TAB_ITEMS = [
 	{ title: "محصولات", id: "products", Component: ProductsTab },
-	{ title: "تماس ها", id: "calls", Component: () => null },
+	{ title: "تماس ها", id: "calls", Component: CallsTab },
 	{ title: "پیام ها", id: "messages", Component: () => null },
 ];
 

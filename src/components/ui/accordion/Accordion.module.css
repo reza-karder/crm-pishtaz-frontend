@@ -1,5 +1,4 @@
 .accordion {
-  margin: 100px;
   overflow: hidden;
 	border: 1px solid var(--clr-border);
 	border-radius: 14px;
@@ -19,6 +18,11 @@
 
 .accordion.open .accordion__summary {
   border-bottom-width: 1px;
+}
+
+.summary__actions {
+  display: flex;
+  align-items: center;
 }
 
 .summary__title {
