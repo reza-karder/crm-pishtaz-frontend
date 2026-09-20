@@ -41,6 +41,7 @@ function CallForm({ callForm }) {
 					className={styles.notes}
 					error={getErrorMessage("notes")}
 					placeholder="خلاصه گفتگو با مشتری..."
+          {...getFieldProps("notes")}
 				/>
 			</FormField>
 		</form>

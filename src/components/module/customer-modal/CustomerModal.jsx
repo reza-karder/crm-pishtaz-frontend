@@ -32,6 +32,13 @@ function CustomerModal({ isOpen, onClose, customer }) {
 		onClose();
 	};
 
+	const editCustomerProfileCache = (customer) => {
+		queryClient.setQueryData(CUSTOMER_KEYS.GET_CUSTOMER_PROFILE(customer._id), (prevValues) => ({
+			...prevValues,
+			customer,
+		}));
+	};
+
 	const editCustomer = async (customer) => {
 		const response = await mutateEditCustomer(customer);
 
@@ -41,9 +48,7 @@ function CustomerModal({ isOpen, onClose, customer }) {
 		}
 
 		// sync new customer across the app
-		queryClient.invalidateQueries({
-			queryKey: CUSTOMER_KEYS.GET_CUSTOMER_PROFILE(response.customer._id),
-		});
+		editCustomerProfileCache(response.customer);
 
 		toast.success(response.message);
 		onClose();

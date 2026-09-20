@@ -10,30 +10,43 @@ const INITIAL_FORM_DATA = {
 	product: "",
 	intentionScore: 3,
 	price: "",
-  quantity: "",
+	quantity: "",
 };
 
-function ProductModal({
-	isOpen,
-	onClose,
-	products = [],
-	initialValues,
-	onAdd,
-	onEdit,
-}) {
-  const isEditing = Boolean(initialValues)
+const normalizeProduct = (productData) => {
+	const { product, price, quantity, type, intentionScore } = productData;
+
+	if (type === "purchased") {
+		return {
+			product,
+			quantity,
+			type,
+			...(price && { price }),
+		};
+	} else {
+		return {
+			product,
+			quantity,
+			type,
+			intentionScore,
+		};
+	}
+};
+
+function ProductModal({ isOpen, onClose, products = [], initialValues, onAdd, onEdit }) {
+	const isEditing = Boolean(initialValues);
 	const [activeTabId, setActiveTabId] = useState(initialValues?.type || "purchased");
 	const title = isEditing ? "ویرایش محصول" : "افزودن محصول";
 
 	const handleSubmit = (productData) => {
-		const product = {
+		const product = normalizeProduct({
 			...productData,
 			type: activeTabId, // activeTabId is same as product types
-		};
+		});
 
 		if (isEditing) {
 			onEdit(product.key, product);
-    } else {
+		} else {
 			onAdd(product);
 		}
 		onClose();

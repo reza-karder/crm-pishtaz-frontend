@@ -18,11 +18,13 @@ const INITIAL_FORM_DATA = {
 function normalizeValues(values) {
 	const normalizedProducts = values.products.map((product) => ({ key: product._id, ...product }));
 	const normalizedCalls = values.calls.map((call) => ({ key: call._id, ...call }));
+  const normalizedJob = values.job._id
 
 	return {
 		...values,
 		products: normalizedProducts,
 		calls: normalizedCalls,
+    job: normalizedJob
 	};
 }
 
