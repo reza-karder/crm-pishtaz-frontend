@@ -6,8 +6,15 @@
 .star {
   height: 25px;
   background-color: transparent;
-  font-size: var(--fs-3xl);
   transition: all 150ms ease-in;
+}
+
+.stars.small .star {
+  font-size: var(--fs-xl);
+}
+
+.stars.medium .star {
+  font-size: var(--fs-3xl);
 }
 
 .icon_outline {

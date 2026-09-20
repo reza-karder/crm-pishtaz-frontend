@@ -1,5 +1,6 @@
 .wrapper {
   display: flex;
+  align-items: start;
   gap: 16px;
 }
 
@@ -15,9 +16,10 @@
 /* ===============================
 WIDTH MEDIA 
 =============================== */
-@media (max-width: 1024px) {
+@media (max-width: 1200px) {
   .wrapper {
     flex-direction: column;
+    align-items: stretch;
   }
 }
 

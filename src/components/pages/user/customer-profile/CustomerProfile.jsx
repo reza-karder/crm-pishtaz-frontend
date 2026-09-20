@@ -6,9 +6,10 @@ import Avatar from "./Avatar";
 import CustomerInfos from "./CustomerInfos";
 import styles from "./CustomerProfile.module.css";
 import { useState } from "react";
+import ProductsTab from "./products-tab/ProductsTab";
 
 const TAB_ITEMS = [
-	{ title: "محصولات", id: "products", Component: () => null },
+	{ title: "محصولات", id: "products", Component: ProductsTab },
 	{ title: "تماس ها", id: "calls", Component: () => null },
 	{ title: "پیام ها", id: "messages", Component: () => null },
 ];

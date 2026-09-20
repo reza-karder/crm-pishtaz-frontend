@@ -1,0 +1,37 @@
+.empty_state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 300px;
+}
+
+.wrapper {
+  margin-block-start: 20px;
+}
+
+.products_list {
+  border: 1px solid var(--clr-border);
+  border-radius: 10px;
+}
+
+.products_block + .products_block {
+  margin-block-start: 40px;
+}
+
+.title_wrapper {
+  display: flex;
+  column-gap: 8px;
+  align-items: center;
+  margin-block-end: 12px;
+}
+
+.title {
+  font-weight: 700;
+  font-size: var(--fs-base);
+}
+
+.count {
+  font-weight: 400;
+  font-size: var(--fs-xs);
+}

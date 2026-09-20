@@ -10,10 +10,11 @@ const useGetUserCustomers = (params, options = {}) => {
   })
 }
 
-const useGetCustomerProfile = (customerId) => {
+const useGetCustomerProfile = (customerId, options = {}) => {
   return useSuspenseQuery({
     queryKey: CUSTOMER_KEYS.GET_CUSTOMER_PROFILE(customerId),
-    queryFn: () => CUSTOMER_SERVICES.getCustomerProfile(customerId)
+    queryFn: () => CUSTOMER_SERVICES.getCustomerProfile(customerId),
+    ...options
   })
 }
 

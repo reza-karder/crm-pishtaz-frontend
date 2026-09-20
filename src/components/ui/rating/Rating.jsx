@@ -2,14 +2,15 @@ import styles from "./Rating.module.css";
 import StarFilltIcon from "../../../assets/icons/star-fill.svg?react";
 import StarOutlinetIcon from "../../../assets/icons/star-outline.svg?react";
 import clsx from "clsx";
+import RatingVariants from "./Rating.variants";
 
-function Rating({ value, onChange, readOnly }) {
+function Rating({ value, onChange, readOnly, size }) {
 	const handleChange = (index) => {
 		if (!readOnly) onChange(index + 1);
 	};
 
 	return (
-		<div className={styles.stars}>
+		<div className={RatingVariants({ size })}>
 			{Array.from({ length: 5 }).map((_, index) => (
 				<button
 					key={index}
