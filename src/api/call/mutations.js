@@ -9,4 +9,11 @@ const useEditCall = () => {
 	});
 };
 
-export { useEditCall };
+const useDeleteCall = () => {
+	return useMutation({
+		mutationFn: CALL_SERVICES.deleteCall,
+		mutationKey: CALL_KEYS.DELETE_CALL,
+	});
+};
+
+export { useEditCall, useDeleteCall };

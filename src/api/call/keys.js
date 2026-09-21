@@ -1,5 +1,6 @@
 const CALL_KEYS = {
-	UPDATE_CALL: ["call", "update"],
+	EDIT_CALL: ["call", "update"],
+  DELETE_CALL: ["call", "delete"]
 };
 
 export default CALL_KEYS;

@@ -29,7 +29,7 @@ function CallsTab({ customerForm }) {
   }
 
   const handleEdit = (...args) => {
-    addCall(...args)
+    editCall(...args)
     toggleIsModalOpen()
   }
 

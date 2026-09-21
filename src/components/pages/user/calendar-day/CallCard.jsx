@@ -7,30 +7,43 @@ import PenIcon from "../.../../../../../assets/icons/pen.svg?react";
 import TrashIcon from "../.../../../../../assets/icons/trash.svg?react";
 import NoteIcon from "../.../../../../../assets/icons/note.svg?react";
 import clsx from "clsx";
-import { useEditCall } from "../../../../api/call/mutations";
+import { useDeleteCall, useEditCall } from "../../../../api/call/mutations";
 import { toast } from "sonner";
 import { useQueryClient } from "@tanstack/react-query";
 import CALENDAR_KEYS from "../../../../api/calendar/keys";
 import { toUTCDateString } from "../../../../utils/calendar";
 import useToggle from "../../../../hooks/useToggle";
 import CallModal from "../../../module/customer-modal/calls-tab/CallModal";
+import DeleteModal from "../../../ui/delete-modal/DeleteModal";
 
 function CallCard({ call }) {
 	const { customer, status, notes } = call;
 	const params = useParams();
 
 	const [isEditModalOpen, toggleIsEditModalOpen] = useToggle(false);
+	const [isDeleteModalOpen, toggleIsDeleteModalOpen] = useToggle(false);
 
 	const queryClient = useQueryClient();
-	const { mutateAsync: mutateeditCall } = useEditCall();
+	const { mutateAsync: mutateEditCall } = useEditCall();
+	const { mutateAsync: mutateDeleteCall } = useDeleteCall();
 
 	const syncData = () => {
 		queryClient.invalidateQueries(CALENDAR_KEYS.GET_CALLS_OF_DAY(toUTCDateString(params.date)));
 	};
 
-	const editCall = async (_,callData) => {
-    delete callData.customer
-		const response = await mutateeditCall(callData);
+	const editCall = async (_, callData) => {
+		delete callData.customer;
+		const response = await mutateEditCall(callData);
+
+		if (response.success) {
+			toast.success(response.message);
+			syncData();
+			toggleIsEditModalOpen();
+		}
+	};
+
+	const deleteCall = async () => {
+		const response = await mutateDeleteCall(call._id);
 
 		if (response.success) {
 			toast.success(response.message);
@@ -51,7 +64,7 @@ function CallCard({ call }) {
 					<IconBtn onClick={toggleIsEditModalOpen}>
 						<PenIcon />
 					</IconBtn>
-					<IconBtn color="danger">
+					<IconBtn color="danger" onClick={toggleIsDeleteModalOpen}>
 						<TrashIcon />
 					</IconBtn>
 				</div>
@@ -73,6 +86,17 @@ function CallCard({ call }) {
 					initialValues={call}
 					onClose={toggleIsEditModalOpen}
 					onEdit={editCall}
+				/>
+			)}
+			{isDeleteModalOpen && (
+				<DeleteModal
+					isOpen={isDeleteModalOpen}
+					onConfirm={deleteCall}
+					onClose={toggleIsDeleteModalOpen}
+					title="حذف تماس"
+					subTitle="آیا مطمئن هستید؟ این عملیات قابل بازگشت نیست."
+					messageTilte={`آیا میخواهید این تماس را حذف کنید؟`}
+					message="تمامی اطلاعات مربوط به این تماس از سیستم پاک خواهد شد"
 				/>
 			)}
 		</li>
