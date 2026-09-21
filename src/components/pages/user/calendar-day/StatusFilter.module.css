@@ -1,0 +1,10 @@
+.status_wrapper {
+  overflow-x: auto;
+}
+
+.status_list {
+	display: flex;
+	align-items: center;
+  min-width: 400px;
+	gap: 8px;
+}

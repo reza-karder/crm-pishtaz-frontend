@@ -12,6 +12,7 @@ import CustomersPage from "./components/pages/user/customers/CustomersPage";
 import CustomerProfile from "./components/pages/user/customer-profile/CustomerProfile";
 import CustomerProfileLoading from "./components/pages/user/customer-profile/Loading";
 import CalendarPage from "./components/pages/user/calendar/CalendarPage";
+import CalendarDayPage from "./components/pages/user/calendar-day/CalendarDayPage";
 
 async function sessionLoader() {
 	const result = await AUTH_SERVICES.checkSession();
@@ -42,6 +43,10 @@ const userRoutes = [
   {
     path: "/calendar",
     element: <CalendarPage />
+  },
+  {
+    path: "/calendar/:date",
+    element: <CalendarDayPage />
   }
 ];
 
