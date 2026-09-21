@@ -1,4 +1,4 @@
-import { useQuery, useSuspenseQuery } from "@tanstack/react-query";
+import { useQuery } from "@tanstack/react-query";
 import CALENDAR_KEYS from "./keys";
 import CALENDAR_SERVICES from "./services";
 
@@ -10,7 +10,7 @@ const useGetCalendarCalls = (startDate, endDate) => {
 };
 
 const useGetCallsOfDay = (date) => {
-	return useSuspenseQuery({
+	return useQuery({
 		queryKey: CALENDAR_KEYS.GET_CALLS_OF_DAY(date),
 		queryFn: () => CALENDAR_SERVICES.getCallsOfDay(date),
 	});
