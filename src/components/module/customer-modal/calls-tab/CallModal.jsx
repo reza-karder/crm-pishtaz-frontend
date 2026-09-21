@@ -20,7 +20,6 @@ function CallModal({ isOpen, onClose, initialValues, onAdd, onEdit }) {
 		} else {
 			onAdd(callData);
 		}
-		onClose();
 	};
 
 	const callForm = useCustomForm(

@@ -1,4 +1,4 @@
-import { Link } from "react-router";
+import { Link, useParams } from "react-router";
 import styles from "./CallCard.module.css";
 import Badge from "../../../ui/badge/Badge";
 import { callStatusesColor, callStatusesLabel } from "../../../../constants/callStatus";
@@ -7,9 +7,37 @@ import PenIcon from "../.../../../../../assets/icons/pen.svg?react";
 import TrashIcon from "../.../../../../../assets/icons/trash.svg?react";
 import NoteIcon from "../.../../../../../assets/icons/note.svg?react";
 import clsx from "clsx";
+import { useEditCall } from "../../../../api/call/mutations";
+import { toast } from "sonner";
+import { useQueryClient } from "@tanstack/react-query";
+import CALENDAR_KEYS from "../../../../api/calendar/keys";
+import { toUTCDateString } from "../../../../utils/calendar";
+import useToggle from "../../../../hooks/useToggle";
+import CallModal from "../../../module/customer-modal/calls-tab/CallModal";
 
 function CallCard({ call }) {
 	const { customer, status, notes } = call;
+	const params = useParams();
+
+	const [isEditModalOpen, toggleIsEditModalOpen] = useToggle(false);
+
+	const queryClient = useQueryClient();
+	const { mutateAsync: mutateeditCall } = useEditCall();
+
+	const syncData = () => {
+		queryClient.invalidateQueries(CALENDAR_KEYS.GET_CALLS_OF_DAY(toUTCDateString(params.date)));
+	};
+
+	const editCall = async (_,callData) => {
+    delete callData.customer
+		const response = await mutateeditCall(callData);
+
+		if (response.success) {
+			toast.success(response.message);
+			syncData();
+			toggleIsEditModalOpen();
+		}
+	};
 
 	return (
 		<li className={clsx("paper", styles.call)}>
@@ -20,7 +48,7 @@ function CallCard({ call }) {
 				</div>
 
 				<div className={styles.call__actions}>
-					<IconBtn>
+					<IconBtn onClick={toggleIsEditModalOpen}>
 						<PenIcon />
 					</IconBtn>
 					<IconBtn color="danger">
@@ -37,6 +65,15 @@ function CallCard({ call }) {
 					</div>
 					<p className={styles.note__text}>{notes}</p>
 				</div>
+			)}
+
+			{isEditModalOpen && (
+				<CallModal
+					isOpen={isEditModalOpen}
+					initialValues={call}
+					onClose={toggleIsEditModalOpen}
+					onEdit={editCall}
+				/>
 			)}
 		</li>
 	);

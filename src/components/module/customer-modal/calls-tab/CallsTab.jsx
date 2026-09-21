@@ -23,6 +23,16 @@ function CallsTab({ customerForm }) {
 		toggleIsModalOpen();
 	};
 
+  const handleAdd = (...args) => {
+    addCall(...args)
+    toggleIsModalOpen()
+  }
+
+  const handleEdit = (...args) => {
+    addCall(...args)
+    toggleIsModalOpen()
+  }
+
 	return (
 		<div>
 			<SubList title="تماس‌ها" Icon={PhoneIcon} onAdd={openAddModal}>
@@ -43,8 +53,8 @@ function CallsTab({ customerForm }) {
 					isOpen={isModalOpen}
 					onClose={toggleIsModalOpen}
 					initialValues={editingCall}
-					onAdd={addCall}
-					onEdit={editCall}
+					onAdd={handleAdd}
+					onEdit={handleEdit}
 				/>
 			)}
 		</div>
