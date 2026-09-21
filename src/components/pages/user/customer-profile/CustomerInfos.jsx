@@ -4,9 +4,9 @@ import PhoneIcon from "../../../../assets/icons/phone.svg?react";
 import EmailIcon from "../../../../assets/icons/email.svg?react";
 import SuitcaseIcon from "../../../../assets/icons/suitcase.svg?react";
 import LocationIcon from "../../../../assets/icons/location.svg?react";
-import NoteIcon from "../../../../assets/icons/note.svg?react";
 import { useParams } from "react-router";
 import { useGetCustomerProfile } from "../../../../api/customers/queries";
+import Note from "../../../module/note/Note";
 
 function getValue(obj, path) {
 	return path.split(".").reduce((value, key) => value?.[key], obj);
@@ -41,13 +41,7 @@ function CustomerInfos() {
 					</li>
 				))}
 			</ul>
-			<div className={styles.note_wrapper}>
-				<div className={styles.note__header}>
-					<NoteIcon className={styles.note__icon} />
-					<p className={styles.note__title}>یادداشت مشتری</p>
-				</div>
-				<p className={styles.note__text}>{customer?.notes}</p>
-			</div>
+			<Note note={customer?.notes} title="یادداشت مشتری" />
 		</section>
 	);
 }

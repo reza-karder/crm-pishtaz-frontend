@@ -5,7 +5,6 @@ import { callStatusesColor, callStatusesLabel } from "../../../../constants/call
 import IconBtn from "../../../ui/icon-btn/IconBtn";
 import PenIcon from "../.../../../../../assets/icons/pen.svg?react";
 import TrashIcon from "../.../../../../../assets/icons/trash.svg?react";
-import NoteIcon from "../.../../../../../assets/icons/note.svg?react";
 import clsx from "clsx";
 import { useDeleteCall, useEditCall } from "../../../../api/call/mutations";
 import { toast } from "sonner";
@@ -15,6 +14,7 @@ import { toUTCDateString } from "../../../../utils/calendar";
 import useToggle from "../../../../hooks/useToggle";
 import CallModal from "../../../module/customer-modal/calls-tab/CallModal";
 import DeleteModal from "../../../ui/delete-modal/DeleteModal";
+import Note from "../../../module/note/Note";
 
 function CallCard({ call }) {
 	const { customer, status, notes } = call;
@@ -70,15 +70,7 @@ function CallCard({ call }) {
 				</div>
 			</div>
 
-			{notes && (
-				<div className={styles.note_wrapper}>
-					<div className={styles.note__header}>
-						<NoteIcon className={styles.note__icon} />
-						<p className={styles.note__title}>یادداشت تماس</p>
-					</div>
-					<p className={styles.note__text}>{notes}</p>
-				</div>
-			)}
+			<Note title="یادداشت تماس" note={notes} />
 
 			{isEditModalOpen && (
 				<CallModal
@@ -88,6 +80,7 @@ function CallCard({ call }) {
 					onEdit={editCall}
 				/>
 			)}
+
 			{isDeleteModalOpen && (
 				<DeleteModal
 					isOpen={isDeleteModalOpen}
