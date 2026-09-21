@@ -29,7 +29,7 @@ function ProductsTab({ customerForm }) {
 		setEditingProduct(null);
 		toggleIsModalOpen();
 	};
-  console.log({values});
+  
 	return (
 		<div>
 			<SubList title="محصولات" Icon={BoxIcon} onAdd={openAddModal}>

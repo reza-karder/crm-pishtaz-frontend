@@ -43,6 +43,7 @@ function useCustomerForm(initialValues, onSubmit) {
 	};
 
 	const editProduct = (productKey, productData) => {
+    console.log({products, productKey});
 		const updatedProducts = products.map((product) =>
 			product.key === productKey ? productData : product
 		);

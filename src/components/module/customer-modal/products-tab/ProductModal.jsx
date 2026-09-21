@@ -14,13 +14,14 @@ const INITIAL_FORM_DATA = {
 };
 
 const normalizeProduct = (productData) => {
-	const { product, price, quantity, type, intentionScore } = productData;
+	const { product, price, quantity, type, intentionScore, key } = productData;
 
 	if (type === "purchased") {
 		return {
 			product,
 			quantity,
 			type,
+      ...(key && { key }),
 			...(price && { price }),
 		};
 	} else {
@@ -29,6 +30,7 @@ const normalizeProduct = (productData) => {
 			quantity,
 			type,
 			intentionScore,
+      ...(key && { key }),
 		};
 	}
 };
