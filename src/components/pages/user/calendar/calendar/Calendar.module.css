@@ -1,0 +1,66 @@
+.calendar__header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.calendar__title {
+	font-weight: 700;
+	font-size: var(--fs-sm);
+}
+
+.calendar__week_days {
+	display: grid;
+	grid-template-columns: repeat(7, 1fr);
+	margin-block: 24px 8px;
+}
+
+.calendar__week_days.mobile {
+	display: none;
+}
+
+.week_day {
+	color: var(--clr-text-soft);
+	font-weight: 400;
+	font-size: var(--fs-xs);
+	text-align: center;
+}
+
+.calendar__grid {
+	display: grid;
+	grid-template-columns: repeat(7, 1fr);
+	gap: 8px;
+}
+
+.grid__sekeleton {
+	aspect-ratio: 1;
+	width: auto;
+	height: auto;
+}
+
+/* ======================================
+WIDTH MEDIA
+======================================== */
+@media (max-width: 680px) {
+	.calendar__grid {
+		gap: 4px;
+	}
+
+	.calendar__week_days.mobile {
+		display: grid;
+	}
+
+	.calendar__week_days.desktop {
+		display: none;
+	}
+}
+
+@media (max-width: 480px) {
+	.grid__calls_count {
+		display: none;
+	}
+
+	.today_mark {
+		display: none;
+	}
+}

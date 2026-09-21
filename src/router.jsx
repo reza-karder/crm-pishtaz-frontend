@@ -11,6 +11,7 @@ import AUTH_SERVICES from "./api/auth/services";
 import CustomersPage from "./components/pages/user/customers/CustomersPage";
 import CustomerProfile from "./components/pages/user/customer-profile/CustomerProfile";
 import CustomerProfileLoading from "./components/pages/user/customer-profile/Loading";
+import CalendarPage from "./components/pages/user/calendar/CalendarPage";
 
 async function sessionLoader() {
 	const result = await AUTH_SERVICES.checkSession();
@@ -38,6 +39,10 @@ const userRoutes = [
 			</QueryBoundary>
 		),
 	},
+  {
+    path: "/calendar",
+    element: <CalendarPage />
+  }
 ];
 
 const router = createBrowserRouter([

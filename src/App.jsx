@@ -11,7 +11,7 @@ function App() {
 	return (
 		<ErrorBoundary fallback={<ErrorState />}>
 			<QueryClientProvider client={queryClient}>
-				{/* <ReactQueryDevtools /> */}
+				<ReactQueryDevtools />
 				<RouterProvider router={router} />
 				<Toaster position="bottom-right" dir="rtl" richColors closeButton />
 			</QueryClientProvider>
