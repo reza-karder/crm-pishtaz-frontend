@@ -5,19 +5,25 @@ import styles from "./CalendarDayPage.module.css";
 import { createPersianDate } from "../../../../utils/calendar";
 import { useState } from "react";
 import StatusFilter from "./StatusFilter";
+import { useGetCallsOfDay } from "../../../../api/calendar/queries";
+import CallCard from "./CallCard";
 
 function CalendarDayPage() {
 	const { date } = useParams();
 	const [status, setStatus] = useState("all");
-
 	const pageTitle = createPersianDate({ format: "dddd DD MMMM YYYY", ...date }).format();
+
+  const { data } = useGetCallsOfDay(date)
+  const calls = data?.calls?.filter(call => status === "all" ? true : call.status === status) || []
 
 	return (
 		<>
 			<BackLink to="/calendar">بازگشت به تقویم</BackLink>
 			<PageHeader title={pageTitle} subTitle="تماس های ثبت شده برای امروز" />
       <StatusFilter status={status} onSelect={setStatus} />
-			
+			<ul className={styles.calls_list}>
+        {calls.map(call => <CallCard key={call._id} call={call} />)}
+      </ul>
 		</>
 	);
 }
