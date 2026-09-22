@@ -34,9 +34,11 @@ function SelectionState({ selection, customersParams }) {
 
 		if (response.success) {
 			toast.success(response.message);
-			queryClient.invalidateQueries({ queryKey: CUSTOMER_KEYS.GET_USER_CUSTOMERS(params) });
-      toggleIsDeleteModalOpen()
-      cancelSelection()
+			queryClient.invalidateQueries({
+				queryKey: CUSTOMER_KEYS.GET_USER_CUSTOMERS(new URLSearchParams(params).toString()),
+			});
+			toggleIsDeleteModalOpen();
+			cancelSelection();
 		}
 	};
 
@@ -56,7 +58,13 @@ function SelectionState({ selection, customersParams }) {
 				<Button size="small" IconStart={MessageIcon} variant="soft">
 					ارسال پیام
 				</Button>
-				<Button size="small" IconStart={TrashIcon} variant="soft" color="danger" onClick={toggleIsDeleteModalOpen}>
+				<Button
+					size="small"
+					IconStart={TrashIcon}
+					variant="soft"
+					color="danger"
+					onClick={toggleIsDeleteModalOpen}
+				>
 					حذف همه
 				</Button>
 			</div>
@@ -70,7 +78,7 @@ function SelectionState({ selection, customersParams }) {
 					messageTilte={`آیا از حذف ${selectionCount} مشتری انتخاب شده مطمئن  هستید؟`}
 					message="تماس‌ها، یادداشت‌ها و سفارش‌های ثبت‌شده برای این مشتریان از سیستم پاک خواهد شد."
 					onConfirm={deleteCustomers}
-          loading={isPending}
+					loading={isPending}
 				/>
 			)}
 		</div>

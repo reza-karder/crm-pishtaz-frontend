@@ -1,7 +1,9 @@
+import useDocumentTitle from "../../../../hooks/useDocumentTitle";
 import PageHeader from "../../../module/page-header/PageHeader";
 import Calendar from "./calendar/Calendar";
 
 function CalendarPage() {
+  useDocumentTitle("تقویم")
 	return (
 		<>
 			<PageHeader

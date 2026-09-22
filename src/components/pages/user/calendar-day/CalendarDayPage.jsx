@@ -7,8 +7,11 @@ import StatusFilter from "./StatusFilter";
 import { useGetCallsOfDay } from "../../../../api/calendar/queries";
 import Loading from "./Loading";
 import CallsList from "./CallsList";
+import useDocumentTitle from "../../../../hooks/useDocumentTitle";
 
 function CalendarDayPage() {
+  useDocumentTitle("تقویم")
+
 	const { date } = useParams();
 	const [status, setStatus] = useState("all");
 	const pageTitle = createPersianDate({ format: "dddd DD MMMM YYYY", ...date }).format();
