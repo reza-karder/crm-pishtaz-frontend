@@ -13,11 +13,19 @@ import CustomerProfile from "./components/pages/user/customer-profile/CustomerPr
 import CustomerProfileLoading from "./components/pages/user/customer-profile/Loading";
 import CalendarPage from "./components/pages/user/calendar/CalendarPage";
 import CalendarDayPage from "./components/pages/user/calendar-day/CalendarDayPage";
+import NotificationManager from "./components/common/NotificationManager";
 
 async function sessionLoader() {
 	const result = await AUTH_SERVICES.checkSession();
 	return { result };
 }
+
+const userLayout = () => (
+	<>
+		<Layout links={USER_LAYOUT_LINKS} />
+		<NotificationManager />
+	</>
+);
 
 const userRoutes = [
 	{
@@ -40,14 +48,14 @@ const userRoutes = [
 			</QueryBoundary>
 		),
 	},
-  {
-    path: "/calendar",
-    element: <CalendarPage />
-  },
-  {
-    path: "/calendar/:date",
-    element: <CalendarDayPage />
-  }
+	{
+		path: "/calendar",
+		element: <CalendarPage />,
+	},
+	{
+		path: "/calendar/:date",
+		element: <CalendarDayPage />,
+	},
 ];
 
 const router = createBrowserRouter([
@@ -64,7 +72,7 @@ const router = createBrowserRouter([
 				loader: sessionLoader,
 				children: [
 					{
-						element: <Layout links={USER_LAYOUT_LINKS} />,
+						Component: userLayout,
 						children: userRoutes,
 					},
 				],
