@@ -3,8 +3,11 @@ import PageHeader from "../../../module/page-header/PageHeader"
 import styles from "./ProfilePage.module.css" 
 import InfoForm from "./InfoForm"
 import PasswordForm from "./PasswordForm"
+import useDocumentTitle from "../../../../hooks/useDocumentTitle"
 
 function ProfilePage() {
+  useDocumentTitle("پروفایل من")
+
   return (
    <>
      <PageHeader title="پروفایل من" subTitle="اطلاعات شخصی و عملکرد شما" />
