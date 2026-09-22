@@ -9,6 +9,13 @@ const useGetUser = () => {
 	});
 };
 
+const useSuspenseGetUser = () => {
+	return useSuspenseQuery({
+		queryKey: USER_KEYS.GET_USER,
+		queryFn: USER_SERVICES.getUser,
+	});
+};
+
 const useGetUserStats = () => {
 	return useSuspenseQuery({
 		queryKey: USER_KEYS.GET_USER_STATS,
@@ -24,4 +31,4 @@ const useGetActiveUsers = () => {
 	});
 };
 
-export { useGetUser, useGetUserStats, useGetActiveUsers };
+export { useGetUser, useGetUserStats, useGetActiveUsers, useSuspenseGetUser };

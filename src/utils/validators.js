@@ -48,10 +48,17 @@ const transferCustomerValidator = yup.object({
 	userId: yup.string().required("کارمند مقصد اجباری است"),
 });
 
+const profileInfoFormSchema = yup.object({
+  email: yup.string().email("ایمیل معتبر نیست").required("ایمیل اجباری است"),
+  phone: yup.string().matches(PHONE_REGEX, "شماره تماس معتبر نیست").optional(),
+  name: yup.string().required("نام و نام خانوادگی اجباری است")
+})
+
 export {
 	signinSchema,
 	customerSchema,
 	customerProductSchema,
 	customerCallValidator,
 	transferCustomerValidator,
+  profileInfoFormSchema
 };
