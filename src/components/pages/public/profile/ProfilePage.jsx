@@ -2,6 +2,7 @@ import clsx from "clsx"
 import PageHeader from "../../../module/page-header/PageHeader"
 import styles from "./ProfilePage.module.css" 
 import InfoForm from "./InfoForm"
+import PasswordForm from "./PasswordForm"
 
 function ProfilePage() {
   return (
@@ -15,6 +16,7 @@ function ProfilePage() {
       </section>
       <section className={clsx("paper", styles.section)}>
         <p className="paper__title">تغییر رمز عبور</p>
+        <PasswordForm />
       </section>
      </div>
    </>

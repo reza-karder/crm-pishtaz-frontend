@@ -2,6 +2,7 @@ import * as yup from "yup";
 import { callStatuses } from "../constants/callStatus";
 
 const PHONE_REGEX = /^09\d{9}$/;
+const PASSWORD_REGEX = /^(?=.*[A-Z])(?=.*\d)(?=.*[^A-Za-z0-9]).{8,}$/;
 
 const signinSchema = yup.object({
 	email: yup.string().required("ایمیل اجباری است").email("ایمیل معتبر نمی باشد"),
@@ -49,10 +50,19 @@ const transferCustomerValidator = yup.object({
 });
 
 const profileInfoFormSchema = yup.object({
-  email: yup.string().email("ایمیل معتبر نیست").required("ایمیل اجباری است"),
-  phone: yup.string().matches(PHONE_REGEX, "شماره تماس معتبر نیست").optional(),
-  name: yup.string().required("نام و نام خانوادگی اجباری است")
-})
+	email: yup.string().email("ایمیل معتبر نیست").required("ایمیل اجباری است"),
+	phone: yup.string().matches(PHONE_REGEX, "شماره تماس معتبر نیست").optional(),
+	name: yup.string().required("نام و نام خانوادگی اجباری است"),
+});
+
+const profilePasswordFormSchema = yup.object({
+	currentPassword: yup.string().required("رمز عبور فعلی اجباری است"),
+	newPassword: yup.string().required("رمز عبور جدید اجباری است").matches(PASSWORD_REGEX),
+	confirmNewPassword: yup
+		.string()
+		.required("تکرار رمز عبور اجباری است")
+		.oneOf([yup.ref("newPassword")], "تکرار با رمز عبور جدید یکسان نمی باشد"),
+});
 
 export {
 	signinSchema,
@@ -60,5 +70,6 @@ export {
 	customerProductSchema,
 	customerCallValidator,
 	transferCustomerValidator,
-  profileInfoFormSchema
+	profileInfoFormSchema,
+  profilePasswordFormSchema
 };

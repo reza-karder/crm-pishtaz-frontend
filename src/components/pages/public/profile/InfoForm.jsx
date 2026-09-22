@@ -44,24 +44,25 @@ function InfoForm() {
 	const { data } = useSuspenseGetUser();
 	const { name, email, phone } = data?.user || {};
 
-  const queryClient = useQueryClient()
-  const { mutateAsync: mutateEditUser, isPending } = useEditUser()
+	const queryClient = useQueryClient();
+	const { mutateAsync: mutateEditUser, isPending } = useEditUser();
 
-  const handleSubmit = async (userData) => {
-    const response = await mutateEditUser(userData)
+	const handleSubmit = async (userData) => {
+		const response = await mutateEditUser(userData);
 
-    if(!response.success) {
-      toast.warning(response.message)
-    }
+		if (!response.success) {
+			toast.warning(response.message);
+      return
+		}
 
-    queryClient.invalidateQueries({ queryKey: USER_KEYS.GET_USER })
-    toast.success(response.message)
-  }
+		queryClient.invalidateQueries({ queryKey: USER_KEYS.GET_USER });
+		toast.success(response.message);
+	};
 
-	const { getErrorMessage, getFieldProps, onSubmit } = useCustomForm(
+	const { getErrorMessage, getFieldProps, onSubmit, dirty } = useCustomForm(
 		{ name, email, phone },
 		profileInfoFormSchema,
-    handleSubmit
+		handleSubmit
 	);
 
 	return (
@@ -83,7 +84,9 @@ function InfoForm() {
 					/>
 				</FormField>
 			))}
-			<Button type="submit" loading={isPending}>ذخیره اطلاعات</Button>
+			<Button type="submit" loading={isPending} disabled={!dirty}>
+				ذخیره اطلاعات
+			</Button>
 		</form>
 	);
 }

@@ -24,8 +24,8 @@ function NotificationPage() {
 				/>
 			</div>
 
-			<CallsList title="تماس های امروز" calls={callsOfDay} />
-			<CallsList title="تماس های رسیدگی نشده" calls={unresolvedCalls} />
+			<CallsList key="calls-of-day" title="تماس های امروز" calls={callsOfDay} />
+			<CallsList key="unresolved-calls" title="تماس های رسیدگی نشده" calls={unresolvedCalls} />
 		</>
 	);
 }
