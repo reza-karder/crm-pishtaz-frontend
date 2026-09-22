@@ -1,0 +1,18 @@
+.stats {
+	display: flex;
+  margin-block-end: 20px;
+	gap: 8px;
+}
+
+.calls_section {
+  margin-block-start: 10px;
+}
+
+/* ==============================
+WIDTH MEDIA
+============================== */
+@media (max-width: 480px) {
+	.stats {
+		flex-direction: column;
+	}
+}

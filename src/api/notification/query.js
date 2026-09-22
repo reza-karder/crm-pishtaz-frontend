@@ -1,4 +1,4 @@
-import { useQuery } from "@tanstack/react-query"
+import { useQuery, useSuspenseQuery } from "@tanstack/react-query"
 import NOTIFICATION_KEYS from "./keys"
 import NOTIFICATION_SERVICES from "./services"
 
@@ -11,7 +11,7 @@ const useGetNotifications = (options = {}) => {
 }
 
 const useSuspenseGetNotifications = () => {
-  return useQuery({
+  return useSuspenseQuery({
     queryKey: NOTIFICATION_KEYS.GET_NOTIFICATIONS,
     queryFn: NOTIFICATION_SERVICES.getNotifications,
   })

@@ -15,6 +15,7 @@ import CalendarPage from "./components/pages/user/calendar/CalendarPage";
 import CalendarDayPage from "./components/pages/user/calendar-day/CalendarDayPage";
 import NotificationManager from "./components/common/NotificationManager";
 import NotificationPage from "./components/pages/user/notification/NotificationPage";
+import NotificationPageLoading from "./components/pages/user/notification/Loading";
 
 async function sessionLoader() {
 	const result = await AUTH_SERVICES.checkSession();
@@ -57,10 +58,14 @@ const userRoutes = [
 		path: "/calendar/:date",
 		element: <CalendarDayPage />,
 	},
-  {
-    path: "/notifications",
-    element: <NotificationPage />
-  }
+	{
+		path: "/notifications",
+		element: (
+			<QueryBoundary loadingFallback={<NotificationPageLoading />} errorFallback={<ErrorState />}>
+				<NotificationPage />
+			</QueryBoundary>
+		),
+	},
 ];
 
 const router = createBrowserRouter([
