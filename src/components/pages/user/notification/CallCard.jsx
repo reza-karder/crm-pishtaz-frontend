@@ -1,7 +1,7 @@
 import { Link } from "react-router";
 import styles from "./CallCard.module.css";
 import Badge from "../../../ui/badge/Badge";
-import { callStatusesColor, callStatusesLabel } from "../../../../constants/callStatus";
+import { CALL_STATUS_COLORS, CALL_STATUS_LABELS } from "../../../../constants/callStatus";
 import LinkButton from "../../../ui/button/LinkButton";
 import { toUTCDateString } from "../../../../utils/calendar";
 import ArrowIcon from "../../../../assets/icons/arrow-left.svg?react";
@@ -16,7 +16,7 @@ function CallCard({ call }) {
 					<Link to={`/customers/${customer._id}`} className={styles.info__name}>
 						{customer.name}
 					</Link>
-					<Badge color={callStatusesColor[status]}>{callStatusesLabel[status]}</Badge>
+					<Badge color={CALL_STATUS_COLORS[status]}>{CALL_STATUS_LABELS[status]}</Badge>
 					<p className={styles.info__date}>{new Date(date).toLocaleDateString("fa-IR")}</p>
 				</div>
 

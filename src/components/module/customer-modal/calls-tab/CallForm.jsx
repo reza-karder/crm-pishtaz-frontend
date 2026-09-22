@@ -5,14 +5,14 @@ import persian_fa from "react-date-object/locales/persian_fa";
 import Input from "../../../ui/input/Input";
 import FormField from "../../../ui/form-field/FormField";
 import Select from "../../../ui/select/Select";
-import { callStatusOptions } from "../../../../constants/callStatus";
+import { CALL_STATUS_OPTIONS } from "../../../../constants/callStatus";
 import TextArea from "../../../ui/text-area/TextArea";
 
 const DatePicker = DatePickerModule.default;
 
 function CallForm({ callForm }) {
 	const { values, setFieldValue, getFieldProps, getErrorMessage } = callForm;
-  
+
 	return (
 		<form className={styles.form}>
 			<FormField id="date" label="تاریخ" required error={getErrorMessage("date")}>
@@ -30,7 +30,7 @@ function CallForm({ callForm }) {
 
 			<FormField id="status" label="وضعیت" required error={getErrorMessage("status")}>
 				<Select
-					options={callStatusOptions}
+					options={CALL_STATUS_OPTIONS}
 					error={getErrorMessage("status")}
 					{...getFieldProps("status")}
 				/>
@@ -41,7 +41,7 @@ function CallForm({ callForm }) {
 					className={styles.notes}
 					error={getErrorMessage("notes")}
 					placeholder="خلاصه گفتگو با مشتری..."
-          {...getFieldProps("notes")}
+					{...getFieldProps("notes")}
 				/>
 			</FormField>
 		</form>

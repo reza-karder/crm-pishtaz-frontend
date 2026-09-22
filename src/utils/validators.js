@@ -1,5 +1,5 @@
 import * as yup from "yup";
-import { callStatuses } from "../constants/callStatus";
+import { CALL_STATUS } from "../constants/callStatus";
 
 const PHONE_REGEX = /^09\d{9}$/;
 const PASSWORD_REGEX = /^(?=.*[A-Z])(?=.*\d)(?=.*[^A-Za-z0-9]).{8,}$/;
@@ -41,7 +41,7 @@ const customerProductSchema = yup.object({
 
 const customerCallValidator = yup.object({
 	date: yup.date().required("تاریخ اجباری می باشد"),
-	status: yup.string().required("وضعیت اجباری می باشد").oneOf(callStatuses),
+	status: yup.string().required("وضعیت اجباری می باشد").oneOf(CALL_STATUS),
 	notes: yup.string(),
 });
 
@@ -71,5 +71,5 @@ export {
 	customerCallValidator,
 	transferCustomerValidator,
 	profileInfoFormSchema,
-  profilePasswordFormSchema
+	profilePasswordFormSchema,
 };

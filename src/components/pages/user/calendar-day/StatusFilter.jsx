@@ -1,8 +1,8 @@
-import { callStatusOptions } from "../../../../constants/callStatus";
+import { CALL_STATUS_OPTIONS } from "../../../../constants/callStatus";
 import Button from "../../../ui/button/Button";
 import styles from "./StatusFilter.module.css";
 
-const STATUS_OPTIONS = [{ label: "همه", value: "all" }, ...callStatusOptions];
+const STATUS_OPTIONS = [{ label: "همه", value: "all" }, ...CALL_STATUS_OPTIONS];
 
 function StatusFilter({ status, onSelect }) {
 	return (

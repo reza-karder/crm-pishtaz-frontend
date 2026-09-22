@@ -1,7 +1,7 @@
 import { Link, useParams } from "react-router";
 import styles from "./CallCard.module.css";
 import Badge from "../../../ui/badge/Badge";
-import { callStatusesColor, callStatusesLabel } from "../../../../constants/callStatus";
+import { CALL_STATUS_COLORS, CALL_STATUS_LABELS } from "../../../../constants/callStatus";
 import IconBtn from "../../../ui/icon-btn/IconBtn";
 import PenIcon from "../.../../../../../assets/icons/pen.svg?react";
 import TrashIcon from "../.../../../../../assets/icons/trash.svg?react";
@@ -57,7 +57,7 @@ function CallCard({ call }) {
 			<div className={styles.call__header}>
 				<div className={styles.call__info}>
 					<Link to={`/customers/${customer._id}`}>{customer.name}</Link>
-					<Badge color={callStatusesColor[status]}>{callStatusesLabel[status]}</Badge>
+					<Badge color={CALL_STATUS_COLORS[status]}>{CALL_STATUS_LABELS[status]}</Badge>
 				</div>
 
 				<div className={styles.call__actions}>

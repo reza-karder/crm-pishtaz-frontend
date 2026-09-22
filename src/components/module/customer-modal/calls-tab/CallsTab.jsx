@@ -2,11 +2,10 @@ import { useState } from "react";
 import useToggle from "../../../../hooks/useToggle";
 import SubList from "../sub-list/SubList";
 import SubItem from "../sub-list/SubItem";
-import { callStatusesColor, callStatusesLabel } from "../../../../constants/callStatus";
+import { CALL_STATUS_COLORS, CALL_STATUS_LABELS } from "../../../../constants/callStatus";
 import Badge from "../../../ui/badge/Badge";
 import CallModal from "./CallModal";
-import PhoneIcon from "../../../../assets/icons/phone.svg?react"
-
+import PhoneIcon from "../../../../assets/icons/phone.svg?react";
 
 function CallsTab({ customerForm }) {
 	const { editCall, addCall, deleteCall, values } = customerForm;
@@ -23,15 +22,15 @@ function CallsTab({ customerForm }) {
 		toggleIsModalOpen();
 	};
 
-  const handleAdd = (...args) => {
-    addCall(...args)
-    toggleIsModalOpen()
-  }
+	const handleAdd = (...args) => {
+		addCall(...args);
+		toggleIsModalOpen();
+	};
 
-  const handleEdit = (...args) => {
-    editCall(...args)
-    toggleIsModalOpen()
-  }
+	const handleEdit = (...args) => {
+		editCall(...args);
+		toggleIsModalOpen();
+	};
 
 	return (
 		<div>
@@ -43,7 +42,7 @@ function CallsTab({ customerForm }) {
 						onEdit={() => openEditModal(call)}
 						title={new Date(call.date).toLocaleDateString("fa-IR")}
 					>
-						<Badge color={callStatusesColor[call.status]}>{callStatusesLabel[call.status]}</Badge>
+						<Badge color={CALL_STATUS_COLORS[call.status]}>{CALL_STATUS_LABELS[call.status]}</Badge>
 					</SubItem>
 				))}
 			</SubList>

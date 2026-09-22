@@ -1,4 +1,4 @@
-import { callStatusesColor, callStatusesLabel } from "../../../../../constants/callStatus";
+import { CALL_STATUS_COLORS, CALL_STATUS_LABELS } from "../../../../../constants/callStatus";
 import Badge from "../../../../ui/badge/Badge";
 import styles from "./CallCard.module.css";
 import Note from "../../../../module/note/Note";
@@ -9,7 +9,7 @@ function CallCard({ call }) {
 	return (
 		<li className={styles.call}>
 			<div className={styles.call__details}>
-				<Badge color={callStatusesColor[status]}>{callStatusesLabel[status]}</Badge>
+				<Badge color={CALL_STATUS_COLORS[status]}>{CALL_STATUS_LABELS[status]}</Badge>
 				<p className={styles.date}>{new Date(date).toLocaleDateString("fa-IR")}</p>
 			</div>
 			<Note title="یادداشت تماس" note={notes} />
