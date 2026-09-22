@@ -1,0 +1,13 @@
+.stats {
+	display: flex;
+	gap: 8px;
+}
+
+/* ==============================
+WIDTH MEDIA
+============================== */
+@media (max-width: 480px) {
+	.stats {
+		flex-direction: column;
+	}
+}

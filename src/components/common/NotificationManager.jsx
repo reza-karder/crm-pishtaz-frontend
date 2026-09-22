@@ -1,5 +1,5 @@
 import { toast } from "sonner";
-import useGetNotifications from "../../api/notification/query";
+import { useGetNotifications } from "../../api/notification/query";
 import { useEffect } from "react";
 
 function hasVisitedToday() {
@@ -33,7 +33,7 @@ function NotificationManager() {
 	const { data, isSuccess } = useGetNotifications({ enabled: !hasVisitedToday() });
 
 	useEffect(() => {
-		if (isSuccess) {
+		if (isSuccess && !hasVisitedToday()) {
 			const { unresolvedCalls, callsOfDay } = data.notifications;
 			const message = createMessage(unresolvedCalls.length, callsOfDay.length);
 
@@ -44,7 +44,7 @@ function NotificationManager() {
 		}
 	}, [isSuccess, data]);
 
-  return null
+	return null;
 }
 
 export default NotificationManager;

@@ -10,4 +10,11 @@ const useGetNotifications = (options = {}) => {
   })
 }
 
-export default useGetNotifications
+const useSuspenseGetNotifications = () => {
+  return useQuery({
+    queryKey: NOTIFICATION_KEYS.GET_NOTIFICATIONS,
+    queryFn: NOTIFICATION_SERVICES.getNotifications,
+  })
+}
+
+export { useSuspenseGetNotifications, useGetNotifications }
