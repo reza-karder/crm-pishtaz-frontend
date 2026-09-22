@@ -3,9 +3,10 @@ import PersonIcon from "../../../../assets/icons/person.svg?react";
 import ListIcon from "../../../../assets/icons/list.svg?react";
 import PhoneIcon from "../../../../assets/icons/phone.svg?react";
 import { Link } from "react-router";
+import { toUTCDateString } from "../../../../utils/calendar";
 
 const QUECK_ACCESS_LINKS = [
-	{ path: "/calendar", label: "تماس های امروز", Icon: PhoneIcon },
+	{ path: `/calendar/${toUTCDateString(new Date())}`, label: "تماس های امروز", Icon: PhoneIcon },
 	{ path: "/customers", label: "فهرست مشتریان", Icon: ListIcon },
 ];
 

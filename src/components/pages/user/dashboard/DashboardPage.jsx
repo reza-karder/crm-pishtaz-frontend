@@ -16,6 +16,7 @@ import LinkButton from "../../../ui/button/LinkButton";
 import useDocumentTitle from "../../../../hooks/useDocumentTitle";
 import CustomerModal from "../../../module/customer-modal/CustomerModal";
 import useToggle from "../../../../hooks/useToggle";
+import { toUTCDateString } from "../../../../utils/calendar";
 
 function DashboardPage() {
 	useDocumentTitle("داشبورد");
@@ -50,7 +51,12 @@ function DashboardPage() {
 				<section className={clsx("paper", styles.calls_sec)}>
 					<div className={styles.calls__header}>
 						<p className="paper__title">تماس‌ های امروز</p>
-						<LinkButton to="/calendar" IconEnd={ArrowIcon} variant="text" color="normal">
+						<LinkButton
+							to={`/calendar/${toUTCDateString(new Date())}`}
+							IconEnd={ArrowIcon}
+							variant="text"
+							color="normal"
+						>
 							تقویم
 						</LinkButton>
 					</div>
