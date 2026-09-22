@@ -17,6 +17,7 @@ import NotificationManager from "./components/common/NotificationManager";
 import NotificationPage from "./components/pages/user/notification/NotificationPage";
 import NotificationPageLoading from "./components/pages/user/notification/Loading";
 import ProfilePage from "./components/pages/public/profile/ProfilePage";
+import ProfilePageLoading from "./components/pages/public/profile/Loading";
 
 async function sessionLoader() {
 	const result = await AUTH_SERVICES.checkSession();
@@ -67,18 +68,26 @@ const userRoutes = [
 			</QueryBoundary>
 		),
 	},
-  {
-    path: "/profile",
-    element: <ProfilePage />
-  }
+	{
+		path: "/profile",
+		element: (
+			<QueryBoundary loadingFallback={<ProfilePageLoading />} errorFallback={<ErrorState />}>
+				<ProfilePage />
+			</QueryBoundary>
+		),
+	},
 ];
 
 const adminRoutes = [
-  {
-    path: "/admin/profile",
-    element: <ProfilePage />
-  }
-]
+	{
+		path: "/admin/profile",
+		element: (
+			<QueryBoundary loadingFallback={<ProfilePageLoading />} errorFallback={<ErrorState />}>
+				<ProfilePage />
+			</QueryBoundary>
+		),
+	},
+];
 
 const router = createBrowserRouter([
 	{
