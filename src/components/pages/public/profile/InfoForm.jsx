@@ -47,8 +47,8 @@ function InfoForm() {
 	const queryClient = useQueryClient();
 	const { mutateAsync: mutateEditUser, isPending } = useEditUser();
 
-	const handleSubmit = async (userData) => {
-		const response = await mutateEditUser(userData);
+	const handleSubmit = async (formData, form) => {
+		const response = await mutateEditUser(formData);
 
 		if (!response.success) {
 			toast.warning(response.message);
@@ -57,6 +57,7 @@ function InfoForm() {
 
 		queryClient.invalidateQueries({ queryKey: USER_KEYS.GET_USER });
 		toast.success(response.message);
+    form.resetForm({ values: formData })
 	};
 
 	const { getErrorMessage, getFieldProps, onSubmit, dirty } = useCustomForm(
