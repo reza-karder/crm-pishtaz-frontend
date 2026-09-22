@@ -1,0 +1,7 @@
+.calls_list, .empty_state {
+  margin-block-start: 20px;
+}
+
+.calls_section + .calls_section {
+  margin-block-start: 10px;
+}

@@ -1,5 +1,6 @@
 .stats {
 	display: flex;
+  margin-block-end: 20px;
 	gap: 8px;
 }
 

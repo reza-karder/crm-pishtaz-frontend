@@ -1,0 +1,44 @@
+.call {
+  padding: 12px;
+  border: 1px solid var(--clr-border);
+  border-radius: 10px;
+}
+
+.call + .call {
+  margin-block-start: 8px;
+}
+
+.call__header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.header__info {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+.info__name {
+  font-weight: 500;
+  font-size: var(--fs-sm);
+  transition: all 100ms ease-in;
+}
+
+.info__date {
+  color: var(--clr-text-soft);
+  font-size: var(--fs-xs);
+}
+
+/* ================================
+HOVER MEDIA 
+================================*/
+@media (hover: hover) {
+  .info__name:hover {
+    color: var(--clr-primary);
+  }
+}
