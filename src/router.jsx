@@ -73,6 +73,13 @@ const userRoutes = [
   }
 ];
 
+const adminRoutes = [
+  {
+    path: "/admin/profile",
+    element: <ProfilePage />
+  }
+]
+
 const router = createBrowserRouter([
 	{
 		errorElement: <ErrorState />,
