@@ -1,0 +1,9 @@
+.wrapper {
+  display: flex;
+  align-items: start;
+  gap: 16px;
+}
+
+.section {
+  flex-grow: 1;
+}
