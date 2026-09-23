@@ -3,6 +3,7 @@ import PlusIcon from "../../../../assets/icons/plus.svg?react"
 import Button from "../../../ui/button/Button"
 import ProductsList from "./ProductsList"
 import useCustomParams from "../../../../hooks/useCustomParams"
+import SearchInput from "./SearchInput"
 
 const DEFAULT_PARAMS = {
   search: "",
@@ -18,6 +19,9 @@ function ProductsPages() {
       <Button IconStart={PlusIcon}>محصول جدید</Button>
      </PageHeader>
     
+    <div className="paper">
+      <SearchInput productsParams={productsParams} />
+    </div>
     <ProductsList productsParams={productsParams} />
    </>
   )
