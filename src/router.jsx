@@ -19,6 +19,7 @@ import NotificationPageLoading from "./components/pages/user/notification/Loadin
 import ProfilePage from "./components/pages/public/profile/ProfilePage";
 import ProfilePageLoading from "./components/pages/public/profile/Loading";
 import ProductsPages from "./components/pages/admin/products/ProductsPages";
+import JobsPage from "./components/pages/admin/jobs/JobsPage";
 
 async function sessionLoader() {
 	const result = await AUTH_SERVICES.checkSession();
@@ -91,6 +92,10 @@ const adminRoutes = [
   {
     path: "/admin/products",
     element: <ProductsPages />
+  },
+  {
+    path: "/admin/jobs",
+    element: <JobsPage />
   }
 ];
 
