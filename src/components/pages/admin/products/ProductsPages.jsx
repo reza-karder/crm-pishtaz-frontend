@@ -6,6 +6,9 @@ import useCustomParams from "../../../../hooks/useCustomParams";
 import SearchInput from "./SearchInput";
 import useToggle from "../../../../hooks/useToggle";
 import ProductModal from "./product-item/ProductModal";
+import QueryBoundary from "../../../common/QueryBoundary";
+import Loading from "./Loading";
+import ErrorState from "../../../common/error-state/ErrorState";
 
 const DEFAULT_PARAMS = {
 	search: "",
@@ -27,7 +30,9 @@ function ProductsPages() {
 			<div className="paper">
 				<SearchInput productsParams={productsParams} />
 			</div>
-			<ProductsList productsParams={productsParams} />
+			<QueryBoundary loadingFallback={<Loading />} errorFallback={<ErrorState />}>
+				<ProductsList productsParams={productsParams} />
+			</QueryBoundary>
 
 			{isProductModalOpen && (
 				<ProductModal

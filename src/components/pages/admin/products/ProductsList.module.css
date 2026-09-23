@@ -4,8 +4,6 @@
 
 .products_list {
 	margin-block-end: 20px;
-	border: 1px solid var(--clr-border);
-	border-radius: 10px;
 }
 
 .pagination {
