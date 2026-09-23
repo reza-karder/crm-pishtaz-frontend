@@ -1,11 +1,11 @@
-import { useQuery } from "@tanstack/react-query";
+import { useQuery, useSuspenseQuery } from "@tanstack/react-query";
 import PRODUCTS_SERVICES from "./services";
 import PRODUCTS_KEYS from "./keys";
 
 const useGetProducts = () => {
 	return useQuery({
-		queryFn: PRODUCTS_SERVICES.getProducts,
-		queryKey: PRODUCTS_KEYS.GET_PRODUCTS,
+		queryFn: PRODUCTS_SERVICES.getAllProducts,
+		queryKey: PRODUCTS_KEYS.GET_ALL_PRODUCTS,
 		refetchOnMount: false,
 		meta: { silent: true },
 	});
@@ -25,4 +25,11 @@ const useGetProductOptions = () => {
 	});
 };
 
-export { useGetProducts, useGetProductOptions };
+const useAdminGetProducts = (params) => {
+	return useSuspenseQuery({
+		queryFn: () => PRODUCTS_SERVICES.getAdminProducts(params),
+		queryKey: PRODUCTS_KEYS.GET_ADMIN_PRODUCTS(params),
+	});
+};
+
+export { useGetProducts, useGetProductOptions, useAdminGetProducts };

@@ -1,0 +1,19 @@
+.products_list {
+	margin-block-end: 20px;
+	border: 1px solid var(--clr-border);
+	border-radius: 10px;
+}
+
+.pagination {
+	display: flex;
+  flex-wrap: wrap;
+	align-items: center;
+	justify-content: space-between;
+  gap: 8px;
+}
+
+.pagination__count {
+	color: var(--clr-text-soft);
+	font-weight: 400;
+	font-size: var(--fs-xs);
+}
