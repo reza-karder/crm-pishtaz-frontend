@@ -1,4 +1,4 @@
-import { useQuery } from "@tanstack/react-query";
+import { useQuery, useSuspenseQuery } from "@tanstack/react-query";
 import JOB_KEYS from "./keys";
 import JOB_SERVICES from "./services";
 
@@ -25,4 +25,11 @@ const useGetJobOptions = () => {
 	});
 };
 
-export { useGetJobs, useGetJobOptions };
+const useAdminGetJobs = (params) => {
+	return useSuspenseQuery({
+		queryKey: JOB_KEYS.GET_ADMIN_JOBS(params),
+		queryFn: () => JOB_SERVICES.getAdminJobs(params),
+	});
+};
+
+export { useGetJobs, useGetJobOptions, useAdminGetJobs };
