@@ -12,7 +12,7 @@ function ProductsTab() {
 
 	const purchasedProducts = products.filter((product) => product.type === "purchased");
 	const potentialProducts = products.filter((product) => product.type === "potential");
-	const hasProducts = potentialProducts.length && purchasedProducts.length;
+	const hasProducts = potentialProducts.length || purchasedProducts.length;
 
 	if (!hasProducts) {
 		return (

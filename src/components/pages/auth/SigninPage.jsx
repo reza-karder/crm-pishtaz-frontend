@@ -10,7 +10,7 @@ function SigninPage() {
 
 	if (result?.success) {
 		const path = result.user.role === "admin" ? "/admin" : "/";
-		<Navigate to={path} replace />;
+		return <Navigate to={path} replace />;
 	}
 
 	return (
