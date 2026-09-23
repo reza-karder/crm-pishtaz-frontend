@@ -1,30 +1,43 @@
-import PageHeader from "../../../module/page-header/PageHeader"
-import PlusIcon from "../../../../assets/icons/plus.svg?react"
-import Button from "../../../ui/button/Button"
-import ProductsList from "./ProductsList"
-import useCustomParams from "../../../../hooks/useCustomParams"
-import SearchInput from "./SearchInput"
+import PageHeader from "../../../module/page-header/PageHeader";
+import PlusIcon from "../../../../assets/icons/plus.svg?react";
+import Button from "../../../ui/button/Button";
+import ProductsList from "./ProductsList";
+import useCustomParams from "../../../../hooks/useCustomParams";
+import SearchInput from "./SearchInput";
+import useToggle from "../../../../hooks/useToggle";
+import ProductModal from "./product-item/ProductModal";
 
 const DEFAULT_PARAMS = {
-  search: "",
-  page: 1
-}
+	search: "",
+	page: 1,
+};
 
 function ProductsPages() {
-  const productsParams = useCustomParams(DEFAULT_PARAMS)
+	const productsParams = useCustomParams(DEFAULT_PARAMS);
+	const [isProductModalOpen, toggleIsProductModalOpen] = useToggle(false);
 
-  return (
-   <>
-     <PageHeader title="محصولات" subTitle="این فهرست در فرم افزودن مشتری استفاده می‌شود">
-      <Button IconStart={PlusIcon}>محصول جدید</Button>
-     </PageHeader>
-    
-    <div className="paper">
-      <SearchInput productsParams={productsParams} />
-    </div>
-    <ProductsList productsParams={productsParams} />
-   </>
-  )
+	return (
+		<>
+			<PageHeader title="محصولات" subTitle="این فهرست در فرم افزودن مشتری استفاده می‌شود">
+				<Button IconStart={PlusIcon} onClick={toggleIsProductModalOpen}>
+					محصول جدید
+				</Button>
+			</PageHeader>
+
+			<div className="paper">
+				<SearchInput productsParams={productsParams} />
+			</div>
+			<ProductsList productsParams={productsParams} />
+
+			{isProductModalOpen && (
+				<ProductModal
+					isOpen={isProductModalOpen}
+					onClose={toggleIsProductModalOpen}
+					params={productsParams.params}
+				/>
+			)}
+		</>
+	);
 }
 
-export default ProductsPages
+export default ProductsPages;

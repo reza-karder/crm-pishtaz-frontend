@@ -64,6 +64,10 @@ const profilePasswordFormSchema = yup.object({
 		.oneOf([yup.ref("newPassword")], "تکرار با رمز عبور جدید یکسان نمی باشد"),
 });
 
+const productFormSchema = yup.object({
+  title: yup.string().required("عنوان اجباری است")
+})
+
 export {
 	signinSchema,
 	customerSchema,
@@ -72,4 +76,5 @@ export {
 	transferCustomerValidator,
 	profileInfoFormSchema,
 	profilePasswordFormSchema,
+  productFormSchema
 };
