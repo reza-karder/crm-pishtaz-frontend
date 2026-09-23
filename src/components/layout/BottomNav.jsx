@@ -9,6 +9,7 @@ function BottomNav({ links }) {
 				<NavLink
 					key={link.path}
 					to={link.path}
+          end
 					className={({ isActive }) => clsx(styles.nav__link, isActive && styles.active)}
 				>
 					<link.Icon className={styles.link__icon} />

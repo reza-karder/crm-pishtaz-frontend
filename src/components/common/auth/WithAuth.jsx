@@ -12,7 +12,7 @@ function WithAuth({ role }) {
 	}
 
 	if (result.user.role !== role) {
-		const path = role === "admin" ? "/admin" : "/";
+    const path = role === "admin" ? "/" : "/admin";
 		return <Navigate to={path}  replace />;
 	}
 

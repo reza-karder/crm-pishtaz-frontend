@@ -2,7 +2,7 @@ import { createBrowserRouter } from "react-router";
 import SigninPage from "./components/pages/auth/SigninPage";
 import WithAuth from "./components/common/auth/WithAuth";
 import Layout from "./components/layout/Layout";
-import { USER_LAYOUT_LINKS } from "./constants/layoutLinks";
+import { ADMIN_LAYOUT_LINKS, USER_LAYOUT_LINKS } from "./constants/layoutLinks";
 import QueryBoundary from "./components/common/QueryBoundary";
 import DashboardPage from "./components/pages/user/dashboard/DashboardPage";
 import UserDashPageLoading from "./components/pages/user/dashboard/PageLoading";
@@ -18,6 +18,7 @@ import NotificationPage from "./components/pages/user/notification/NotificationP
 import NotificationPageLoading from "./components/pages/user/notification/Loading";
 import ProfilePage from "./components/pages/public/profile/ProfilePage";
 import ProfilePageLoading from "./components/pages/public/profile/Loading";
+import ProductsPages from "./components/pages/admin/products/ProductsPages";
 
 async function sessionLoader() {
 	const result = await AUTH_SERVICES.checkSession();
@@ -87,6 +88,10 @@ const adminRoutes = [
 			</QueryBoundary>
 		),
 	},
+  {
+    path: "/admin/products",
+    element: <ProductsPages />
+  }
 ];
 
 const router = createBrowserRouter([
@@ -108,6 +113,16 @@ const router = createBrowserRouter([
 					},
 				],
 			},
+      {
+        element: <WithAuth role="admin" />,
+        loader: sessionLoader,
+        children: [
+          {
+            element: <Layout links={ADMIN_LAYOUT_LINKS} />,
+            children: adminRoutes
+          }
+        ]
+      }
 		],
 	},
 ]);

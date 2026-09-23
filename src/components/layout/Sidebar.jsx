@@ -47,6 +47,7 @@ function Sidebar({ links, onClose }) {
 						key={link.path}
 						to={link.path}
 						onClick={onClose}
+            end
 						className={({ isActive }) => clsx(styles.nav__link, isActive && styles.active)}
 					>
 						<link.Icon className={styles.link__icon} />
