@@ -10,7 +10,7 @@ function hasVisitedToday() {
 
 function saveVisit() {
 	const today = new Date();
-	localStorage.setItem("last-notification-visit", JSON.stringify(today));
+	localStorage.setItem("last-notification-visit", JSON.stringify(today.toDateString()));
 }
 
 function createMessage(unresolvedCallsCount, callsOfdayCount) {

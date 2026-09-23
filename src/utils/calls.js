@@ -1,19 +1,20 @@
-function getScheduledCalls(calls) {
+function getToday() {
 	const today = new Date();
-	return calls.filter(
-		(call) => new Date(call.date).getDate() >= today.getDate() && call.status === "scheduled"
-	);
+	today.setHours(0, 0, 0, 0);
+	return today;
+}
+
+function getScheduledCalls(calls) {
+	const today = getToday();
+	return calls.filter((call) => new Date(call.date) >= today && call.status === "scheduled");
 }
 
 function getUnresolvedCalls(calls) {
-	const today = new Date();
-	return calls.filter(
-		(call) => new Date(call.date).getDate() < today.getDate() && call.status === "scheduled"
-	);
+	const today = getToday();
+	return calls.filter((call) => new Date(call.date) < today && call.status === "scheduled");
 }
 
 function getResolvedCalls(calls) {
-  console.log({calls});
 	return calls.filter((call) => call.status !== "scheduled");
 }
 

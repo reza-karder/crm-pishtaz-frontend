@@ -3,6 +3,7 @@
 	top: 20px;
   width: 357px;
   min-width: 357px;
+  max-height: fit-content;
 }
 
 /* ================================

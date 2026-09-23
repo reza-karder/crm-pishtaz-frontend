@@ -1,6 +1,6 @@
 .wrapper {
   display: flex;
-  align-items: start;
+  align-items: stretch;
   gap: 16px;
 }
 
