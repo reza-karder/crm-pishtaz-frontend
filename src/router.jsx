@@ -22,6 +22,7 @@ import ProductsPages from "./components/pages/admin/products/ProductsPages";
 import JobsPage from "./components/pages/admin/jobs/JobsPage";
 import AdminDashboardPage from "./components/pages/admin/dashboard/DashboardPage";
 import AdminDashboardLoading from "./components/pages/admin/dashboard/Loading";
+import EmployeesPage from "./components/pages/admin/employees/EmployeesPage";
 
 async function sessionLoader() {
 	const result = await AUTH_SERVICES.checkSession();
@@ -107,6 +108,10 @@ const adminRoutes = [
 			</QueryBoundary>
 		),
 	},
+  {
+    path: "/admin/employees",
+    element: <EmployeesPage />
+  }
 ];
 
 const router = createBrowserRouter([
