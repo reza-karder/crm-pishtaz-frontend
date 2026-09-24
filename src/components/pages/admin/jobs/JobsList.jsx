@@ -4,10 +4,11 @@ import { useAdminGetJobs } from "../../../../api/jobs/queries";
 import JobItem from "./job-item/JobItem";
 import EmptyState from "../../../common/empty-state/EmptyState";
 import CounterPagination from "../../../module/counter-pagination/CounterPagination";
+import { stringifyParams } from "../../../../utils/utils";
 
 function JobsList({ jobsParams }) {
 	const { params, updateParams } = jobsParams;
-	const { data } = useAdminGetJobs(new URLSearchParams(params).toString());
+	const { data } = useAdminGetJobs(stringifyParams(params));
 	const { jobs, totalJobs, totalPages, limit } = data || {};
 
 	if (!jobs.length) {

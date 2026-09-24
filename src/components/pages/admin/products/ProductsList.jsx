@@ -4,11 +4,12 @@ import ProductItem from "./product-item/ProductItem";
 import clsx from "clsx";
 import EmptyState from "../../../common/empty-state/EmptyState";
 import CounterPagination from "../../../module/counter-pagination/CounterPagination";
+import { stringifyParams } from "../../../../utils/utils";
 
 function ProductsList({ productsParams }) {
 	const { params, updateParams } = productsParams;
   
-	const { data } = useAdminGetProducts(new URLSearchParams(params).toString());
+	const { data } = useAdminGetProducts(stringifyParams(params));
 	const { products, totalPages, limit, totalProducts } = data || {};
   
 

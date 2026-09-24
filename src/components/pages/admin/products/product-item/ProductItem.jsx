@@ -9,6 +9,7 @@ import { useDeleteProduct } from "../../../../../api/products/mutations";
 import { toast } from "sonner";
 import queryClient from "../../../../../lib/queryClient";
 import PRODUCTS_KEYS from "../../../../../api/products/keys";
+import { stringifyParams } from "../../../../../utils/utils";
 
 function ProductItem({ product, params }) {
 	const { title, _id } = product;
@@ -24,7 +25,7 @@ function ProductItem({ product, params }) {
 		if (response.success) {
 			toast.success(response.message);
 			queryClient.invalidateQueries({
-				queryKey: PRODUCTS_KEYS.GET_ADMIN_PRODUCTS(new URLSearchParams(params).toString()),
+				queryKey: PRODUCTS_KEYS.GET_ADMIN_PRODUCTS(stringifyParams(params)),
 			});
       toggleIsDeleteModalOpen()
 		}

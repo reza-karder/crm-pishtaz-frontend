@@ -9,6 +9,7 @@ import { useDeleteJob } from "../../../../../api/jobs/mutations";
 import { toast } from "sonner";
 import { useQueryClient } from "@tanstack/react-query";
 import JOB_KEYS from "../../../../../api/jobs/keys";
+import { stringifyParams } from "../../../../../utils/utils";
 
 function JobItem({ job, params }) {
 	const { title, _id } = job;
@@ -25,7 +26,7 @@ function JobItem({ job, params }) {
 		if (response.success) {
 			toast.success(response.message);
 			queryClient.invalidateQueries({
-				queryKey: JOB_KEYS.GET_ADMIN_JOBS(new URLSearchParams(params).toString()),
+				queryKey: JOB_KEYS.GET_ADMIN_JOBS(stringifyParams(params)),
 			});
       toggleIsDeleteModalOpen()
 		}

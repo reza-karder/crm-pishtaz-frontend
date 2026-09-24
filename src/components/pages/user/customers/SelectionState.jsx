@@ -11,6 +11,7 @@ import { useDeleteManyCustomers } from "../../../../api/customers/mutations";
 import { toast } from "sonner";
 import { useQueryClient } from "@tanstack/react-query";
 import CUSTOMER_KEYS from "../../../../api/customers/keys";
+import { stringifyParams } from "../../../../utils/utils";
 
 function SelectionState({ selection, customersParams }) {
 	const { cancelSelection, selectionState } = selection;
@@ -35,7 +36,7 @@ function SelectionState({ selection, customersParams }) {
 		if (response.success) {
 			toast.success(response.message);
 			queryClient.invalidateQueries({
-				queryKey: CUSTOMER_KEYS.GET_USER_CUSTOMERS(new URLSearchParams(params).toString()),
+				queryKey: CUSTOMER_KEYS.GET_USER_CUSTOMERS(stringifyParams(params)),
 			});
 			toggleIsDeleteModalOpen();
 			cancelSelection();

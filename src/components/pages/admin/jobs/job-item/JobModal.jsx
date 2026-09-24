@@ -8,6 +8,7 @@ import { useCreateJob, useEditJob } from "../../../../../api/jobs/mutations";
 import JOB_KEYS from "../../../../../api/jobs/keys";
 import { toast } from "sonner";
 import Button from "../../../../ui/button/Button";
+import { stringifyParams } from "../../../../../utils/utils";
 
 function JobModal({ isOpen, onClose, job, params }) {
 	const isEditing = Boolean(job);
@@ -18,7 +19,7 @@ function JobModal({ isOpen, onClose, job, params }) {
 
 	const syncData = () => {
 		queryClient.invalidateQueries({
-			queryKey: JOB_KEYS.GET_ADMIN_JOBS(new URLSearchParams(params).toString()),
+			queryKey: JOB_KEYS.GET_ADMIN_JOBS(stringifyParams(params)),
 		});
 	};
 

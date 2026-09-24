@@ -4,6 +4,7 @@ import EmptyState from "../../../../common/empty-state/EmptyState";
 import CustomerRow from "./CustomerRow";
 import styles from "./CustomersList.module.css";
 import CounterPagination from "../../../../module/counter-pagination/CounterPagination";
+import { stringifyParams } from "../../../../../utils/utils";
 
 const TABLE_HEADES = ["مشتری", "شماره تماس", "شغل", "وضعیت", "تاریخ افزودن", "جزئیات"];
 
@@ -11,7 +12,7 @@ function CustomersList({ customersParams, selection }) {
 	const { params, updateParams } = customersParams;
 	const { isSelected, toggleSelect, toggleSelectAll, selectionState } = selection;
 
-	const { data } = useGetUserCustomers(new URLSearchParams(params).toString());
+	const { data } = useGetUserCustomers(stringifyParams(params));
 	const { customers, totalPages, totalCustomers, limit } = data || {};
 
 	if (!data.totalCustomers) {

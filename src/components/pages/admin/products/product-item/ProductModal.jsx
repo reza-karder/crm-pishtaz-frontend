@@ -8,6 +8,7 @@ import Input from "../../../../ui/input/Input";
 import Modal, { ModalBody, ModalFooter, ModalHeader } from "../../../../ui/modal/Modal";
 import { useQueryClient } from "@tanstack/react-query";
 import PRODUCTS_KEYS from "../../../../../api/products/keys";
+import { stringifyParams } from "../../../../../utils/utils";
 
 function ProductModal({ isOpen, onClose, product, params }) {
 	const isEditing = Boolean(product);
@@ -18,7 +19,7 @@ function ProductModal({ isOpen, onClose, product, params }) {
 
 	const syncData = () => {
 		queryClient.invalidateQueries({
-			queryKey: PRODUCTS_KEYS.GET_ADMIN_PRODUCTS(new URLSearchParams(params).toString()),
+			queryKey: PRODUCTS_KEYS.GET_ADMIN_PRODUCTS(stringifyParams(params)),
 		});
 	};
 
