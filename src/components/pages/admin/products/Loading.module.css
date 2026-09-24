@@ -1,9 +1,0 @@
-.section {
-  margin-block-start: 20px;
-}
-
-.products_list {
-  display: flex;
-  row-gap: 4px;
-  flex-direction: column;
-}
