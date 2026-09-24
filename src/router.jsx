@@ -21,6 +21,7 @@ import ProfilePageLoading from "./components/pages/public/profile/Loading";
 import ProductsPages from "./components/pages/admin/products/ProductsPages";
 import JobsPage from "./components/pages/admin/jobs/JobsPage";
 import AdminDashboardPage from "./components/pages/admin/dashboard/DashboardPage";
+import AdminDashboardLoading from "./components/pages/admin/dashboard/Loading";
 
 async function sessionLoader() {
 	const result = await AUTH_SERVICES.checkSession();
@@ -90,18 +91,22 @@ const adminRoutes = [
 			</QueryBoundary>
 		),
 	},
-  {
-    path: "/admin/products",
-    element: <ProductsPages />
-  },
-  {
-    path: "/admin/jobs",
-    element: <JobsPage />
-  },
-  {
-    path: "/admin",
-    element: <AdminDashboardPage />
-  }
+	{
+		path: "/admin/products",
+		element: <ProductsPages />,
+	},
+	{
+		path: "/admin/jobs",
+		element: <JobsPage />,
+	},
+	{
+		path: "/admin",
+		element: (
+			<QueryBoundary loadingFallback={<AdminDashboardLoading />} errorFallback={<ErrorState />}>
+				<AdminDashboardPage />
+			</QueryBoundary>
+		),
+	},
 ];
 
 const router = createBrowserRouter([
@@ -123,16 +128,16 @@ const router = createBrowserRouter([
 					},
 				],
 			},
-      {
-        element: <WithAuth role="admin" />,
-        loader: sessionLoader,
-        children: [
-          {
-            element: <Layout links={ADMIN_LAYOUT_LINKS} />,
-            children: adminRoutes
-          }
-        ]
-      }
+			{
+				element: <WithAuth role="admin" />,
+				loader: sessionLoader,
+				children: [
+					{
+						element: <Layout links={ADMIN_LAYOUT_LINKS} />,
+						children: adminRoutes,
+					},
+				],
+			},
 		],
 	},
 ]);
