@@ -9,9 +9,9 @@ import SelectionState from "./SelectionState";
 import CustomersList from "./customers-list/CustomersList";
 import useSelection from "./hooks/useSelection";
 import QueryBoundary from "../../../common/QueryBoundary";
-import Loading from "./customers-list/Loading";
 import ErrorState from "../../../common/error-state/ErrorState";
 import useCustomParams from "../../../../hooks/useCustomParams";
+import TableLoading from "../../../module/table-loading/TableLoading";
 
 const DEFAULT_PARAMS = {
 	search: "",
@@ -45,7 +45,7 @@ function CustomersPage() {
 			{selection.isSelecting && (
 				<SelectionState selection={selection} customersParams={customersParams} />
 			)}
-			<QueryBoundary loadingFallback={<Loading />} errorFallback={<ErrorState />}>
+			<QueryBoundary loadingFallback={<TableLoading />} errorFallback={<ErrorState />}>
 				<CustomersList customersParams={customersParams} selection={selection} />
 			</QueryBoundary>
 
