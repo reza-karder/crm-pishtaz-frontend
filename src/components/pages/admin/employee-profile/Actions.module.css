@@ -3,3 +3,12 @@
   align-items: center;
   gap: 8px;
 }
+
+/* ==================================
+WIDTH MEDIA
+================================== */
+@media (max-width: 680px) {
+  .wrapper button {
+    width: 100% !important;
+  }
+}
