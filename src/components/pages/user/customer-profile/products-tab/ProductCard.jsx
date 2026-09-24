@@ -5,7 +5,7 @@ import Rating from "../../../../ui/rating/Rating";
 
 function ProductCard({ product }) {
 	const { type, price, quantity, intentionScore } = product;
-	const { title } = product.product;
+	const { title } = product.product || {};
   
 	const isPurchased = Boolean(type === "purchased");
 
