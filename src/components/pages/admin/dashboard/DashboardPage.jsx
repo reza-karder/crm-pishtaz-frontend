@@ -6,6 +6,8 @@ import PhoneIcon from "../../../../assets/icons/phone.svg?react"
 import PersonIcon from "../../../../assets/icons/person.svg?react"
 import PeopleIcon from "../../../../assets/icons/people.svg?react"
 import Chart from "./Chart"
+import EmployeesStats from "./EmployeesStats"
+import clsx from "clsx"
 
 function DashboardPage() {
   const { data } = useGetAdminStats()
@@ -24,6 +26,11 @@ function DashboardPage() {
      <section className="paper">
       <p className="paper__title">تماس های موفق ماهانه</p>
       <Chart calls={calls} />
+     </section>
+
+     <section className={clsx("paper", styles.employees_sec)}>
+      <p className="paper__title">عملکرد کارمندان</p>
+      <EmployeesStats />
      </section>
    </>
   )

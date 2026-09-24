@@ -1,0 +1,30 @@
+.employees_list {
+  margin-block-start: 8px;
+}
+
+.employee {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-block: 16px;
+}
+
+.employee + .employee {
+  border-top: 1px solid var(--clr-border);
+}
+
+.employee__name {
+  font-weight: 500;
+  font-size: var(--fs-sm);
+}
+
+.employee__stats {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.stat {
+  color: var(--clr-text-soft);
+  font-size: var(--fs-xs);
+}
