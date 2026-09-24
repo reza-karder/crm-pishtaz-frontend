@@ -6,6 +6,7 @@ import { CALL_STATUS_COLORS, CALL_STATUS_LABELS } from "../../../../constants/ca
 import Badge from "../../../ui/badge/Badge";
 import CallModal from "./CallModal";
 import PhoneIcon from "../../../../assets/icons/phone.svg?react";
+import { toPersianDateString } from "../../../../utils/utils";
 
 function CallsTab({ customerForm }) {
 	const { editCall, addCall, deleteCall, values } = customerForm;
@@ -40,7 +41,7 @@ function CallsTab({ customerForm }) {
 						key={call.id}
 						onDelete={() => deleteCall(call.key)}
 						onEdit={() => openEditModal(call)}
-						title={new Date(call.date).toLocaleDateString("fa-IR")}
+						title={toPersianDateString(call.date)}
 					>
 						<Badge color={CALL_STATUS_COLORS[call.status]}>{CALL_STATUS_LABELS[call.status]}</Badge>
 					</SubItem>

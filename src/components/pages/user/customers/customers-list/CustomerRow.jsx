@@ -6,10 +6,10 @@ import {
 	CUSTOMER_STATUSES_COLOR,
 	CUSTOMER_STATUSES_LABEL,
 } from "../../../../../constants/customerStatus";
+import { toPersianDateString } from "../../../../../utils/utils";
 
 function CustomerRow({ customer, isSelected, onToggleSelect }) {
 	const { name, job, phonePrimary, createdAt, _id, status } = customer;
-	const addDate = new Date(createdAt).toLocaleDateString("fa-IR");
 
 	return (
 		<tr className={styles.row}>
@@ -27,7 +27,7 @@ function CustomerRow({ customer, isSelected, onToggleSelect }) {
 			<td>
 				<Badge color={CUSTOMER_STATUSES_COLOR[status]}>{CUSTOMER_STATUSES_LABEL[status]}</Badge>
 			</td>
-			<td className={styles.date}>{addDate}</td>
+			<td className={styles.date}>{toPersianDateString(createdAt)}</td>
 			<td>
 				<LinkButton to={`/customers/${_id}`} IconEnd={ArrowIcon} variant="text" color="normal">
 					پرونده

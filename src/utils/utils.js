@@ -3,4 +3,8 @@ function stringifyParams(paramsObj) {
   return new URLSearchParams(paramsObj).toString()
 }
 
-export { stringifyParams }
+function toPersianDateString(date) {
+  return new Date(date).toLocaleDateString("fa-IR")
+}
+
+export { stringifyParams, toPersianDateString }

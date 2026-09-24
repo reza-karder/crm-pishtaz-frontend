@@ -6,6 +6,7 @@ import LinkButton from "../../../ui/button/LinkButton";
 import { toUTCDateString } from "../../../../utils/calendar";
 import ArrowIcon from "../../../../assets/icons/arrow-left.svg?react";
 import Note from "../../../module/note/Note";
+import { toPersianDateString } from "../../../../utils/utils";
 
 function CallCard({ call }) {
 	const { status, customer, date, notes } = call;
@@ -17,7 +18,7 @@ function CallCard({ call }) {
 						{customer.name}
 					</Link>
 					<Badge color={CALL_STATUS_COLORS[status]}>{CALL_STATUS_LABELS[status]}</Badge>
-					<p className={styles.info__date}>{new Date(date).toLocaleDateString("fa-IR")}</p>
+					<p className={styles.info__date}>{toPersianDateString(date)}</p>
 				</div>
 
 				<LinkButton
