@@ -20,6 +20,7 @@ import ProfilePage from "./components/pages/public/profile/ProfilePage";
 import ProfilePageLoading from "./components/pages/public/profile/Loading";
 import ProductsPages from "./components/pages/admin/products/ProductsPages";
 import JobsPage from "./components/pages/admin/jobs/JobsPage";
+import AdminDashboardPage from "./components/pages/admin/dashboard/DashboardPage";
 
 async function sessionLoader() {
 	const result = await AUTH_SERVICES.checkSession();
@@ -96,6 +97,10 @@ const adminRoutes = [
   {
     path: "/admin/jobs",
     element: <JobsPage />
+  },
+  {
+    path: "/admin",
+    element: <AdminDashboardPage />
   }
 ];
 
