@@ -4,7 +4,8 @@ const PRODUCTS_SERVICES = {
 	getAllProducts: () => axiosClient.get("/products/all"),
 	getAdminProducts: (params) => axiosClient.get(`/products/?${params}`),
   editProduct: (product) => axiosClient.patch(`/products/${product._id}`, product),
-  createProduct: (product) => axiosClient.post("/products", product)
+  createProduct: (product) => axiosClient.post("/products", product),
+  deleteProduct: (productId) => axiosClient.delete(`/products/${productId}`)
 };
 
 export default PRODUCTS_SERVICES;

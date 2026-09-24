@@ -20,7 +20,7 @@ function JobItem({ job, params }) {
 	const { mutateAsync: mutateDeleteJob, isPending } = useDeleteJob();
 
 	const deleteJob = async () => {
-		const response = await mutateDeleteJob(job._id);
+		const response = await mutateDeleteJob(_id);
 
 		if (response.success) {
 			toast.success(response.message);
