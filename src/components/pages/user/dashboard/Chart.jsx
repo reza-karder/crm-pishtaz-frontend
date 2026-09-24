@@ -1,5 +1,6 @@
 import { BarChart, Bar, XAxis, CartesianGrid, Tooltip } from "recharts";
 import styles from "./Chart.module.css";
+import TooltipContent from "../../../module/call-chart-tooltip/TooltipContent";
 
 // returns Array of {label: String, y: Number}
 function generateData(callsOfLast7Days) {
@@ -26,18 +27,6 @@ function Chart({ callsOfLast7Days }) {
 			<XAxis dataKey="label" axisLine={false} fontSize="var(--fs-xs)" />
 			<Bar dataKey="y" radius={[10, 10, 0, 0]} fill="var(--clr-primary)" />
 		</BarChart>
-	);
-}
-
-function TooltipContent({ active, payload }) {
-  if(!active || !payload.length) return null
-	const firstPayload = payload[0]?.payload;
-
-	return (
-		<div className={styles.tooltip}>
-			<p className={styles.tooltip__day}>{firstPayload?.label}</p>
-			<p className={styles.tooltip__count}>تماس ها : {firstPayload?.y}</p>
-		</div>
 	);
 }
 
