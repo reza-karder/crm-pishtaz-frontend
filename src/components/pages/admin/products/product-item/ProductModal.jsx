@@ -61,7 +61,7 @@ function ProductModal({ isOpen, onClose, product, params }) {
 			<ModalHeader title={isEditing ? "ویرایش محصول" : "افزودن محصول"} onClose={onClose} />
 			<ModalBody>
 				<form>
-					<FormField label="عنوان محصول" required id="product" error={getErrorMessage("title")}>
+					<FormField label="عنوان محصول" required id="title" error={getErrorMessage("title")}>
 						<Input
 							type="text"
 							placeholder="نام را وارد کنید"

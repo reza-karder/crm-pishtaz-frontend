@@ -68,6 +68,10 @@ const productFormSchema = yup.object({
   title: yup.string().required("عنوان اجباری است")
 })
 
+const jobFormSchema = yup.object({
+  title: yup.string().required("عنوان اجباری است")
+})
+
 export {
 	signinSchema,
 	customerSchema,
@@ -76,5 +80,6 @@ export {
 	transferCustomerValidator,
 	profileInfoFormSchema,
 	profilePasswordFormSchema,
-  productFormSchema
+  productFormSchema,
+  jobFormSchema
 };
