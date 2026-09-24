@@ -1,0 +1,14 @@
+.stats_sec {
+  display: flex;
+  align-items: stretch;
+  gap: 12px;
+}
+
+/* =====================================
+WIDTH MEDIA
+===================================== */
+@media (max-width: 680px) {
+  .stats_sec {
+    flex-direction: column;
+  }
+}
