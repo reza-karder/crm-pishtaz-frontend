@@ -23,7 +23,7 @@ function CustomerRow({ customer, isSelected, onToggleSelect }) {
 				</div>
 			</td>
 			<td className={styles.phone}>{phonePrimary}</td>
-			<td className={styles.job}>{job.title}</td>
+			<td className={styles.job}>{job?.title}</td>
 			<td>
 				<Badge color={CUSTOMER_STATUSES_COLOR[status]}>{CUSTOMER_STATUSES_LABEL[status]}</Badge>
 			</td>

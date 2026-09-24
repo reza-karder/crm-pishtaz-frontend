@@ -75,7 +75,7 @@ function JobModal({ isOpen, onClose, job, params }) {
 				<Button onClick={onSubmit} disabled={!dirty} loading={isPendingEdit || isPendingCreate}>
 					ذخیره
 				</Button>
-				<Button variant="outlined">انصراف</Button>
+				<Button variant="outlined" onClick={onClose}>انصراف</Button>
 			</ModalFooter>
 		</Modal>
 	);

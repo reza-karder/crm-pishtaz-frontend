@@ -19,7 +19,7 @@ const useGetJobOptions = () => {
 		meta: { silent: true },
 		select: (data) =>
 			data?.jobs.map((job) => ({
-				label: job.title,
+				label: job?.title,
 				value: job._id,
 			})),
 	});

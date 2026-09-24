@@ -51,22 +51,8 @@ TABLE
   text-align: center;
 }
 
-/* ===============================
-TABLE
-=============================== */
-
-.pagination {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  min-width: 700px;
+.pagination_wrapper {
   padding: 16px;
-}
-
-.pagination__count {
-  color: var(--clr-text-soft);
-  font-weight: 400;
-  font-size: var(--fs-xs);
 }
 
 /* ===============================

@@ -16,7 +16,7 @@ const INFO_ITEMS = [
 	{ title: "تماس اصلی", Icon: PhoneIcon, key: "phonePrimary" },
 	{ title: "تماس دوم", Icon: PhoneIcon, key: "phoneSecondary" },
 	{ title: "ایمیل", Icon: EmailIcon, key: "email" },
-	{ title: "شغل", Icon: SuitcaseIcon, key: "job.title" },
+	{ title: "شغل", Icon: SuitcaseIcon, key: "job?.title" },
 	{ title: "آدرس", Icon: LocationIcon, key: "address" },
 ];
 

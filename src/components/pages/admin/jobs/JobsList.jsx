@@ -2,16 +2,13 @@ import clsx from "clsx";
 import styles from "./JobsList.module.css";
 import { useAdminGetJobs } from "../../../../api/jobs/queries";
 import JobItem from "./job-item/JobItem";
-import Pagination from "../../../ui/pagination/Pagination";
 import EmptyState from "../../../common/empty-state/EmptyState";
+import CounterPagination from "../../../module/counter-pagination/CounterPagination";
 
 function JobsList({ jobsParams }) {
 	const { params, updateParams } = jobsParams;
 	const { data } = useAdminGetJobs(new URLSearchParams(params).toString());
 	const { jobs, totalJobs, totalPages, limit } = data || {};
-
-	const jobsDisplayStartRange = (params.page - 1) * limit + Math.min(1, totalJobs);
-	const jobsDisplayEndRange = Math.min(jobsDisplayStartRange + limit - 1, totalJobs);
 
 	if (!jobs.length) {
 		return (
@@ -28,16 +25,14 @@ function JobsList({ jobsParams }) {
 					<JobItem key={job._id} job={job} params={params} />
 				))}
 			</ul>
-			<div className={styles.pagination}>
-				<p className={styles.pagination__count}>
-					نمایش {jobsDisplayStartRange} تا {jobsDisplayEndRange} از {totalJobs} شغل
-				</p>
-				<Pagination
-					currentPage={Number(params.page)}
-					totalPages={totalPages}
-					onChange={(value) => updateParams({ page: value })}
-				/>
-			</div>
+			<CounterPagination
+				label="شغل"
+        limit={limit}
+				totalCount={totalJobs}
+				totalPages={totalPages}
+				currentPage={params.page}
+				onChange={(page) => updateParams({ page })}
+			/>
 		</section>
 	);
 }

@@ -56,9 +56,9 @@ const formFields = [
 function InformationTab({ customerForm }) {
 	const { getFieldProps, getErrorMessage } = customerForm;
 	const { data } = useGetJobs();
-  
+
 	const jobOptions = data?.jobs.map((job) => ({
-		label: job.title,
+		label: job?.title,
 		value: job._id,
 	}));
 
