@@ -5,6 +5,7 @@ import CustomerRow from "./CustomerRow";
 import styles from "./CustomersList.module.css";
 import CounterPagination from "../../../../module/counter-pagination/CounterPagination";
 import { stringifyParams } from "../../../../../utils/utils";
+import Table from "../../../../ui/table/Table";
 
 const TABLE_HEADES = ["مشتری", "شماره تماس", "شغل", "وضعیت", "تاریخ افزودن", "جزئیات"];
 
@@ -14,6 +15,11 @@ function CustomersList({ customersParams, selection }) {
 
 	const { data } = useGetUserCustomers(stringifyParams(params));
 	const { customers, totalPages, totalCustomers, limit } = data || {};
+
+	const heads = [
+		<input type="checkbox" checked={selectionState.mode === "all"} onChange={toggleSelectAll} />,
+		...TABLE_HEADES,
+	];
 
 	if (!data.totalCustomers) {
 		return (
@@ -27,32 +33,16 @@ function CustomersList({ customersParams, selection }) {
 
 	return (
 		<section className={styles.wrapper}>
-			<table className={styles.table}>
-				<thead>
-					<tr>
-						<th>
-							<input
-								type="checkbox"
-								checked={selectionState.mode === "all"}
-								onChange={toggleSelectAll}
-							/>
-						</th>
-						{TABLE_HEADES.map((head) => (
-							<th key={head}>{head}</th>
-						))}
-					</tr>
-				</thead>
-				<tbody>
-					{customers?.map((customer) => (
-						<CustomerRow
-							key={customer._id}
-							customer={customer}
-							isSelected={isSelected(customer._id)}
-							onToggleSelect={(event) => toggleSelect(event, customer._id)}
-						/>
-					))}
-				</tbody>
-			</table>
+			<Table heads={heads}>
+				{customers?.map((customer) => (
+					<CustomerRow
+						key={customer._id}
+						customer={customer}
+						isSelected={isSelected(customer._id)}
+						onToggleSelect={(event) => toggleSelect(event, customer._id)}
+					/>
+				))}
+			</Table>
 
 			<CounterPagination
 				label="مشتری"
@@ -60,7 +50,7 @@ function CustomersList({ customersParams, selection }) {
 				totalPages={totalPages}
 				currentPage={params.page}
 				totalCount={totalCustomers}
-        wrapperClassName={styles.pagination_wrapper}
+				wrapperClassName={styles.pagination_wrapper}
 				onChange={(page) => updateParams({ page })}
 			/>
 		</section>

@@ -1,8 +1,3 @@
-.row td {
-  padding-inline: 12px;
-  padding-block: 14px;
-}
-
 .name_wrapper {
   display: flex;
   column-gap: 12px;

@@ -7,12 +7,13 @@ import {
 	CUSTOMER_STATUSES_LABEL,
 } from "../../../../../constants/customerStatus";
 import { toPersianDateString } from "../../../../../utils/utils";
+import { TableRow } from "../../../../ui/table/Table";
 
 function CustomerRow({ customer, isSelected, onToggleSelect }) {
 	const { name, job, phonePrimary, createdAt, _id, status } = customer;
 
 	return (
-		<tr className={styles.row}>
+		<TableRow>
 			<td>
 				<input type="checkbox" checked={isSelected} onChange={onToggleSelect} />
 			</td>
@@ -33,7 +34,7 @@ function CustomerRow({ customer, isSelected, onToggleSelect }) {
 					پرونده
 				</LinkButton>
 			</td>
-		</tr>
+		</TableRow>
 	);
 }
 
