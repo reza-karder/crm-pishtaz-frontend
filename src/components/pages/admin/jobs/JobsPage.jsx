@@ -3,6 +3,7 @@ import PlusIcon from "../../../../assets/icons/plus.svg?react";
 import Button from "../../../ui/button/Button";
 import useCustomParams from "../../../../hooks/useCustomParams";
 import JobsList from "./JobsList";
+import SearchInput from "./SearchInput";
 
 const DEFAULT_PARAMS = {
 	search: "",
@@ -18,6 +19,9 @@ function JobsPage() {
 				<Button IconStart={PlusIcon}>شغل جدید</Button>
 			</PageHeader>
 
+      <div className="paper">
+        <SearchInput jobsParams={jobsParams} />
+      </div>
       <JobsList jobsParams={jobsParams} />
 		</>
 	);

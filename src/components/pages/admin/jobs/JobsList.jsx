@@ -6,7 +6,7 @@ import Pagination from "../../../ui/pagination/Pagination";
 
 function JobsList({ jobsParams }) {
 	const { params, updateParams } = jobsParams;
-	const { data } = useAdminGetJobs();
+	const { data } = useAdminGetJobs(new URLSearchParams(params).toString());
 	const { jobs, totalJobs, totalPages, limit } = data || {};
 
 	const jobsDisplayStartRange = (params.page - 1) * limit + Math.min(1, totalJobs);
