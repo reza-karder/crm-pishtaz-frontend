@@ -6,6 +6,9 @@ import JobsList from "./JobsList";
 import SearchInput from "./SearchInput";
 import useToggle from "../../../../hooks/useToggle";
 import JobModal from "./job-item/JobModal";
+import QueryBoundary from "../../../common/QueryBoundary";
+import Loading from "./Loading";
+import ErrorState from "../../../common/error-state/ErrorState";
 
 const DEFAULT_PARAMS = {
 	search: "",
@@ -27,7 +30,9 @@ function JobsPage() {
 			<div className="paper">
 				<SearchInput jobsParams={jobsParams} />
 			</div>
-			<JobsList jobsParams={jobsParams} />
+			<QueryBoundary loadingFallback={<Loading />} errorFallback={<ErrorState />}>
+				<JobsList jobsParams={jobsParams} />
+			</QueryBoundary>
 
 			{isJobModalOpen && (
 				<JobModal
