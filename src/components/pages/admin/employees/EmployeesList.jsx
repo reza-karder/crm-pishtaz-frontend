@@ -4,7 +4,7 @@ import Table from "../../../ui/table/Table";
 import EmployeeRow from "./EmployeeRow";
 import styles from "./EmployeesList.module.css";
 
-const HEADS = ["نام", "نقش", "وضعیت", "تاریخ افزودن", "پرونده"];
+const HEADS = ["نام", "سمت", "وضعیت", "تاریخ افزودن", "پرونده"];
 
 function EmployeesList() {
 	const { data } = useGetAllUsers();

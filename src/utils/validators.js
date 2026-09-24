@@ -1,5 +1,6 @@
 import * as yup from "yup";
 import { CALL_STATUS } from "../constants/callStatus";
+import { USER_ROLES, USER_STATUS } from "../constants/userLabels";
 
 const PHONE_REGEX = /^09\d{9}$/;
 const PASSWORD_REGEX = /^(?=.*[A-Z])(?=.*\d)(?=.*[^A-Za-z0-9]).{8,}$/;
@@ -65,12 +66,29 @@ const profilePasswordFormSchema = yup.object({
 });
 
 const productFormSchema = yup.object({
-  title: yup.string().required("عنوان اجباری است")
-})
+	title: yup.string().required("عنوان اجباری است"),
+});
 
 const jobFormSchema = yup.object({
-  title: yup.string().required("عنوان اجباری است")
-})
+	title: yup.string().required("عنوان اجباری است"),
+});
+
+const employeeFormSchema = yup.object({
+	name: yup.string().required("نام اجباری است"),
+  email: yup.string().required("ایمیل اجباری است").email("ایمیل معتبر نمی باشد"),
+  role: yup.string().required("سمت اجباری می باشد").oneOf(USER_ROLES),
+  status: yup.string().required("وضعیت اجباری می باشد").oneOf(USER_STATUS),
+	phone: yup
+		.string()
+		.matches(PHONE_REGEX, "شماره تماس معتبر نیست"),
+	password: yup
+		.string()
+		.required("رمز عبور اجباری است")
+		.matches(
+			PASSWORD_REGEX,
+			"رمز عبور باید انگلیسی و دارای حداقل ۸ حرف، یک حرف بزرگ، یک حرف خاص، یک عدد باشد"
+		),
+});
 
 export {
 	signinSchema,
@@ -80,6 +98,7 @@ export {
 	transferCustomerValidator,
 	profileInfoFormSchema,
 	profilePasswordFormSchema,
-  productFormSchema,
-  jobFormSchema
+	productFormSchema,
+	jobFormSchema,
+  employeeFormSchema
 };

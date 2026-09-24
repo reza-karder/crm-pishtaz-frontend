@@ -4,7 +4,7 @@ import styles from "./Select.module.css";
 /**
  * @param {Object[]} options
  * @param {label} options[].label - label to show
- * @param {value} options[].id - option value
+ * @param {value} options[].value - option value
  */
 function Select({ options, className, value, error, ...props }) {
 	return (
