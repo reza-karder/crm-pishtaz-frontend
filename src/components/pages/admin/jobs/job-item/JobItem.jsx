@@ -27,6 +27,7 @@ function JobItem({ job, params }) {
 			queryClient.invalidateQueries({
 				queryKey: JOB_KEYS.GET_ADMIN_JOBS(new URLSearchParams(params).toString()),
 			});
+      toggleIsDeleteModalOpen()
 		}
 	};
 

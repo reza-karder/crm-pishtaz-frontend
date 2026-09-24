@@ -24,8 +24,9 @@ function ProductItem({ product, params }) {
 		if (response.success) {
 			toast.success(response.message);
 			queryClient.invalidateQueries({
-				queryKey: PRODUCTS_KEYS.GET_ADMIN_JOBS(new URLSearchParams(params).toString()),
+				queryKey: PRODUCTS_KEYS.GET_ADMIN_PRODUCTS(new URLSearchParams(params).toString()),
 			});
+      toggleIsDeleteModalOpen()
 		}
 	};
 
@@ -36,7 +37,7 @@ function ProductItem({ product, params }) {
 				<IconBtn onClick={toggleIsProductModalOpen}>
 					<PenIcon />
 				</IconBtn>
-				<IconBtn color="danger">
+				<IconBtn color="danger" onClick={toggleIsDeleteModalOpen}>
 					<TrashIcon />
 				</IconBtn>
 			</div>

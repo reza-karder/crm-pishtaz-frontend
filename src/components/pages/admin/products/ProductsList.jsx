@@ -3,6 +3,7 @@ import Pagination from "../../../ui/pagination/Pagination";
 import { useAdminGetProducts } from "../../../../api/products/queries";
 import ProductItem from "./product-item/ProductItem";
 import clsx from "clsx";
+import EmptyState from "../../../common/empty-state/EmptyState";
 
 function ProductsList({ productsParams }) {
 	const { params, updateParams } = productsParams;
@@ -11,6 +12,14 @@ function ProductsList({ productsParams }) {
 
 	const productsDisplayStartRange = (params.page - 1) * limit + Math.min(1, totalProducts);
 	const productsDisplayEndRange = Math.min(productsDisplayStartRange + limit - 1, totalProducts);
+
+	if (!products.length) {
+		return (
+			<section className={clsx("paper", styles.section)}>
+				<EmptyState title="محصولی وجود ندارد" subtitle="هنوز محصولی در سامانه ثبت نشده است" />
+			</section>
+		);
+	}
 
 	return (
 		<section className={clsx("paper", styles.section)}>
