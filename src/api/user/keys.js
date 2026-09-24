@@ -6,7 +6,8 @@ const USER_KEYS = {
   CHANGE_USER_PASSWORD: ["user", "password"],
   GET_ALL_USERS: ["users", "all"],
   CREATE_EMPLOYEE: ["employee", "create"],
-  EDIT_EMPLOYEE: ["employee", "edit"]
+  EDIT_EMPLOYEE: ["employee", "edit"],
+  GET_EMPLOYEE: (employeeId) => ["employee", employeeId]
 }
 
 export default USER_KEYS

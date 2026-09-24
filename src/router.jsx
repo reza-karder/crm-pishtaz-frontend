@@ -23,6 +23,7 @@ import JobsPage from "./components/pages/admin/jobs/JobsPage";
 import AdminDashboardPage from "./components/pages/admin/dashboard/DashboardPage";
 import AdminDashboardLoading from "./components/pages/admin/dashboard/Loading";
 import EmployeesPage from "./components/pages/admin/employees/EmployeesPage";
+import EmployeeProfile from "./components/pages/admin/employee-profile/EmployeeProfile";
 
 async function sessionLoader() {
 	const result = await AUTH_SERVICES.checkSession();
@@ -108,10 +109,14 @@ const adminRoutes = [
 			</QueryBoundary>
 		),
 	},
-  {
-    path: "/admin/employees",
-    element: <EmployeesPage />
-  }
+	{
+		path: "/admin/employees",
+		element: <EmployeesPage />,
+	},
+	{
+		path: "/admin/employees/:employeeId",
+		element: <EmployeeProfile />,
+	},
 ];
 
 const router = createBrowserRouter([

@@ -38,4 +38,18 @@ const useGetAllUsers = () => {
 	});
 };
 
-export { useGetUser, useGetUserStats, useGetActiveUsers, useSuspenseGetUser, useGetAllUsers };
+const useGetEmployee = (employeeId) => {
+	return useSuspenseQuery({
+		queryKey: USER_KEYS.GET_EMPLOYEE(employeeId),
+		queryFn: () => USER_SERVICES.getEmployee(employeeId),
+	});
+};
+
+export {
+	useGetUser,
+	useGetUserStats,
+	useGetActiveUsers,
+	useSuspenseGetUser,
+	useGetAllUsers,
+	useGetEmployee,
+};

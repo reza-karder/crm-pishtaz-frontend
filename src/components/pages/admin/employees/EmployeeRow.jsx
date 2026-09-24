@@ -22,7 +22,7 @@ function EmployeeRow({ employee }) {
 			</td>
 			<td className={styles.data}>{toPersianDateString(createdAt)}</td>
 			<td>
-				<LinkButton to={`/employees/${_id}`} IconEnd={ArrowIcon} variant="text" color="normal">
+				<LinkButton to={`/admin/employees/${_id}`} IconEnd={ArrowIcon} variant="text" color="normal">
 					پرونده
 				</LinkButton>
 			</td>

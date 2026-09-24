@@ -73,6 +73,7 @@ function EmployeeModal({ isOpen, onClose, employee }) {
 			<ModalHeader
 				title={isEditing ? "ویرایش کارمند" : "افزودن کارمند"}
 				subTitle="اطلاعات عمومی و حساس مربوط به کارمند"
+        onClose={onClose}
 			/>
 			<ModalBody>
 				<EmployeeForm employeeForm={employeeForm} />
