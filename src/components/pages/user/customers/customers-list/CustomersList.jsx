@@ -32,8 +32,8 @@ function CustomersList({ customersParams, selection }) {
 	}
 
 	return (
-		<section className={styles.wrapper}>
-			<Table heads={heads}>
+		<section className="table_wrapper">
+			<Table heads={heads} className={styles.table}>
 				{customers?.map((customer) => (
 					<CustomerRow
 						key={customer._id}

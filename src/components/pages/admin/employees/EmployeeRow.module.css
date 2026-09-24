@@ -1,0 +1,9 @@
+.name {
+  font-weight: 500;
+  font-size: var(--fs-sm);
+}
+
+.data {
+  color: var(--clr-text-soft);
+  font-size: var(--fs-sm);
+}

@@ -3,7 +3,8 @@ const USER_KEYS = {
   GET_USER_STATS: ["user", "stats"],
   GET_ACTIVE_USERS: ["users", "active"],
   EDIT_USER: ["user", "edit"],
-  CHANGE_USER_PASSWORD: ["user", "password"]
+  CHANGE_USER_PASSWORD: ["user", "password"],
+  GET_ALL_USERS: ["users", "all"]
 }
 
 export default USER_KEYS

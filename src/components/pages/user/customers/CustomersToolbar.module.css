@@ -1,3 +1,7 @@
+.toolbar {
+  margin-block-end: 20px;
+}
+
 .toolbar__summary {
   display: grid;
   grid-template-columns: 1fr 170px 110px;

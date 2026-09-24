@@ -27,8 +27,15 @@ const useGetActiveUsers = () => {
 	return useQuery({
 		queryKey: USER_KEYS.GET_ACTIVE_USERS,
 		queryFn: USER_SERVICES.getActiveUsers,
-    staleTime: Infinity
+		staleTime: Infinity,
 	});
 };
 
-export { useGetUser, useGetUserStats, useGetActiveUsers, useSuspenseGetUser };
+const useGetAllUsers = () => {
+	return useSuspenseQuery({
+		queryKey: USER_KEYS.GET_ALL_USERS,
+		queryFn: USER_SERVICES.getAllUsers,
+	});
+};
+
+export { useGetUser, useGetUserStats, useGetActiveUsers, useSuspenseGetUser, useGetAllUsers };

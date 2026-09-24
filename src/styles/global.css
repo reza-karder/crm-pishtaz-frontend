@@ -116,15 +116,12 @@ REUSEABLE STYLES
   font-size: var(--fs-xs);
 }
 
-.toast--success {
-  border-color: var(--clr-success) !important;
-  background-color: var(--clr-success-soft) !important ;
-  color: var(--clr-success) !important;
-}
-
-.toast_btn {
-  background-color: var(--clr-text-mute) !important;
-  color: var(--clr-text-soft) !important;
+.table_wrapper {
+  width: 100%;
+  overflow-x: auto;
+  border: 1px solid var(--clr-border);
+  border-radius: 14px;
+  background-color: var(--clr-white);
 }
 
 /* ==================================

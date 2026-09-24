@@ -5,7 +5,8 @@ const USER_SERVICES = {
   getUserStats: () => axiosClient.get("/users/me/stats"),
   getActiveUsers: () => axiosClient.get("/users/active"),
   editUser: (data) => axiosClient.patch("/users/me", data),
-  changeUserPassword: (data) => axiosClient.patch("/users/me/password", data)
+  changeUserPassword: (data) => axiosClient.patch("/users/me/password", data),
+  getAllUsers: () => axiosClient.get("/users/all")
 }
 
 export default USER_SERVICES

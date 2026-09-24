@@ -29,10 +29,6 @@
   font-size: var(--fs-xs);
 }
 
-.table thead th:last-child {
-  text-align: center;
-}
-
 .row td {
   padding-inline: 12px;
   padding-block: 14px;
