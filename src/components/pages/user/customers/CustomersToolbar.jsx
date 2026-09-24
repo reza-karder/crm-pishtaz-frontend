@@ -14,19 +14,11 @@ import {
 	CUSTOMER_TOOLBAR_FIELDS,
 	SORT_OPTIONS,
 } from "../../../../constants/CustomersToolbar";
-import { useEffect, useState } from "react";
-import useDebouncedValue from "../../../../hooks/useDebouncedValue";
+import SearchInput from "../../../module/SearchInput";
 
 function CustomersToolbar({ customersParams }) {
 	const [isFilterOpen, toggleIsFilterOpen] = useToggle(false);
 	const { params, updateParams } = customersParams;
-
-	const [searchValue, setSearchValue] = useState(params.search);
-	const debouncedSearchValue = useDebouncedValue(searchValue, 500);
-
-	useEffect(() => {
-		updateParams({ search: debouncedSearchValue });
-	}, [debouncedSearchValue]);
 
 	const { data: jobOptions } = useGetJobOptions();
 	const { data: productOptions } = useGetProductOptions();
@@ -44,11 +36,10 @@ function CustomersToolbar({ customersParams }) {
 	return (
 		<section className={clsx("paper", styles.toolbar, isFilterOpen && styles.open)}>
 			<div className={styles.toolbar__summary}>
-				<Input
+				<SearchInput
+					initialValue={params.search}
+					onChange={(search) => updateParams({ search })}
 					placeholder="جستجوی نام، شماره تماس، ایمیل ..."
-					value={searchValue}
-					StartIcon={MagnifyIcon}
-					onChange={(event) => setSearchValue(event.target.value)}
 				/>
 				<Select name="sort" value={params.sort} options={SORT_OPTIONS} onChange={handleChange} />
 				<Button

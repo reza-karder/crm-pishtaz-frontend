@@ -3,12 +3,12 @@ import PlusIcon from "../../../../assets/icons/plus.svg?react";
 import Button from "../../../ui/button/Button";
 import ProductsList from "./ProductsList";
 import useCustomParams from "../../../../hooks/useCustomParams";
-import SearchInput from "./SearchInput";
 import useToggle from "../../../../hooks/useToggle";
 import ProductModal from "./product-item/ProductModal";
 import QueryBoundary from "../../../common/QueryBoundary";
 import Loading from "./Loading";
 import ErrorState from "../../../common/error-state/ErrorState";
+import SearchInput from "../../../module/SearchInput";
 
 const DEFAULT_PARAMS = {
 	search: "",
@@ -28,7 +28,11 @@ function ProductsPages() {
 			</PageHeader>
 
 			<div className="paper">
-				<SearchInput productsParams={productsParams} />
+				<SearchInput
+					initialValue={productsParams.params.search}
+					placeholder="جستجوی محصول..."
+					onChange={(search) => productsParams.updateParams({ search })}
+				/>
 			</div>
 			<QueryBoundary loadingFallback={<Loading />} errorFallback={<ErrorState />}>
 				<ProductsList productsParams={productsParams} />

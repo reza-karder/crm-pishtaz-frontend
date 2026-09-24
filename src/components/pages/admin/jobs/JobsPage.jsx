@@ -3,12 +3,12 @@ import PlusIcon from "../../../../assets/icons/plus.svg?react";
 import Button from "../../../ui/button/Button";
 import useCustomParams from "../../../../hooks/useCustomParams";
 import JobsList from "./JobsList";
-import SearchInput from "./SearchInput";
 import useToggle from "../../../../hooks/useToggle";
 import JobModal from "./job-item/JobModal";
 import QueryBoundary from "../../../common/QueryBoundary";
 import Loading from "./Loading";
 import ErrorState from "../../../common/error-state/ErrorState";
+import SearchInput from "../../../module/SearchInput";
 
 const DEFAULT_PARAMS = {
 	search: "",
@@ -28,7 +28,11 @@ function JobsPage() {
 			</PageHeader>
 
 			<div className="paper">
-				<SearchInput jobsParams={jobsParams} />
+				<SearchInput
+					initialValue={jobsParams.params.search}
+          placeholder="جستجوی شغل..."
+					onChange={(search) => jobsParams.updateParams({ search })}
+				/>
 			</div>
 			<QueryBoundary loadingFallback={<Loading />} errorFallback={<ErrorState />}>
 				<JobsList jobsParams={jobsParams} />
