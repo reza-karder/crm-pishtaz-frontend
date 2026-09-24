@@ -4,7 +4,8 @@ const JOB_SERVICES = {
   getJobs: () => axiosClient.get("/jobs/all"),
   getAdminJobs: (params) => axiosClient.get(`/jobs?${params}`),
   editJob: (job) => axiosClient.patch(`/jobs/${job._id}`, job),
-  createJob: (job) => axiosClient.post("/jobs", job)
+  createJob: (job) => axiosClient.post("/jobs", job),
+  deleteJob: (jobId) => axiosClient.delete(`/jobs/${jobId}`)
 }
 
 export default JOB_SERVICES

@@ -16,4 +16,12 @@ const useEditJob = () => {
 	});
 };
 
-export { useCreateJob, useEditJob };
+const useDeleteJob = () => {
+	return useMutation({
+		mutationFn: JOB_SERVICES.deleteJob,
+		mutationKey: JOB_KEYS.DELETE_JOB,
+	});
+};
+
+
+export { useCreateJob, useEditJob, useDeleteJob };

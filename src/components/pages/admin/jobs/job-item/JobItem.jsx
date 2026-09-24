@@ -4,10 +4,31 @@ import PenIcon from "../../../../../assets/icons/pen.svg?react";
 import TrashIcon from "../../../../../assets/icons/trash.svg?react";
 import useToggle from "../../../../../hooks/useToggle";
 import JobModal from "./JobModal";
+import DeleteModal from "../../../../ui/delete-modal/DeleteModal";
+import { useDeleteJob } from "../../../../../api/jobs/mutations";
+import { toast } from "sonner";
+import { useQueryClient } from "@tanstack/react-query";
+import JOB_KEYS from "../../../../../api/jobs/keys";
 
 function JobItem({ job, params }) {
-	const { title } = job;
+	const { title, _id } = job;
+
 	const [isJobModalOpen, toggleIsJobModalOpen] = useToggle(false);
+	const [isDeleteModalOpen, toggleIsDeleteModalOpen] = useToggle(false);
+
+	const queryClient = useQueryClient();
+	const { mutateAsync: mutateDeleteJob, isPending } = useDeleteJob();
+
+	const deleteJob = async () => {
+		const response = await mutateDeleteJob(job._id);
+
+		if (response.success) {
+			toast.success(response.message);
+			queryClient.invalidateQueries({
+				queryKey: JOB_KEYS.GET_ADMIN_JOBS(new URLSearchParams(params).toString()),
+			});
+		}
+	};
 
 	return (
 		<li className={styles.job}>
@@ -16,7 +37,7 @@ function JobItem({ job, params }) {
 				<IconBtn onClick={toggleIsJobModalOpen}>
 					<PenIcon />
 				</IconBtn>
-				<IconBtn color="danger">
+				<IconBtn color="danger" onClick={toggleIsDeleteModalOpen}>
 					<TrashIcon />
 				</IconBtn>
 			</div>
@@ -27,6 +48,19 @@ function JobItem({ job, params }) {
 					isOpen={isJobModalOpen}
 					onClose={toggleIsJobModalOpen}
 					job={job}
+				/>
+			)}
+
+			{isDeleteModalOpen && (
+				<DeleteModal
+					isOpen={isDeleteModalOpen}
+					onClose={toggleIsDeleteModalOpen}
+					title="حذف شغل"
+					subTitle="آیا از حذف این شغل مطمئن هستید؟"
+					messageTilte="حذف شغل بازگشت ناپذیر خواهد بود"
+					message="با حذف این شغل تمام مشتریان دارای این شغل فاقد شغل خواهند شد"
+					onConfirm={deleteJob}
+					loading={isPending}
 				/>
 			)}
 		</li>
