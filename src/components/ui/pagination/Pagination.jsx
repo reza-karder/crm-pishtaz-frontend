@@ -29,9 +29,16 @@ function getPaginationItems(totalPages, currentPage) {
 function Pagination({ totalPages, currentPage, onChange }) {
 	const paginationItems = getPaginationItems(totalPages, currentPage);
 
+  const navigateByAmount = (amount) => {
+    const newCurrentPage = currentPage + amount
+    if(!(newCurrentPage < 1 && newCurrentPage > totalPages)) {
+      onChange(newCurrentPage)
+    }
+  }
+
 	return (
 		<div dir="ltr" className={styles.pagination_wrapper}>
-			<IconBtn className={styles.pagination__btn}>
+			<IconBtn onClick={navigateByAmount} className={styles.pagination__btn}>
 				<ArrowLeft />
 			</IconBtn>
 			<div className={styles.pagination}>
@@ -44,7 +51,7 @@ function Pagination({ totalPages, currentPage, onChange }) {
 					/>
 				))}
 			</div>
-			<IconBtn className={styles.pagination__btn}>
+			<IconBtn onClick={navigateByAmount} className={styles.pagination__btn}>
 				<ArrowRight />
 			</IconBtn>
 		</div>
