@@ -4,7 +4,6 @@ import styles from "./DashboardPage.module.css";
 import PersonIcon from "../../../../assets/icons/person.svg?react";
 import PhoneIcon from "../../../../assets/icons/phone.svg?react";
 import QuickAccess from "./QuickAccess";
-import Chart from "./Chart";
 import clsx from "clsx";
 import PageHeader from "../../../module/page-header/PageHeader";
 import Button from "../../../ui/button/Button";
@@ -17,6 +16,7 @@ import useDocumentTitle from "../../../../hooks/useDocumentTitle";
 import CustomerModal from "../../../module/customer-modal/CustomerModal";
 import useToggle from "../../../../hooks/useToggle";
 import { toUTCDateString } from "../../../../utils/calendar";
+import CallChart from "../../../module/call-chart/CallChart";
 
 function DashboardPage() {
 	useDocumentTitle("داشبورد");
@@ -46,7 +46,7 @@ function DashboardPage() {
 						<p className="paper__title">تماس‌ های هفته</p>
 						<p className="paper__subtitle">تعداد تماس‌های انجام‌شده در ۷ روز گذشته</p>
 					</div>
-					<Chart callsOfLast7Days={callsOfLast7Days} />
+					<CallChart callsOfLast7Days={callsOfLast7Days} />
 				</section>
 				<section className={clsx("paper", styles.calls_sec)}>
 					<div className={styles.calls__header}>

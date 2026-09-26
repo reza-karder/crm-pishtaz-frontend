@@ -25,3 +25,12 @@
 .item__value {
   font-size: var(--fs-sm);
 }
+
+/* ==================================
+WIDTH MEDIA
+================================== */
+@media (max-width: 1024px) {
+	.wrapper {
+    width: 100%;
+  }
+}

@@ -11,9 +11,25 @@
   gap: 16px;
 }
 
+.chart_sec {
+	flex-grow: 1;
+	min-width: 450px;
+}
+
 /* ==================================
 WIDTH MEDIA
 ================================== */
+@media (max-width: 1024px) {
+	.wrapper {
+		flex-direction: column;
+	}
+
+	.chart_sec {
+		flex-grow: 1;
+		min-width: 0
+	}
+}
+
 @media (max-width: 680px) {
   .stats_sec {
     flex-direction: column;

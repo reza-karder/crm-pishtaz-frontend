@@ -9,6 +9,8 @@ import StatCard from "../../../module/stat-card/StatCard";
 import PersonIcon from "../../../../assets/icons/person.svg?react";
 import PhoneIcon from "../../../../assets/icons/phone.svg?react";
 import EmployeeInfo from "./EmployeeInfo";
+import CallChart from "../../../module/call-chart/CallChart";
+import clsx from "clsx";
 
 function EmployeeProfile() {
 	const params = useParams();
@@ -44,6 +46,13 @@ function EmployeeProfile() {
 
       <div className={styles.wrapper}>
         <EmployeeInfo />
+        <section className={clsx("paper", styles.chart_sec)}>
+					<div>
+						<p className="paper__title">تماس‌ های هفته</p>
+						<p className="paper__subtitle">تعداد تماس‌های انجام‌شده در ۷ روز گذشته</p>
+					</div>
+        <CallChart callsOfLast7Days={stats?.callsOfLast7Days} />
+				</section>
       </div>
 		</>
 	);
