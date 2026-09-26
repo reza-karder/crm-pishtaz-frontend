@@ -18,7 +18,6 @@ const USER_LAYOUT_LINKS = [
 
 const ADMIN_LAYOUT_LINKS = [
   { label: "داشبورد", path: "/admin", Icon: BarChartIcon },
-  { label: "مشتریان", path: "/admin/customers", Icon: PeopleIcon },
   { label: "محصولات", path: "/admin/products", Icon: BoxIcon },
   { label: "مشاغل", path: "/admin/jobs", Icon: SuitcaseIcon },
   { label: "پروفایل", path: "/admin/profile", Icon: PersonIcon },

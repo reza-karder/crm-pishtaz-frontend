@@ -7,7 +7,8 @@ const USER_KEYS = {
   GET_ALL_USERS: ["users", "all"],
   CREATE_EMPLOYEE: ["employee", "create"],
   EDIT_EMPLOYEE: ["employee", "edit"],
-  GET_EMPLOYEE: (employeeId) => ["employee", employeeId]
+  GET_EMPLOYEE: (employeeId) => ["employee", employeeId],
+  DELETE_EMPLOYEE: ["employee", "delete"]
 }
 
 export default USER_KEYS

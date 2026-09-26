@@ -9,7 +9,8 @@ const USER_SERVICES = {
 	getAllUsers: () => axiosClient.get("/users/all"),
 	createEmployee: (data) => axiosClient.post("/users", data),
 	editEmployee: (employee) => axiosClient.patch(`/users/${employee._id}`, employee),
-  getEmployee: (employeeId) => axiosClient.get(`/users/${employeeId}`)
+  getEmployee: (employeeId) => axiosClient.get(`/users/${employeeId}`),
+  deleteEmployee: (data) => axiosClient.post(`/users/${data.employeeId}`, data)
 };
 
 export default USER_SERVICES;

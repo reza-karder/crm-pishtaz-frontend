@@ -6,9 +6,11 @@ import EmployeeModal from "../../../module/employee-modal/EmployeeModal";
 import Button from "../../../ui/button/Button";
 import styles from "./Actions.module.css";
 import { useGetEmployee } from "../../../../api/user/queries";
+import DeleteModal from "./DeleteModal";
 
 function Actions() {
 	const [isEmployeeModalOpen, toggleIsEmployeeModalOpen] = useToggle(false);
+	const [isDeleteModalOpen, toggleIsDeleteModalOpen] = useToggle(false);
 
 	const params = useParams();
 	const { data } = useGetEmployee(params.employeeId);
@@ -24,7 +26,7 @@ function Actions() {
 			>
 				ویرایش
 			</Button>
-			<Button size="small" color="danger" IconStart={TrashIcon}>
+			<Button size="small" color="danger" IconStart={TrashIcon} onClick={toggleIsDeleteModalOpen}>
 				حذف
 			</Button>
 
@@ -33,6 +35,14 @@ function Actions() {
 					isOpen={isEmployeeModalOpen}
 					onClose={toggleIsEmployeeModalOpen}
 					employee={data?.user}
+				/>
+			)}
+
+			{isDeleteModalOpen && (
+				<DeleteModal
+					isOpen={isDeleteModalOpen}
+					onClose={toggleIsDeleteModalOpen}
+					employeeId={data?.user?._id}
 				/>
 			)}
 		</div>

@@ -90,6 +90,10 @@ const employeeFormSchema = yup.object({
 		),
 });
 
+const deleteEmployeeSchema = yup.object({
+  substituteEmployeeId: yup.string().required("کارمند مقصد اجباری است")
+})
+
 export {
 	signinSchema,
 	customerSchema,
@@ -100,5 +104,6 @@ export {
 	profilePasswordFormSchema,
 	productFormSchema,
 	jobFormSchema,
-  employeeFormSchema
+  employeeFormSchema,
+  deleteEmployeeSchema
 };

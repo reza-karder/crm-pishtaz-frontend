@@ -30,4 +30,17 @@ const useEditEmployee = () => {
 	});
 };
 
-export { useEditUser, useChangeUserPassword, useCreateEmployee, useEditEmployee };
+const useDeleteEmployee = () => {
+	return useMutation({
+		mutationFn: USER_SERVICES.deleteEmployee,
+		mutationKey: USER_KEYS.DELETE_EMPLOYEE,
+	});
+};
+
+export {
+	useEditUser,
+	useChangeUserPassword,
+	useCreateEmployee,
+	useEditEmployee,
+	useDeleteEmployee,
+};
