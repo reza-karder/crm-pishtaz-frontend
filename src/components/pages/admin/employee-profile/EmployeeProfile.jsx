@@ -8,6 +8,7 @@ import Actions from "./Actions";
 import StatCard from "../../../module/stat-card/StatCard";
 import PersonIcon from "../../../../assets/icons/person.svg?react";
 import PhoneIcon from "../../../../assets/icons/phone.svg?react";
+import EmployeeInfo from "./EmployeeInfo";
 
 function EmployeeProfile() {
 	const params = useParams();
@@ -40,6 +41,10 @@ function EmployeeProfile() {
           color="warning"
 				/>
 			</section>
+
+      <div className={styles.wrapper}>
+        <EmployeeInfo />
+      </div>
 		</>
 	);
 }

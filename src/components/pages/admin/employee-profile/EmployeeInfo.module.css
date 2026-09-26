@@ -1,0 +1,27 @@
+.wrapper {
+  width: 300px;
+}
+
+.info_list {
+  margin-block-start: 16px;
+}
+
+.info__item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.info__item + .info__item {
+  margin-block-start: 12px;
+}
+
+.item__title {
+  color: var(--clr-text-soft);
+  font-size: var(--fs-xs);
+}
+
+.item__value {
+  font-size: var(--fs-sm);
+}
