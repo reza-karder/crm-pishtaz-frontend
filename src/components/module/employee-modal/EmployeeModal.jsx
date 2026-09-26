@@ -7,6 +7,7 @@ import Modal, { ModalBody, ModalFooter, ModalHeader } from "../../ui/modal/Modal
 import EmployeeForm from "./EmployeeForm";
 import { useQueryClient } from "@tanstack/react-query";
 import USER_KEYS from "../../../api/user/keys";
+import { useParams } from "react-router";
 
 const INITIAL_FORM_DATA = {
 	name: "",
@@ -19,6 +20,7 @@ const INITIAL_FORM_DATA = {
 
 function EmployeeModal({ isOpen, onClose, employee }) {
 	const isEditing = Boolean(employee);
+	const params = useParams();
 
 	const queryClient = useQueryClient();
 	const { mutateAsync: mutateCreateEmployee, isPending: isPendingCreate } = useCreateEmployee();
@@ -26,6 +28,7 @@ function EmployeeModal({ isOpen, onClose, employee }) {
 
 	const syncData = () => {
 		queryClient.invalidateQueries({ queryKey: USER_KEYS.GET_ALL_USERS });
+		queryClient.invalidateQueries({ queryKey: USER_KEYS.GET_EMPLOYEE(params.employeeId) });
 	};
 
 	const createEmployee = async (employeeData) => {
@@ -73,7 +76,7 @@ function EmployeeModal({ isOpen, onClose, employee }) {
 			<ModalHeader
 				title={isEditing ? "ویرایش کارمند" : "افزودن کارمند"}
 				subTitle="اطلاعات عمومی و حساس مربوط به کارمند"
-        onClose={onClose}
+				onClose={onClose}
 			/>
 			<ModalBody>
 				<EmployeeForm employeeForm={employeeForm} />
