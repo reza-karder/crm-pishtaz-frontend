@@ -61,7 +61,7 @@ function JobModal({ isOpen, onClose, job, params }) {
 		<Modal isOpen={isOpen} onClose={onClose}>
 			<ModalHeader title={isEditing ? "ویرایش شغل" : "افزودن شغل"} onClose={onClose} />
 			<ModalBody>
-				<form>
+				<form onSubmit={onSubmit}>
 					<FormField label="عنوان شغل" required id="title" error={getErrorMessage("title")}>
 						<Input
 							type="text"

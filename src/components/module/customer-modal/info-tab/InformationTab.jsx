@@ -54,7 +54,7 @@ const formFields = [
 ];
 
 function InformationTab({ customerForm }) {
-	const { getFieldProps, getErrorMessage } = customerForm;
+	const { getFieldProps, getErrorMessage, onSubmit } = customerForm;
 	const { data } = useGetJobs();
 
 	const jobOptions = data?.jobs.map((job) => ({
@@ -63,7 +63,7 @@ function InformationTab({ customerForm }) {
 	}));
 
 	return (
-		<form className={styles.form}>
+		<form className={styles.form} onSubmit={onSubmit}>
 			{formFields.map((field) => (
 				<FormField
 					id={field.id}

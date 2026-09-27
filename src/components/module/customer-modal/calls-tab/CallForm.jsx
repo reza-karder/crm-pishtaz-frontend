@@ -11,10 +11,10 @@ import TextArea from "../../../ui/text-area/TextArea";
 const DatePicker = DatePickerModule.default;
 
 function CallForm({ callForm }) {
-	const { values, setFieldValue, getFieldProps, getErrorMessage } = callForm;
+	const { values, setFieldValue, getFieldProps, getErrorMessage, onSubmit } = callForm;
 
 	return (
-		<form className={styles.form}>
+		<form className={styles.form} onSubmit={onSubmit}>
 			<FormField id="date" label="تاریخ" required error={getErrorMessage("date")}>
 				<DatePicker
 					calendar={persian}

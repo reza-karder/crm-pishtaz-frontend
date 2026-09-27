@@ -11,14 +11,14 @@ const TAB_ITEMS = [
 ];
 
 function ProductForm({ productForm, setActiveTabId, activeTabId, products }) {
-	const { getFieldProps, getErrorMessage, setFieldValue, values } = productForm;
+	const { getFieldProps, getErrorMessage, setFieldValue, values, onSubmit } = productForm;
 	const productOptions = products.map((product) => ({
 		value: product._id,
 		label: product.title,
 	}));
 
 	return (
-		<form>
+		<form onSubmit={onSubmit}>
 			<div className={styles.inputs_wrapper}>
 				<FormField id="product" required label="محصول" error={getErrorMessage("product")}>
 					<Select
