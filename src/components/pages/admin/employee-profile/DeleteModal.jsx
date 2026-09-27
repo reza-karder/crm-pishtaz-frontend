@@ -10,12 +10,16 @@ import Button from "../../../ui/button/Button";
 import Skeleton from "../../../common/skeleton/Skeleton";
 import { useDeleteEmployee } from "../../../../api/user/mutation";
 import { toast } from "sonner";
+import { useQueryClient } from "@tanstack/react-query";
+import USER_KEYS from "../../../../api/user/keys";
 
 function DeleteModal({ isOpen, onClose, employeeId }) {
 	const navigate = useNavigate();
 
+  const queryClient = useQueryClient()
 	const { mutateAsync: mutateDeleteEmployee, isPending } = useDeleteEmployee();
 	const { data, isPending: isPendingUsers } = useGetActiveUsers();
+  const users = data?.users?.filter(user => user._id !== employeeId) || []
 
 	const handleSubmit = async (formData) => {
 		const data = { substituteEmployeeId: formData.substituteEmployeeId, employeeId };
@@ -24,6 +28,7 @@ function DeleteModal({ isOpen, onClose, employeeId }) {
 		if (response.success) {
 			toast.success(response.message);
 			navigate("/admin/employees");
+      queryClient.invalidateQueries({ queryKey: USER_KEYS.GET_ACTIVE_USERS })
       onClose()
 		}
 	};
@@ -47,7 +52,7 @@ function DeleteModal({ isOpen, onClose, employeeId }) {
 						<Loading />
 					) : (
 						<ul className={styles.users_list}>
-							{data?.users.map((user) => (
+							{users.map((user) => (
 								<UserItem
 									key={user._id}
 									user={user}

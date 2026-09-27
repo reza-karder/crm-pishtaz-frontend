@@ -4,7 +4,7 @@ import Input from "../../ui/input/Input";
 import Select from "../../ui/select/Select";
 import styles from "./EmployeeForm.module.css";
 
-const FORM_INPUTS = [
+const generateFormInputs = (isEditing) => ([
 	{
 		id: "name",
 		name: "name",
@@ -36,12 +36,12 @@ const FORM_INPUTS = [
 		id: "password",
 		name: "password",
 		label: "رمز عبور",
-		required: true,
+		required: !isEditing,
 		placeholder: "••••••••",
 		type: "password",
 		dir: "ltr",
 	},
-];
+]);
 
 const FORM_SELECTS = [
 	{
@@ -60,12 +60,12 @@ const FORM_SELECTS = [
 	},
 ];
 
-function EmployeeForm({ employeeForm }) {
+function EmployeeForm({ employeeForm, isEditing }) {
 	const { getFieldProps, getErrorMessage, onSubmit } = employeeForm;
 
 	return (
 		<form className={styles.form} onSubmit={onSubmit}>
-			{FORM_INPUTS.map((field) => (
+			{generateFormInputs(isEditing).map((field) => (
 				<FormField
 					key={field.id}
 					id={field.id}

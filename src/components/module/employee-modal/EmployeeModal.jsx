@@ -1,7 +1,7 @@
 import { toast } from "sonner";
 import { useCreateEmployee, useEditEmployee } from "../../../api/user/mutation";
 import useCustomForm from "../../../hooks/useCustomForm";
-import { employeeFormSchema } from "../../../utils/validators";
+import { editEmployeeFormSchema, employeeFormSchema } from "../../../utils/validators";
 import Button from "../../ui/button/Button";
 import Modal, { ModalBody, ModalFooter, ModalHeader } from "../../ui/modal/Modal";
 import EmployeeForm from "./EmployeeForm";
@@ -67,7 +67,7 @@ function EmployeeModal({ isOpen, onClose, employee }) {
 
 	const employeeForm = useCustomForm(
 		employee || INITIAL_FORM_DATA,
-		employeeFormSchema,
+		isEditing ? editEmployeeFormSchema : employeeFormSchema,
 		handleSubmit
 	);
 
@@ -79,7 +79,7 @@ function EmployeeModal({ isOpen, onClose, employee }) {
 				onClose={onClose}
 			/>
 			<ModalBody>
-				<EmployeeForm employeeForm={employeeForm} />
+				<EmployeeForm employeeForm={employeeForm} isEditing={isEditing} />
 			</ModalBody>
 			<ModalFooter>
 				<Button

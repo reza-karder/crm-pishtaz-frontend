@@ -10,12 +10,14 @@ import { toast } from "sonner";
 import { useQueryClient } from "@tanstack/react-query";
 import JOB_KEYS from "../../../../../api/jobs/keys";
 import { stringifyParams } from "../../../../../utils/utils";
+import { useSearchParams } from "react-router";
 
 function JobItem({ job, params }) {
 	const { title, _id } = job;
 
 	const [isJobModalOpen, toggleIsJobModalOpen] = useToggle(false);
 	const [isDeleteModalOpen, toggleIsDeleteModalOpen] = useToggle(false);
+  const [searchParams, setSearchParams] = useSearchParams()
 
 	const queryClient = useQueryClient();
 	const { mutateAsync: mutateDeleteJob, isPending } = useDeleteJob();
@@ -28,6 +30,7 @@ function JobItem({ job, params }) {
 			queryClient.invalidateQueries({
 				queryKey: JOB_KEYS.GET_ADMIN_JOBS(stringifyParams(params)),
 			});
+      setSearchParams({})
       toggleIsDeleteModalOpen()
 		}
 	};

@@ -10,12 +10,14 @@ import { toast } from "sonner";
 import queryClient from "../../../../../lib/queryClient";
 import PRODUCTS_KEYS from "../../../../../api/products/keys";
 import { stringifyParams } from "../../../../../utils/utils";
+import { useSearchParams } from "react-router";
 
 function ProductItem({ product, params }) {
 	const { title, _id } = product;
 
 	const [isProductModalOpen, toggleIsProductModalOpen] = useToggle(false);
 	const [isDeleteModalOpen, toggleIsDeleteModalOpen] = useToggle(false);
+  const [searchParams, setSearchParams] = useSearchParams()
 
 	const { mutateAsync: mutateDeleteProduct, isPending } = useDeleteProduct();
 
@@ -27,6 +29,7 @@ function ProductItem({ product, params }) {
 			queryClient.invalidateQueries({
 				queryKey: PRODUCTS_KEYS.GET_ADMIN_PRODUCTS(stringifyParams(params)),
 			});
+      setSearchParams({})
       toggleIsDeleteModalOpen()
 		}
 	};

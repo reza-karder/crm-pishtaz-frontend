@@ -4,9 +4,14 @@ import { USER_ROLES, USER_STATUS } from "../constants/userLabels";
 
 const PHONE_REGEX = /^09\d{9}$/;
 const PASSWORD_REGEX = /^(?=.*[A-Z])(?=.*\d)(?=.*[^A-Za-z0-9]).{8,}$/;
+const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 const signinSchema = yup.object({
-	email: yup.string().trim().required("ایمیل اجباری است").email("ایمیل معتبر نمی باشد"),
+	email: yup
+		.string()
+		.trim()
+		.required("ایمیل اجباری است")
+		.matches(EMAIL_REGEX, "ایمیل معتبر نمی باشد"),
 	password: yup.string().trim().required("رمز عبور اجباری است"),
 });
 
@@ -18,7 +23,7 @@ const customerSchema = yup.object({
 		.required("شماره تماس اصلی اجباری است")
 		.matches(PHONE_REGEX, "شماره معتبر نمی باشد"),
 	phoneSecondary: yup.string().trim().optional().matches(PHONE_REGEX, "شماره معتبر نمی باشد"),
-	email: yup.string().trim().optional().email("ایمیل معتبر نمی باشد"),
+	email: yup.string().trim().optional().matches(EMAIL_REGEX, "ایمیل معتبر نمی باشد"),
 	address: yup.string().trim().optional(),
 	notes: yup.string().trim().optional(),
 	products: yup.array(),
@@ -52,14 +57,21 @@ const transferCustomerValidator = yup.object({
 });
 
 const profileInfoFormSchema = yup.object({
-	email: yup.string().trim().email("ایمیل معتبر نیست").required("ایمیل اجباری است"),
+	email: yup.string().trim().matches(EMAIL_REGEX, "ایمیل معتبر نیست").required("ایمیل اجباری است"),
 	phone: yup.string().trim().matches(PHONE_REGEX, "شماره تماس معتبر نیست").optional(),
 	name: yup.string().trim().required("نام و نام خانوادگی اجباری است"),
 });
 
 const profilePasswordFormSchema = yup.object({
 	currentPassword: yup.string().trim().required("رمز عبور فعلی اجباری است"),
-	newPassword: yup.string().trim().required("رمز عبور جدید اجباری است").matches(PASSWORD_REGEX),
+	newPassword: yup
+		.string()
+		.trim()
+		.required("رمز عبور جدید اجباری است")
+		.matches(
+			PASSWORD_REGEX,
+			"رمز عبور باید انگلیسی و دارای حداقل ۸ حرف، یک حرف بزرگ، یک حرف خاص، یک عدد باشد"
+		),
 	confirmNewPassword: yup
 		.string()
 		.trim()
@@ -75,9 +87,14 @@ const jobFormSchema = yup.object({
 	title: yup.string().trim().required("عنوان اجباری است"),
 });
 
+
 const employeeFormSchema = yup.object({
 	name: yup.string().trim().required("نام اجباری است"),
-	email: yup.string().trim().required("ایمیل اجباری است").email("ایمیل معتبر نمی باشد"),
+	email: yup
+		.string()
+		.trim()
+		.required("ایمیل اجباری است")
+		.matches(EMAIL_REGEX, "ایمیل معتبر نمی باشد"),
 	role: yup.string().required("سمت اجباری می باشد").oneOf(USER_ROLES),
 	status: yup.string().required("وضعیت اجباری می باشد").oneOf(USER_STATUS),
 	phone: yup.string().trim().matches(PHONE_REGEX, "شماره تماس معتبر نیست"),
@@ -85,6 +102,25 @@ const employeeFormSchema = yup.object({
 		.string()
 		.trim()
 		.required("رمز عبور اجباری است")
+		.matches(
+			PASSWORD_REGEX,
+			"رمز عبور باید انگلیسی و دارای حداقل ۸ حرف، یک حرف بزرگ، یک حرف خاص، یک عدد باشد"
+		),
+});
+
+const editEmployeeFormSchema = yup.object({
+	name: yup.string().trim().required("نام اجباری است"),
+	email: yup
+		.string()
+		.trim()
+		.required("ایمیل اجباری است")
+		.matches(EMAIL_REGEX, "ایمیل معتبر نمی باشد"),
+	role: yup.string().required("سمت اجباری می باشد").oneOf(USER_ROLES),
+	status: yup.string().required("وضعیت اجباری می باشد").oneOf(USER_STATUS),
+	phone: yup.string().trim().matches(PHONE_REGEX, "شماره تماس معتبر نیست"),
+	password: yup
+		.string()
+		.trim()
 		.matches(
 			PASSWORD_REGEX,
 			"رمز عبور باید انگلیسی و دارای حداقل ۸ حرف، یک حرف بزرگ، یک حرف خاص، یک عدد باشد"
@@ -107,4 +143,5 @@ export {
 	jobFormSchema,
 	employeeFormSchema,
 	deleteEmployeeSchema,
+  editEmployeeFormSchema
 };
