@@ -31,14 +31,15 @@ function Pagination({ totalPages, currentPage, onChange }) {
 
   const navigateByAmount = (amount) => {
     const newCurrentPage = currentPage + amount
-    if(!(newCurrentPage < 1 && newCurrentPage > totalPages)) {
+    console.log(newCurrentPage);
+    if(newCurrentPage >= 1 && newCurrentPage <= totalPages) {
       onChange(newCurrentPage)
     }
   }
 
 	return (
 		<div dir="ltr" className={styles.pagination_wrapper}>
-			<IconBtn onClick={navigateByAmount} className={styles.pagination__btn}>
+			<IconBtn onClick={() => navigateByAmount(-1)} className={styles.pagination__btn}>
 				<ArrowLeft />
 			</IconBtn>
 			<div className={styles.pagination}>
@@ -51,7 +52,7 @@ function Pagination({ totalPages, currentPage, onChange }) {
 					/>
 				))}
 			</div>
-			<IconBtn onClick={navigateByAmount} className={styles.pagination__btn}>
+			<IconBtn onClick={() => navigateByAmount(+1)} className={styles.pagination__btn}>
 				<ArrowRight />
 			</IconBtn>
 		</div>

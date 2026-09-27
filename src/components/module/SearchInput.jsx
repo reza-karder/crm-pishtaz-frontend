@@ -8,7 +8,7 @@ function SearchInput({ initialValue, onChange, ...props }) {
 	const debouncedValue = useDebouncedValue(value, 500);
 
 	useEffect(() => {
-		onChange(debouncedValue);
+		onChange(debouncedValue.trim());
 	}, [debouncedValue, onChange]);
 
 	return (
@@ -16,7 +16,7 @@ function SearchInput({ initialValue, onChange, ...props }) {
 			type="text"
 			value={value}
 			StartIcon={MagnifyIcon}
-			onChange={(event) => setValue(event.target.value.trim())}
+			onChange={(event) => setValue(event.target.value)}
       {...props}
 		/>
 	);
