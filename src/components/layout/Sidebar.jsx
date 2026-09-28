@@ -29,6 +29,7 @@ function Sidebar({ links, onClose }) {
       toast.success(response.message)
       navigate("/sign-in", { replace: true })
       queryClient.invalidateQueries({ queryKey: AUTH_KEYS.SESSION })
+      localStorage.removeItem("last-notification-visit")
     }
   }
 

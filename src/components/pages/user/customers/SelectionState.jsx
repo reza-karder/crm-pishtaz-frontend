@@ -12,11 +12,13 @@ import { toast } from "sonner";
 import { useQueryClient } from "@tanstack/react-query";
 import CUSTOMER_KEYS from "../../../../api/customers/keys";
 import { stringifyParams } from "../../../../utils/utils";
+import { useSearchParams } from "react-router";
 
 function SelectionState({ selection, customersParams }) {
 	const { cancelSelection, selectionState } = selection;
 	const { params } = customersParams;
 
+  const [searchParams, setSearchParams] = useSearchParams();
 	const queryClient = useQueryClient();
 
 	const [isDeleteModalOpen, toggleIsDeleteModalOpen] = useToggle();
@@ -38,6 +40,8 @@ function SelectionState({ selection, customersParams }) {
 			queryClient.invalidateQueries({
 				queryKey: CUSTOMER_KEYS.GET_USER_CUSTOMERS(stringifyParams(params)),
 			});
+      searchParams.delete("page")
+      setSearchParams(searchParams)
 			toggleIsDeleteModalOpen();
 			cancelSelection();
 		}

@@ -3,7 +3,7 @@
 	flex-wrap: wrap;
 	align-items: center;
 	justify-content: space-between;
-	margin-block-start: 16px;
+	margin-block: 16px;
 	gap: 16px;
   background-color: var(--clr-primary) !important;
 }

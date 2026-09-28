@@ -13,7 +13,7 @@ const useGetProducts = () => {
 
 const useGetProductOptions = () => {
 	return useQuery({
-		queryFn: PRODUCTS_SERVICES.getProducts,
+		queryFn: PRODUCTS_SERVICES.getAllProducts,
 		queryKey: PRODUCTS_KEYS.GET_PRODUCTS,
 		refetchOnMount: false,
 		meta: { silent: true },
