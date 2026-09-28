@@ -20,7 +20,7 @@ function Calendar() {
 	const startDate = toUTCDateString(daysOfMonth[0]);
 	const endDate = toUTCDateString(daysOfMonth[daysOfMonth.length - 1]);
 	const { data, isPending } = useGetCalendarCalls(startDate, endDate);
-
+  
 	const addToMonth = (amount) => {
 		setDate((prevValue) => {
 			return new DateObject(prevValue.add(amount, "month"));

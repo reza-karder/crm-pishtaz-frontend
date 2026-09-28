@@ -1,6 +1,8 @@
 import DateObject from "react-date-object";
 import persian from "react-date-object/calendars/persian";
 import persian_fa from "react-date-object/locales/persian_fa";
+import gregorian from "react-date-object/calendars/gregorian";
+import gregorian_en from "react-date-object/locales/gregorian_en";
 
 function createPersianDate(options = {}) {
 	return new DateObject({
@@ -27,11 +29,11 @@ function getDaysOfMonth(month, year) {
 }
 
 function toUTCDateString(date) {
-	return new DateObject(date)
-		.toUTC()
-		.toDate()
-		.toLocaleDateString("en-IR", { timeZone: "UTC" })
-		.replaceAll("/", "-");
+	return createPersianDate({date})
+  .convert(gregorian)
+  .setLocale(gregorian_en)
+	.toString()
+  .replaceAll("/", "-")
 }
 
 function isToday(date) {

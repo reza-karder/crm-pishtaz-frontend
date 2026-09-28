@@ -8,13 +8,19 @@ import { useGetCallsOfDay } from "../../../../api/calendar/queries";
 import Loading from "./Loading";
 import CallsList from "./CallsList";
 import useDocumentTitle from "../../../../hooks/useDocumentTitle";
+import DateObject from "react-date-object";
+import { toPersianDateString } from "../../../../utils/utils";
 
 function CalendarDayPage() {
-  useDocumentTitle("تقویم")
+	useDocumentTitle("تقویم");
 
 	const { date } = useParams();
 	const [status, setStatus] = useState("all");
-	const pageTitle = createPersianDate({ format: "dddd DD MMMM YYYY", ...date }).format();
+
+	const pageTitle = createPersianDate({
+		format: "",
+		date: toPersianDateString(date),
+	}).format("dddd DD MMMM YYYY");
 
 	const { data, isPending } = useGetCallsOfDay(date);
 	const calls =
